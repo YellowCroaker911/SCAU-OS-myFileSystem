@@ -4,24 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1538b75c-bd7a-4467-8950-94f80bd167ac" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/controller/MainViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/Disk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/FileManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/myTreeItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/testMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/MainView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/disk.txt" afterDir="false" />
+    <list default="true" id="1538b75c-bd7a-4467-8950-94f80bd167ac" name="变更" comment="完成Disk编写">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/Disk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/Disk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/testMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/testMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/disk.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/disk.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +41,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "last_opened_file_path": "D:/2wenjian/Javaproject/OS/demo/src/main/resources/com/example/demo",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "File.Encoding"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -100,6 +87,14 @@
       <option name="presentableId" value="Default" />
       <updated>1693234947828</updated>
     </task>
+    <task id="LOCAL-00001" summary="完成Disk编写">
+      <created>1693310572603</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1693310572603</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -112,5 +107,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="完成Disk编写" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成Disk编写" />
   </component>
 </project>

@@ -41,20 +41,18 @@ public class Disk {
 
 
     public void IOByte(int indexOfBlock, int indexOfByte, String mode) {
-        int base1 = indexOfBlock * blocksNumOfDisk;
-        int base2 = indexOfByte * bytesNumOfBlock;
-        for (int offset = 0; offset < bitsNumOfByte; offset++) {
+        int base = indexOfBlock * blocksNumOfDisk;
+        int offset = indexOfByte;
             try {
-                this.simulatedFile.seek(base1 + base2 + offset);
+                this.simulatedFile.seek(base + offset);
                 switch (mode) {
-                    case "r" -> this.readingBuffer[offset] = this.simulatedFile.readByte();
-                    case "w" -> this.simulatedFile.writeByte(this.writingBuffer[offset]);
+                    case "r" -> this.readingBuffer[0] = this.simulatedFile.readByte();
+                    case "w" -> this.simulatedFile.writeByte(this.writingBuffer[0]);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-    }
 
     public void format() {
         for (int offset = 0; offset < bytesNumOfBlock; offset++) {
@@ -63,9 +61,7 @@ public class Disk {
         for (int indexOfBlock = 0; indexOfBlock < blocksNumOfDisk; indexOfBlock++) {
             this.IOBlock(indexOfBlock, "w");
         }
-        for (int offset = 0; offset < bitsNumOfByte; offset++) {
-            this.writingBuffer[offset] = (byte) 0xFF;   // -1补码
-        }
+        this.writingBuffer[0] = (byte) 0xFF;   // -1补码
         for (int indexOfByte = 0; indexOfByte < 3; indexOfByte++) {
             this.IOByte(0, indexOfByte, "w");
         }
