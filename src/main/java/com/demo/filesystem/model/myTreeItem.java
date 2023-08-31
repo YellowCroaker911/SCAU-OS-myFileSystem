@@ -1,38 +1,38 @@
-//package com.demo.filesystem.model;
-//
-//import com.demo.photomanage.utils.Tools;
-//import javafx.collections.ObservableList;
-//import javafx.scene.control.TreeItem;
-//
-//import java.io.File;
-//
-//public class myTreeItem extends TreeItem<String> {
-//    private boolean isinited = false;   // 它儿子加载过没
-//    private final File file;
-//    public myTreeItem(File file){
-//        super(Tools.getFileName(file));
-//        this.file = file;
-//    }
-//
-//    @Override
-//    public ObservableList<TreeItem<String>> getChildren() {         // 展开时发生事件
-//
-//        ObservableList<TreeItem<String>> children = super.getChildren();
-//
-//        if (!isinited && isExpanded()) {      // 没有加载子目录
-//            isinited = true;
-//            if (file.isDirectory())
-//                for (File f : file.listFiles())     // 将子文件夹的夹到儿子里
-//                    if (f.isDirectory()) children.add(new myTreeItem(f));
-//        }
-//        return children;
-//    }
-//
-//    // 判断能不能点击展开
-//    @Override
-//    public boolean isLeaf() {
-//        return !file.isDirectory();
-//    }
-//
-//    public File getFile(){return file;}
-//}
+package com.demo.filesystem.model;
+
+import com.demo.filesystem.kernel.DirectoryEntry;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TreeItem;
+
+import java.io.File;
+
+public class myTreeItem extends TreeItem<String> {
+    private boolean isInitialized = false;                          // child是否已加载
+    private final DirectoryEntry directoryEntry;
+    public myTreeItem(DirectoryEntry directoryEntry){
+        super(directoryEntry.getName());
+        this.directoryEntry = directoryEntry;
+    }
+
+    @Override
+    public ObservableList<TreeItem<String>> getChildren() {         // 展开时发生事件
+        ObservableList<TreeItem<String>> children = super.getChildren();
+        if (!isInitialized && isExpanded()) {                       // 未加载child
+            isInitialized = true;
+            if (directoryEntry.isDirectory())
+                for (DirectoryEntry de : directoryEntry.listDirectoryEntries())     // 根据子目录项生成child
+                    if (de.isDirectory()) children.add(new myTreeItem(de));
+        }
+        return children;
+    }
+
+    // 判断是否可以点击展开
+    @Override
+    public boolean isLeaf() {
+        return !directoryEntry.isDirectory();
+    }
+
+    public DirectoryEntry getDirectoryEntry(){
+        return this.directoryEntry;
+    }
+}
