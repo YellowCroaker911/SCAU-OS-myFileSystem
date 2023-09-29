@@ -1,7 +1,12 @@
 package com.demo.filesystem;
 
-import com.demo.filesystem.kernel.Disk;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 public class testMain {
 
     public static void main(String[] args) {

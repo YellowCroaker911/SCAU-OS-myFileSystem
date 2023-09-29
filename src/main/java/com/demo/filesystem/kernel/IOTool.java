@@ -6,8 +6,7 @@ import static com.demo.filesystem.utils.Constant.bytesNumOfEntry;
 public class IOTool {
 
     public static byte readByte(int indexOfBlock,int offsetOfByte){
-
-        return
+        return ' ';
     }
 
     public static void writeByte(int indexOfBlock, int offsetOfByte, byte b) {
