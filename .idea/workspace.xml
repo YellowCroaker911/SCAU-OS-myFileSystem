@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1538b75c-bd7a-4467-8950-94f80bd167ac" name="变更" comment="第一次打包">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/FileFlowPane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/OperationMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1538b75c-bd7a-4467-8950-94f80bd167ac" name="变更" comment="runnable version">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/controller/MainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/IOTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/IOTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/testMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/testMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +41,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "D:/coding/OSClassP/2/demo/src/main/resources/com/demo/filesystem",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -62,6 +57,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\2wenjian\Javaproject\OS\demo\src\main\resources\com\demo\filesystem" />
       <recent name="D:\2wenjian\Javaproject\OS\demo\src\main\resources\com.demo.filesystem" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.demo.filesystem" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.demo.filesystem.model" />
@@ -135,6 +133,17 @@
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

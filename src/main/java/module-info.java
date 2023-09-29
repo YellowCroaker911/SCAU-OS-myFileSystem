@@ -6,4 +6,6 @@ module demo {
 
     opens com.demo.filesystem to javafx.fxml;
     exports com.demo.filesystem;
+    exports com.demo.filesystem.controller;
+    opens com.demo.filesystem.controller to javafx.fxml;
 }
