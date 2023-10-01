@@ -16,8 +16,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<StackPane prefHeight="738.0" prefWidth="1019.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo.filesystem.controller.MainViewController">
+<StackPane prefHeight="738.0" prefWidth="1019.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.demo.filesystem.controller.MainViewController">
     <children>
         <VBox fx:id="MainVbox" prefHeight="733.0" prefWidth="1019.0">
             <children>
@@ -39,7 +38,7 @@
                 </AnchorPane>
                 <SplitPane fx:id="SplitPane" dividerPositions="0.25, 0.75" prefHeight="694.0" prefWidth="1100.0">
                     <items>
-                        <TreeView fx:id="TreeViewFile" prefHeight="639.0" prefWidth="204.0" showRoot="false" />
+                        <TreeView fx:id="TreeViewFile" prefHeight="639.0" prefWidth="204.0" />
                         <ScrollPane fx:id="FileScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="50.0" minWidth="50.0" prefHeight="639.0" prefWidth="822.0">
                             <content>
                                 <AnchorPane fx:id="FileAnchorPane" />

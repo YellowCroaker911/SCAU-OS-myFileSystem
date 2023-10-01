@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1538b75c-bd7a-4467-8950-94f80bd167ac" name="变更" comment="runnable version">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="1538b75c-bd7a-4467-8950-94f80bd167ac" name="变更" comment="first runnable version with original files">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/FileWindowMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/ThumbnailPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/controller/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/DirectoryEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/DirectoryEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/FileFlowPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/FileFlowPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/OperationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/OperationMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/myTreeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/myTreeItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/MainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,18 +44,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/coding/OSClassP/2/demo/src/main/resources/com/demo/filesystem",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.25287357",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/coding/OSClassP/2/demo&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.25287357&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\coding\OSClassP\2\demo\src\main\resources\com\demo\filesystem" />
@@ -131,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693479170860</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="first runnable version with original files">
+      <created>1696011747757</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696011747757</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -159,6 +173,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完成Disk编写" />
     <MESSAGE value="第一次打包" />
-    <option name="LAST_COMMIT_MESSAGE" value="第一次打包" />
+    <MESSAGE value="first runnable version with original files" />
+    <option name="LAST_COMMIT_MESSAGE" value="first runnable version with original files" />
   </component>
 </project>

@@ -58,7 +58,7 @@ public class DirectoryEntry {
 
     public boolean isDirectory() {
         String typeName = this.getTypeName();
-        return Objects.equals(typeName, "  ");
+        return Objects.equals(typeName, "$$");
     }
 
     public DirectoryEntry[] listDirectoryEntries() {
