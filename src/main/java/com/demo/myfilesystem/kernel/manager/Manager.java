@@ -21,11 +21,11 @@ public class Manager {
         pathStack.add(EntryTreeHelper.getRoot());
     }
 
-    public static void push(EntryTreeNode node) {
+    public static void pushPath(EntryTreeNode node) {
         pathStack.push(node);
     }
 
-    public static void pop() {
+    public static void popPath() {
         pathStack.pop();
     }
 

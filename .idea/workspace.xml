@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1119aeb8-8e8b-4ab7-85ec-7a59b9bf57c8" name="变更" comment="创建、删除目录项+简单测试">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/manager/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/manager/Manager.java" afterDir="false" />
-    </list>
+    <list default="true" id="1119aeb8-8e8b-4ab7-85ec-7a59b9bf57c8" name="变更" comment="创建、删除目录项+简单测试" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +78,77 @@
       <option name="project" value="LOCAL" />
       <updated>1696259570976</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="创建、删除目录项+简单测试">
+      <created>1696261728870</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696261728870</updated>
+    </task>
+    <task id="LOCAL-00004" summary="创建、删除目录项+简单测试">
+      <created>1696261781146</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696261781146</updated>
+    </task>
+    <task id="LOCAL-00005" summary="创建、删除目录项+简单测试">
+      <created>1696261853145</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696261853145</updated>
+    </task>
+    <task id="LOCAL-00006" summary="创建、删除目录项+简单测试">
+      <created>1696261929067</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696261929067</updated>
+    </task>
+    <task id="LOCAL-00007" summary="创建、删除目录项+简单测试">
+      <created>1696262059672</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696262059672</updated>
+    </task>
+    <task id="LOCAL-00008" summary="创建、删除目录项+简单测试">
+      <created>1696262499080</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696262499080</updated>
+    </task>
+    <task id="LOCAL-00009" summary="创建、删除目录项+简单测试">
+      <created>1696263088500</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696263088500</updated>
+    </task>
+    <task id="LOCAL-00010" summary="创建、删除目录项+简单测试">
+      <created>1696263445443</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696263445443</updated>
+    </task>
+    <task id="LOCAL-00011" summary="创建、删除目录项+简单测试">
+      <created>1696264009698</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1696264009698</updated>
+    </task>
+    <task id="LOCAL-00012" summary="创建、删除目录项+简单测试">
+      <created>1696264030180</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1696264030180</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -90,7 +156,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="github/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
