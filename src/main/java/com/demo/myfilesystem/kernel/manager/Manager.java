@@ -13,6 +13,9 @@ import static com.demo.myfilesystem.kernel.manager.ManagerHelper.openUpSpace;
 import static com.demo.myfilesystem.kernel.manager.ManagerHelper.searchFreeBlock;
 import static com.demo.myfilesystem.utils.Constant.ENTRIES_NUM_OF_BLOCK;
 
+/**
+ * 文件相关操作
+ */
 public class Manager {
 
     private static Stack<EntryTreeNode> pathStack;
@@ -23,8 +26,23 @@ public class Manager {
         pathStack.add(EntryTreeHelper.getRoot());
     }
 
-    public static EntryTreeNode getStackTop(){return pathStack.peek();}
+    public static void pushPath(EntryTreeNode node) {
+        pathStack.push(node);
+    }
 
+    public static void popPath() {
+        pathStack.pop();
+    }
+
+    public static EntryTreeNode getTopPath(){return pathStack.peek();}
+
+    /**
+     * 绝对路径创建文件
+     * @param pathArray 要创建文件的父目录路径
+     * @param fullName  文件名
+     * @param attribute 文件属性
+     * @return  创建是否成功
+     */
     public static int createEntry(ArrayList<String> pathArray, String fullName, String attribute) {
         // 匹配路径，得到父目录
         EntryTreeNode curNode = EntryTreeHelper.match(pathArray);
@@ -38,6 +56,13 @@ public class Manager {
         return 1;
     }
 
+    /**
+     * 相对路径创建文件
+     * @param fullName  文件名
+     * @param attribute 文件属性
+     * @param curNode   父目录节点
+     * @return  是否成功
+     */
     public static int createEntry(String fullName, String attribute, EntryTreeNode curNode) {
         if (curNode == null) {
             curNode = pathStack.lastElement();
@@ -108,6 +133,9 @@ public class Manager {
         return listEntry(curNode);
     }
 
+    /**
+     * 获得该节点下的所有儿子
+     */
     public static ArrayList<EntryTreeNode> listEntry(EntryTreeNode curNode) {
         if (curNode == null) {
             curNode = pathStack.lastElement();

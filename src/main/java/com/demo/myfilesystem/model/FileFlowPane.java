@@ -13,16 +13,19 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * 右边依次排开的文件/文件夹，还有 Menu也是它下面
- * 在FlowPane范围内的鼠标操作都在这写
+ * 中间依次排开的文件/文件夹(ThumbnailPane)，Menu是他的所属节点。
+ * 在这个区域的大部分鼠标事件都应该在这写(Menu选项在OperationMenu写)
  */
 public class FileFlowPane extends FlowPane {
     // TODO: 是不是限了个最多打开文件数量(当前没有限)
-    private final ArrayList<ThumbnailPane> FileArray;
+    private final ArrayList<ThumbnailPane> FileArray = new ArrayList<>();
     private final OperationMenu menu = new OperationMenu();
-    public FileFlowPane(){
-        FileArray = new ArrayList<>();
-    }
+    public FileFlowPane(){}
+
+    /**
+     * 选择文件夹打开(在FlowPane重展示)
+     * @param TreeNode 目录树的节点
+     */
     public void openDirectory(EntryTreeNode TreeNode){
         ArrayList<EntryTreeNode> entries = TreeNode.getChildList();
         FileArray.clear();
@@ -35,7 +38,7 @@ public class FileFlowPane extends FlowPane {
     }
 
     /**
-     * 在中间点击产生的时间
+     * 在FlowPane区域点击产生的事件
      */
     private void clickMouseHandler(MouseEvent e){
         Node clickNode = e.getPickResult().getIntersectedNode();

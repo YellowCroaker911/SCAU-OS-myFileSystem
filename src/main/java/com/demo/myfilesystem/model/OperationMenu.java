@@ -63,9 +63,9 @@ public class OperationMenu extends ContextMenu {
         }
     }
 
-    // TODO: 打开文件, 创建文件, 删除, 看属性
-
+     // 打开文件, 创建文件, 删除, 看属性
     private void openReadOnly(ActionEvent actionEvent){
+        //TODO: 只读打开
         if(entry.getEntry().getInfo().isDirectory()){    // 打开文件夹
 
         }
@@ -75,18 +75,23 @@ public class OperationMenu extends ContextMenu {
     }
 
     private void openReadWrite(ActionEvent actionEvent) {
+        // TODO: 读写打开
         // 要判断该文件是否可以读写打开
     }
     private void newFile(ActionEvent actionEvent) {
+        //TODO: 新建文件
     }
 
     private void newDirectory(ActionEvent actionEvent) {
+        //TODO: 新建文件夹
     }
 
     private void deleteFile(ActionEvent actionEvent) {
+        //TODO: 删除文件
     }
 
     private void showProperty(ActionEvent actionEvent) {
+        //TODO: 展示文件属性
     }
 
 

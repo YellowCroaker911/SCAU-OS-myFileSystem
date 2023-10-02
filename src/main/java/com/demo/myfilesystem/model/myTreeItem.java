@@ -33,7 +33,7 @@ public class myTreeItem extends TreeItem<String> {
     // 判断是否可以点击展开
     @Override
     public boolean isLeaf() {
-        return !isDirectory();
+        return this.treeNode.isLeaf();
     }
 
     public boolean isDirectory(){return this.treeNode.getEntry().getInfo().isDirectory();}

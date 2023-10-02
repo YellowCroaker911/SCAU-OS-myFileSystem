@@ -61,13 +61,14 @@ public class MainViewController {
         autoAdapt();
         initBlockInfo();
         initFAT();
+        // TODO: 磁盘占用情况(饼图) 还没加到fxml中
     }
 
 
 
     private void initTreeView(){
 //        System.out.println("qweqwe");
-        myTreeItem root = new myTreeItem(Manager.getStackTop());
+        myTreeItem root = new myTreeItem(Manager.getTopPath());
 //        root.addChildren(new DirectoryEntry());
 //        var tmp = root.getDirectoryEntry().listDirectoryEntries();
 //        System.out.println(tmp.length);
@@ -135,11 +136,11 @@ public class MainViewController {
     private void initBlockInfo() {
         // TODO: 块信息 右上角
         blockTable = new BlockTable();
+        // 将blockTable的宽高和他爹绑定
         blockTable.prefHeightProperty().bind(BlockInfoAnchor.heightProperty());
         blockTable.prefWidthProperty().bind(BlockInfoAnchor.widthProperty());
         BlockInfoAnchor.getChildren().add(blockTable);
     }
-
 
 
     /*******************窗口右侧 End*****************************/

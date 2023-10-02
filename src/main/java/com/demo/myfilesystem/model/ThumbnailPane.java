@@ -15,6 +15,10 @@ import java.io.File;
 import java.util.Optional;
 
 // https://www.yiibai.com/javafx/javafx_borderpane.html
+
+/**
+ * 文件缩略图，窗口中间的 图标+文件名，每个文件一个实例
+ */
 public class ThumbnailPane extends BorderPane {
     private ImageView imageView;
     private double actualWidth;
@@ -22,7 +26,7 @@ public class ThumbnailPane extends BorderPane {
     private File imageFile;
     private Text imageName;
     private boolean isSelect;
-    private EntryTreeNode directory;
+    private final EntryTreeNode directory;
     private static final double SIZE = 100;  // 缩略图大小 (小于加载图片的大小)
     private static final Insets INSETS = new Insets(5, 5, 0, 5);
 
@@ -83,11 +87,11 @@ public class ThumbnailPane extends BorderPane {
     public boolean isDirectory(){return directory.getEntry().getInfo().isDirectory();}
     public EntryTreeNode getDirectory(){return directory;}
 
-    public void Select(){
+    public void Select(){   // 被选择后改变背景色
         this.setStyle("-fx-background-color: #cce8ff");
         isSelect = true;
     }
-    public void unSelect(){
+    public void unSelect(){ // 背景色改回去
         this.setStyle("-fx-background-color: transparent");
         isSelect = false;
     }

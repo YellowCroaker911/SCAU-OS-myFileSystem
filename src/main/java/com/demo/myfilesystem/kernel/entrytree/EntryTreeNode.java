@@ -5,10 +5,14 @@ import com.demo.myfilesystem.kernel.entry.Entry;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 文件在树型结构下的节点
+ * 目录树记录该节点
+ */
 public class EntryTreeNode {
 
     protected String fullName;
-    protected Entry entry;
+    protected Entry entry;  // 存文件相关信息
     protected EntryTreeNode parentNode;
     protected ArrayList<EntryTreeNode> childList;
 
