@@ -4,15 +4,65 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1538b75c-bd7a-4467-8950-94f80bd167ac" name="变更" comment="Doing menu &amp; FlowPane">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/BlockTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/FATTable.java" afterDir="false" />
+    <list default="true" id="9445b2ff-318e-45bb-bdd4-45b6e21ed95a" name="Changes" comment="first merge master (temporary commit)">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Changes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Changes/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/disk/Disk.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/entry/Entry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/entry/EntryInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/entrytree/EntryTreeHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/entrytree/EntryTreeNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/io/IOtool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/io/Pointer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/manager/Manager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/manager/ManagerHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/myTreeItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/test/DebugTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/test/TestMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/utils/Constant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/MainView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/PropertyView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/disk.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/icon/DiskManager.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/icon/Terminal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/icon/direct.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/icon/file.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/icon/finder.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/icon/mac.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/controller/MainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/FileFlowPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/FileFlowPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/OperationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/OperationMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/FileWindowMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/FileWindowMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/controller/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/DirectoryEntry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/Disk.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/FileManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/IOTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/kernel/OpenedFileTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/BlockTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/BlockTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/FATTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/FATTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/FileFlowPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/FileFlowPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/OperationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/OperationMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/ThumbnailPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/ThumbnailPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/model/myTreeItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/testMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/filesystem/utils/Constant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/demo/com/demo/myfilesystem/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/PropertyView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/demo/com/demo/myfilesystem/PropertyView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/disk.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/demo/com/demo/myfilesystem/disk.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/icon/DiskManager.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/demo/com/demo/myfilesystem/icon/DiskManager.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/icon/Terminal.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/demo/com/demo/myfilesystem/icon/Terminal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/icon/direct.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/demo/com/demo/myfilesystem/icon/direct.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/icon/file.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/demo/com/demo/myfilesystem/icon/file.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/icon/finder.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/demo/com/demo/myfilesystem/icon/finder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/filesystem/icon/mac.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/demo/com/demo/myfilesystem/icon/mac.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +72,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="module-info" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -33,7 +83,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2UcNXRcUuGDlqn9ryehX1iSbyFU" />
+  <component name="ProjectId" id="2VmleJdcm4V991MWaNGPguE2IWp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -41,44 +91,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "TODO_SCOPE": "All Places",
-    "last_opened_file_path": "D:/coding/OSClassP/2/emmm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.25287357",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.CamelCasePlugin&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\coding\OSClassP\2\demo\src\main\resources\com\demo\filesystem" />
-      <recent name="D:\2wenjian\Javaproject\OS\demo\src\main\resources\com\example\demo" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\2wenjian\Javaproject\OS\demo\src\main\resources\com\demo\filesystem" />
-      <recent name="D:\2wenjian\Javaproject\OS\demo\src\main\resources\com.demo.filesystem" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.demo.filesystem" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.demo.filesystem.model" />
-      <recent name="com.demo.filesystem.controller" />
-      <recent name="com.demo.filesystem" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.demo.filesystem.Main" />
-      <module name="demo" />
+}</component>
+  <component name="RunManager">
+    <configuration name="TestMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.demo.myfilesystem.test.TestMain" />
+      <module name="myFileSystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.demo.filesystem.*" />
+          <option name="PATTERN" value="com.demo.myfilesystem.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -86,100 +113,50 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.demo.filesystem.testMain" />
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.demo.filesystem.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.testMain" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="1538b75c-bd7a-4467-8950-94f80bd167ac" name="变更" comment="" />
-      <created>1693234947828</created>
+      <changelist id="9445b2ff-318e-45bb-bdd4-45b6e21ed95a" name="Changes" comment="first merge master (temporary commit)" />
+      <created>1695449230104</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1693234947828</updated>
+      <updated>1695449230104</updated>
     </task>
-    <task id="LOCAL-00001" summary="完成Disk编写">
-      <created>1693310572603</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1693310572603</updated>
-    </task>
-    <task id="LOCAL-00002" summary="完成Disk编写">
-      <created>1693311591016</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1693311591016</updated>
-    </task>
-    <task id="LOCAL-00003" summary="第一次打包">
-      <created>1693479170860</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1693479170860</updated>
-    </task>
-    <task id="LOCAL-00004" summary="first runnable version with original files">
-      <created>1696011747757</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1696011747757</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Doing menu &amp; FlowPane">
-      <created>1696181693264</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1696181693264</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
     <servers />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-        <option value="Space.CommitStatus" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="MakeWindow" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="完成Disk编写" />
-    <MESSAGE value="第一次打包" />
-    <MESSAGE value="first runnable version with original files" />
-    <MESSAGE value="Doing menu &amp; FlowPane" />
-    <option name="LAST_COMMIT_MESSAGE" value="Doing menu &amp; FlowPane" />
+    <MESSAGE value="first merge master (temporary commit)" />
+    <option name="LAST_COMMIT_MESSAGE" value="first merge master (temporary commit)" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.demo.myfilesystem.kernel.entry.Entry" memberName="info" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

@@ -4,8 +4,8 @@ module demo {
     requires javafx.controls;
     requires jdk.compiler;
 
-    opens com.demo.filesystem to javafx.fxml;
-    exports com.demo.filesystem;
-    exports com.demo.filesystem.controller;
-    opens com.demo.filesystem.controller to javafx.fxml;
+    opens com.demo.myfilesystem to javafx.fxml;
+    exports com.demo.myfilesystem;
+    exports com.demo.myfilesystem.controller;
+    opens com.demo.myfilesystem.controller to javafx.fxml;
 }
