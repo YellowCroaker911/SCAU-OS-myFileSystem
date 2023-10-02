@@ -1,5 +1,7 @@
 package com.demo.myfilesystem;
 
+import com.demo.myfilesystem.kernel.io.IOtool;
+import com.demo.myfilesystem.kernel.manager.Manager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -27,7 +29,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-//        System.out.println(System.currentTimeMillis());
+        IOtool.format();
+        Manager.init();
         launch();
     }
 }

@@ -11,8 +11,9 @@ public class myTreeItem extends TreeItem<String> {
 
     public myTreeItem(EntryTreeNode treeNode){
         super(treeNode.getFullName());
-//        System.out.println(directoryEntry.getName());
+        System.out.println(treeNode.getFullName());
         this.treeNode = treeNode;
+        System.out.println(isDirectory());
     }
 
     @Override
@@ -32,7 +33,7 @@ public class myTreeItem extends TreeItem<String> {
     // 判断是否可以点击展开
     @Override
     public boolean isLeaf() {
-        return treeNode.isLeaf();
+        return !isDirectory();
     }
 
     public boolean isDirectory(){return this.treeNode.getEntry().getInfo().isDirectory();}

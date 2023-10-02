@@ -9,14 +9,15 @@ import javafx.scene.shape.Rectangle;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import static com.demo.filesystem.utils.Constant.blocksNumOfDisk;
+import static com.demo.myfilesystem.utils.Constant.BLOCKS_NUM_OF_DISK;
+
 
 /**
  * 右上侧磁盘各个块占用情况
  */
 public class BlockTable extends GridPane {
     private final static int COLS = 8;
-    private final static int ROWS = blocksNumOfDisk / COLS; // 一行8个
+    private final static int ROWS = BLOCKS_NUM_OF_DISK / COLS; // 一行8个
     private final static int REC_WIDTH = 15;
     private final static int REC_HEIGHT = 10;
 
