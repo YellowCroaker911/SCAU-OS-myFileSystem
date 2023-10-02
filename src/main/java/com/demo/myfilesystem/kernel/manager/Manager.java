@@ -2,11 +2,9 @@ package com.demo.myfilesystem.kernel.manager;
 
 import com.demo.myfilesystem.kernel.entry.Entry;
 import com.demo.myfilesystem.kernel.entrytree.*;
-import com.demo.myfilesystem.kernel.io.IOtool;
-import com.demo.myfilesystem.test.DebugTool;
 
 import static com.demo.myfilesystem.kernel.entrytree.EntryTreeHelper.*;
-import static com.demo.myfilesystem.kernel.io.IOtool.writeFATByte;
+import static com.demo.myfilesystem.kernel.io.IOtool.*;
 import static com.demo.myfilesystem.kernel.manager.ManagerHelper.*;
 import static com.demo.myfilesystem.utils.Constant.*;
 
@@ -21,6 +19,14 @@ public class Manager {
         EntryTreeHelper.init();
         pathStack = new Stack<>();
         pathStack.add(EntryTreeHelper.getRoot());
+    }
+
+    public static void push(EntryTreeNode node) {
+        pathStack.push(node);
+    }
+
+    public static void pop() {
+        pathStack.pop();
     }
 
     public static int createEntry(ArrayList<String> pathArray, String fullName, String attribute) {
