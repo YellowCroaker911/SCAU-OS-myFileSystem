@@ -17,7 +17,7 @@ import java.util.Objects;
  * 在FlowPane范围内的鼠标操作都在这写
  */
 public class FileFlowPane extends FlowPane {
-    // TODO: 是不是限了个最多打开文件数量
+    // TODO: 是不是限了个最多打开文件数量(当前没有限)
     private final ArrayList<ThumbnailPane> FileArray;
     private final OperationMenu menu = new OperationMenu();
     public FileFlowPane(){
@@ -69,11 +69,13 @@ public class FileFlowPane extends FlowPane {
                 else{   // 右键文件
                     menu.switchMode(3);
                 }
+                menu.setEntry(thumbnail.getDirectory());
             }
             else {  // 点到空白处
                 menu.switchMode(1);
+                menu.setEntry(null);
             }
-            menu.show(this, e.getScreenX(), e.getScreenY());    // TODO:菜单位置可能错的一逼
+            menu.show(this, e.getScreenX(), e.getScreenY());
         }
     }
 }

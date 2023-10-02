@@ -1,16 +1,14 @@
 package com.demo.filesystem.controller;
 
 import com.demo.filesystem.kernel.DirectoryEntry;
+import com.demo.filesystem.model.BlockTable;
 import com.demo.filesystem.model.FileFlowPane;
 import com.demo.filesystem.model.myTreeItem;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 public class MainViewController {
 
@@ -47,16 +45,25 @@ public class MainViewController {
     @FXML
     private AnchorPane UpperPane;
 
+    @FXML
+    private AnchorPane BlockInfoAnchor;
+
+    @FXML
+    private StackPane RootPane;
+
     private FileFlowPane flowPane;
+    private BlockTable blockTable;
 
     @FXML
     private void initialize(){
         initTreeView();     // 目录树
         initFlowPane();     // 中间文件详情页
         autoAdapt();
-        // TODO: 右侧有一个块占用情况
-        // TODO: 右侧的表
+        initBlockInfo();
+        initFAT();
     }
+
+
 
     private void initTreeView(){
 //        System.out.println("qweqwe");
@@ -92,7 +99,7 @@ public class MainViewController {
         FileAnchorPane.getChildren().add(flowPane);
     }
     private void autoAdapt(){
-        // TODO:窗口自适应，FlowPane的大小没有布满中间
+        // TODO:窗口自适应，FlowPane的大小没有布满中间，根Pane不能根随窗口变化而变化
     }
 
     /**
@@ -107,23 +114,31 @@ public class MainViewController {
 
     @FXML
     private void goBackward(ActionEvent event) {
-        // TODO
+        // TODO goBackward()
     }
 
     @FXML
     private void goFather(ActionEvent event) {
-        // TODO
+        // TODO goFather()
     }
 
     @FXML
     private void goForeward(ActionEvent event) {
-        // TODO
+        // TODO goForeward()
     }
 
-    /****************TODO:窗口右侧的信息展示有关************************/
-//    private void refresh(){
-//
-//    }
+    /****************窗口右侧的信息展示有关************************/
+    private void initFAT() {
+        // TODO: FAT 右下角表格
+    }
+
+    private void initBlockInfo() {
+        // TODO: 块信息 右上角
+        blockTable = new BlockTable();
+        blockTable.prefHeightProperty().bind(BlockInfoAnchor.heightProperty());
+        blockTable.prefWidthProperty().bind(BlockInfoAnchor.widthProperty());
+        BlockInfoAnchor.getChildren().add(blockTable);
+    }
 
 
 

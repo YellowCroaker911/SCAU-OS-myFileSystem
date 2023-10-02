@@ -78,6 +78,7 @@ public class OperationMenu extends ContextMenu {
     }
 
     private void openReadWrite(ActionEvent actionEvent) {
+        // 要判断该文件是否可以读写打开
     }
     private void newFile(ActionEvent actionEvent) {
     }

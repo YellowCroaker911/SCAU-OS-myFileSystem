@@ -17,14 +17,12 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainView.fxml"));
-        Parent tmp = fxmlLoader.load();
-        Scene scene = new Scene(tmp, 1100, 700);
+        Scene scene = new Scene(fxmlLoader.load(), 1100, 700);
         stage.setMinHeight(400);
         stage.setMinWidth(700);
         stage.setTitle("wwwwww");
 //        stage.getIcons().add(new Image(Main.class.getResource("icon.png").toExternalForm()));
         stage.setScene(scene);
-
 //        MainViewController controller = fxmlLoader.getController();
 //        controller.setStage(stage);
         stage.show();
