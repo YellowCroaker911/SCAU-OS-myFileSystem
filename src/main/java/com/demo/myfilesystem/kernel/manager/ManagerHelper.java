@@ -1,6 +1,7 @@
 package com.demo.myfilesystem.kernel.manager;
 
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
+import com.demo.myfilesystem.kernel.filetable.FileNode;
 
 import static com.demo.myfilesystem.kernel.io.IOtool.*;
 import static com.demo.myfilesystem.utils.Constant.*;
@@ -26,7 +27,18 @@ public class ManagerHelper {
         return -1;
     }
 
+    // todo：合并方法
     public static int openUpSpace(EntryTreeNode curNode) {
+        int freeBlockIndex = searchFreeBlock();
+        if (freeBlockIndex == -1) {
+            return -1;
+        }
+        curNode.getEntry().linkBlock(freeBlockIndex);
+        curNode.getEntry().initBlock(freeBlockIndex);
+        return 1;
+    }
+
+    public static int openUpSpace(FileNode curNode) {
         int freeBlockIndex = searchFreeBlock();
         if (freeBlockIndex == -1) {
             return -1;
