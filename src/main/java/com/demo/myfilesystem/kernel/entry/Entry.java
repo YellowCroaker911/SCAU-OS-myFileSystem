@@ -46,6 +46,21 @@ public class Entry {
         return entriesArray;
     }
 
+    // 通过Pointer封装读写遍历
+    public ArrayList<Entry> list2() throws CloneNotSupportedException {
+        ArrayList<Entry> entriesArray = new ArrayList<Entry>();
+        Pointer pointer = new Pointer(this.getInfo().getStartBlockIndex(), 0, "entry");
+        while (true) {
+            Entry entry = new Entry(pointer.clone());
+            entriesArray.add(entry);
+            if (!pointer.hasNext()) {
+                break;
+            }
+            pointer.next();
+        }
+        return entriesArray;
+    }
+
     public Entry newEntry(String fullName, String attribute, int freeBlockIndex) {
         EntryInfo info = new EntryInfo(fullName, attribute, freeBlockIndex);
         Pointer pointer = this.searchFreeEntry();
@@ -79,6 +94,21 @@ public class Entry {
         return null;
     }
 
+    // 通过Pointer封装读写遍历
+    public Pointer searchFreeEntry2() throws CloneNotSupportedException {
+        Pointer pointer = new Pointer(this.getInfo().getStartBlockIndex(), 0, "entry");
+        while (true) {
+            if (pointer.loadByte() == '$') {
+                return pointer.clone();
+            }
+            if (!pointer.hasNext()) {
+                break;
+            }
+            pointer.next();
+        }
+        return null;
+    }
+
     public int endBlockIndex() {
         return this.blocksIndex().get(this.blocksIndex().size() - 1);
     }
@@ -93,11 +123,11 @@ public class Entry {
 
     /* IO */
     public byte[] loadEntryByte() {
-        return readEntryByte(this.selfPointer.getBlockIndex(), this.selfPointer.getEntryIndex());
+        return this.selfPointer.loadEntry();
     }
 
     public void updateEntryByte() {
-        writeEntryByte(this.selfPointer.getBlockIndex(), this.selfPointer.getEntryIndex(), this.info.getBytes());
+        this.selfPointer.putEntry(this.getInfo().getBytes());
     }
 
     public void linkBlock(int newBlockIndex) {
