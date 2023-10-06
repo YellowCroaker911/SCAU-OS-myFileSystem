@@ -37,19 +37,7 @@ public class Entry {
 
     public ArrayList<Entry> list() {
         ArrayList<Entry> entriesArray = new ArrayList<Entry>();
-        for (int blockIndex : blocksIndex()) {
-            for (int index = 0; index < ENTRIES_NUM_OF_BLOCK; index++) {
-                Entry entry = new Entry(new Pointer(blockIndex, index, "entry"));
-                entriesArray.add(entry);
-            }
-        }
-        return entriesArray;
-    }
-
-    // 通过Pointer封装读写遍历
-    public ArrayList<Entry> list2() throws CloneNotSupportedException {
-        ArrayList<Entry> entriesArray = new ArrayList<Entry>();
-        Pointer pointer = new Pointer(this.getInfo().getStartBlockIndex(), 0, "entry");
+        Pointer pointer = this.getInfo().startEntryPointer();
         while (true) {
             Entry entry = new Entry(pointer.clone());
             entriesArray.add(entry);
@@ -82,21 +70,7 @@ public class Entry {
 
     /* 获取信息 */
     public Pointer searchFreeEntry() {
-        byte[] buffer;
-        for (int index : blocksIndex()) {
-            buffer = readBlock(index);
-            for (int i = 0; i < ENTRIES_NUM_OF_BLOCK * BYTES_NUM_OF_ENTRY; i += BYTES_NUM_OF_ENTRY) {
-                if (buffer[i] == (byte) '$') {
-                    return new Pointer(index, i / BYTES_NUM_OF_ENTRY, "entry");
-                }
-            }
-        }
-        return null;
-    }
-
-    // 通过Pointer封装读写遍历
-    public Pointer searchFreeEntry2() throws CloneNotSupportedException {
-        Pointer pointer = new Pointer(this.getInfo().getStartBlockIndex(), 0, "entry");
+        Pointer pointer = this.getInfo().startEntryPointer();
         while (true) {
             if (pointer.loadByte() == '$') {
                 return pointer.clone();

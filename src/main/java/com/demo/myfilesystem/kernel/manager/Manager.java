@@ -24,6 +24,10 @@ public class Manager {
         pathStack.add(EntryTreeHelper.getRoot());
     }
 
+    public static Stack<EntryTreeNode> getPathStack() {
+        return pathStack;
+    }
+
     public static void pushPath(EntryTreeNode node) {
         pathStack.push(node);
     }
@@ -56,7 +60,7 @@ public class Manager {
             }
         }
         // 搜索空闲block作为新目录空间
-        int freeBlockIndex = searchFreeBlock();
+        int freeBlockIndex = freeBlockIndex();
         if (freeBlockIndex == -1) {
             return -1;
         }
@@ -198,10 +202,46 @@ public class Manager {
 
     public static FileNode closeFile(EntryTreeNode targetNode) {
         // 关闭文件
-        FileNode fNode = closeFile(targetNode);
+        FileNode fNode = close(targetNode);
         if (fNode == null) {
             return null;
         }
         return fNode;
     }
+
+    public static int writeFile(FileNode targetFNode, String str) {
+        // 检查写入长度是否超出硬盘空间
+        int requiredFreeSpaceNum = targetFNode.requiredFreeSpaceNum(str);
+        if (requiredFreeSpaceNum > freeBlockNum()) {
+            return -1;
+        }
+        // 开辟所需空间
+        for (int i = 0; i < requiredFreeSpaceNum; i++) {
+            openUpSpace(targetFNode);
+        }
+        // 写文件
+        targetFNode.write(str);
+        return 1;
+    }
+
+    public static String readFile(FileNode targetFNode, Integer len) {
+        if (len == null) {
+            len = targetFNode.bytesLength();
+        }
+        if (len > targetFNode.bytesLength()) {
+            return null;
+        }
+        // 读文件
+        return targetFNode.read(len);
+    }
+
+    public static byte[] listFAT() {
+        byte[] bs = new byte[BYTES_NUM_OF_BLOCK * BLOCKS_NUM_OF_FAT];
+        for (int i = 0; i < BLOCKS_NUM_OF_FAT; i++) {
+            byte[] buffer = readBlock(i);
+            System.arraycopy(buffer, 0, bs, i * BYTES_NUM_OF_BLOCK, BYTES_NUM_OF_BLOCK);
+        }
+        return bs;
+    }
+
 }

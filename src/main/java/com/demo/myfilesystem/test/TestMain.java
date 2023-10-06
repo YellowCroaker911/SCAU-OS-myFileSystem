@@ -32,12 +32,12 @@ public class TestMain {
         for (int i = 31; i < 40; i++) {
             Manager.createEntry(pathArray, Integer.toString(i)+"$", "00010000");
         }
-//        DebugTool.print(128);
+        DebugTool.print(128);
 
         pathArray.remove(2);
         pathArray.remove(1);
         Manager.deleteEntry(pathArray,"0$$");
-        DebugTool.print(128);
+//        DebugTool.print(128);
 
         for (int i = 40; i < 50; i++) {
             Manager.createEntry(pathArray, Integer.toString(i)+"$", "00010000");

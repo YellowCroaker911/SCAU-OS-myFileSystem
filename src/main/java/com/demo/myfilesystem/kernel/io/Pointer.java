@@ -3,7 +3,8 @@ package com.demo.myfilesystem.kernel.io;
 import static com.demo.myfilesystem.kernel.io.IOtool.*;
 import static com.demo.myfilesystem.utils.Constant.*;
 
-public class Pointer {
+// 封装遍历读写操作
+public class Pointer implements Cloneable {
     private int blockIndex;
     private int entryIndex;
     private int byteOffset;
@@ -35,15 +36,16 @@ public class Pointer {
     }
 
     public void next() {
-        // todo:通过Pointer的next封装遍历读写操作
         if (this.mode.equals("entry")) {
             if (this.entryIndex < ENTRIES_NUM_OF_BLOCK - 1) {
                 this.entryIndex++;
                 this.byteOffset += BYTES_NUM_OF_ENTRY;
+                return;
             }
         } else if (this.mode.equals("byte")) {
             if (this.byteOffset < BYTES_NUM_OF_BLOCK - 1) {
                 this.byteOffset++;
+                return;
             }
         }
         this.blockIndex = readFATByte(this.blockIndex);
@@ -92,8 +94,12 @@ public class Pointer {
     }
 
     @Override
-    public Pointer clone() throws CloneNotSupportedException {
-        return (Pointer) super.clone();
+    public Pointer clone() {
+        try {
+            return (Pointer) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

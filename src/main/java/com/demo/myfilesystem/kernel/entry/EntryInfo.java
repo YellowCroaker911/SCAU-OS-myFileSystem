@@ -1,5 +1,7 @@
 package com.demo.myfilesystem.kernel.entry;
 
+import com.demo.myfilesystem.kernel.io.Pointer;
+
 import static com.demo.myfilesystem.utils.Constant.*;
 
 public class EntryInfo {
@@ -173,6 +175,14 @@ public class EntryInfo {
         } else {
             return this.name + "." + this.typeName;
         }
+    }
+
+    public Pointer startBytePointer(){
+        return new Pointer(this.startBlockIndex,0,"byte");
+    }
+
+    public Pointer startEntryPointer(){
+        return new Pointer(this.startBlockIndex,0,"entry");
     }
 
 }

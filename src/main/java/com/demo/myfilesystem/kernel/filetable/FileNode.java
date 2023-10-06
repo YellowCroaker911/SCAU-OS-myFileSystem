@@ -2,6 +2,7 @@ package com.demo.myfilesystem.kernel.filetable;
 
 import com.demo.myfilesystem.kernel.entry.Entry;
 import com.demo.myfilesystem.kernel.io.Pointer;
+import com.demo.myfilesystem.kernel.manager.ManagerHelper;
 
 import java.util.ArrayList;
 
@@ -24,23 +25,23 @@ public class FileNode {
         this.fullName = entry.getInfo().getFullName();
         this.entry = entry;
         this.mode = mode;
-        this.rPointer = new Pointer(this.entry.getInfo().getStartBlockIndex(), 0, "byte");
+        this.rPointer = this.getEntry().getInfo().startBytePointer();
         if (mode.equals("w")) {
             this.wPointer = this.tailPointer();
         } else {
-            this.wPointer = new Pointer(this.entry.getInfo().getStartBlockIndex(), 0, "byte");
+            this.wPointer = this.getEntry().getInfo().startBytePointer();
         }
     }
 
     public Pointer tailPointer() {
-        int endBlockIndex = this.entry.endBlockIndex();
-        byte[] buffer = readBlock(endBlockIndex);
-        for (int byteOffset = 0; byteOffset < BYTES_NUM_OF_BLOCK; byteOffset++) {
-            if (buffer[byteOffset] == '#') {
-                return new Pointer(endBlockIndex, byteOffset, "byte");
+        Pointer pointer = this.getEntry().getInfo().startBytePointer();
+        while (true) {
+            if (pointer.loadByte() == '#') {
+                return pointer.clone();
             }
+            assert pointer.hasNext();
+            pointer.next();
         }
-        return null;
     }
 
     public int closeUpdate() {
@@ -61,6 +62,33 @@ public class FileNode {
         this.wPointer.next();
         this.wPointer.putByte((byte) '#');
         return 1;
+    }
+
+    public int requiredFreeSpaceNum(String str) {
+        int remainingFreeByte = BYTES_NUM_OF_BLOCK - this.tailPointer().getByteOffset();
+        return (str.length() - remainingFreeByte + 1) / BYTES_NUM_OF_BLOCK + 1; // 第一个+1考虑预留文件结束符那一位
+    }
+
+    public void write(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            this.wPointer.putByte((byte) str.charAt(i));
+            assert this.wPointer.hasNext();
+            this.wPointer.next();
+        }
+    }
+
+    public int bytesLength() {
+        return (this.getEntry().blocksIndex().size() - 1) * BYTES_NUM_OF_BLOCK + this.tailPointer().getByteOffset();
+    }
+
+    public String read(int len) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < len; i++) {
+            sb.append(this.rPointer.loadByte());
+            assert this.rPointer.hasNext();
+            this.rPointer.next();
+        }
+        return sb.toString();
     }
 
     public ArrayList<String> getPathArray() {
