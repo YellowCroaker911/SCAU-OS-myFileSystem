@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 
 import java.io.File;
 import java.util.Optional;
+import com.demo.myfilesystem.Main;
 
 // https://www.yiibai.com/javafx/javafx_borderpane.html
 
@@ -36,15 +37,20 @@ public class ThumbnailPane extends BorderPane {
         this.setMinSize(SIZE + 10, SIZE + 50);
         this.setPadding(INSETS);    //设置边距
         this.setPrefSize(SIZE+30, SIZE+50);
+        this.directory = entry;
 
         imageName = new Text(entry.getFullName());
         this.setBottom(imageName);
         BorderPane.setAlignment(imageName, Pos.CENTER); // 文字居中
-        // TODO:改成相对路径
-        String path = "D:\\coding\\OSClassP\\2\\demo\\src\\main\\resources\\com\\demo\\myfilesystem\\icon\\file.png";
+        String path;
+        if(this.directory.getEntry().getInfo().isDirectory()){
+            path = Main.class.getResource("")+"icon/direct.png";
+        }
+        else{
+            path =  Main.class.getResource("")+"icon/file.png";
+        }
         this.setCenter(new ImageView(new Image(path, 120, 120, true, true)));   // TODO:图片应该可以改成一次性加载
 
-        this.directory = entry;
 //        setOnMouseClicked(e->{
 //            myFlowPane father = (myFlowPane) this.getParent();  // 获取他爹
 //            // 左键单击

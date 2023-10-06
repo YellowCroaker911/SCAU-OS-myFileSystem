@@ -33,12 +33,6 @@ public class Main extends Application {
         IOtool.format();
         Manager.init();
         ArrayList<String> pathArray = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Manager.createEntry(pathArray, Integer.toString(i)+"$$", "00010000");
-        }
-        for (int i = 10; i < 12; i++) {
-            Manager.createEntry(pathArray, Integer.toString(i)+"$.t$", "00000000");
-        }
         launch();
     }
 }

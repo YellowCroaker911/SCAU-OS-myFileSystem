@@ -101,6 +101,8 @@ public class MainViewController {
     }
     private void autoAdapt(){
         // TODO:窗口自适应，FlowPane的大小没有布满中间，根Pane不能根随窗口变化而变化
+        flowPane.prefWidthProperty().bind(FileAnchorPane.widthProperty());
+        flowPane.prefHeightProperty().bind(FileAnchorPane.heightProperty());
     }
 
     /**

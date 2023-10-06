@@ -19,7 +19,8 @@ import java.util.Objects;
 public class FileFlowPane extends FlowPane {
     // TODO: 是不是限了个最多打开文件数量(当前没有限)
     private final ArrayList<ThumbnailPane> FileArray = new ArrayList<>();
-    private final OperationMenu menu = new OperationMenu();
+    private final OperationMenu menu = new OperationMenu(this);
+    private EntryTreeNode currentTreeNode = null;   // 当前打开的那个文件夹
     public FileFlowPane(){}
 
     /**
@@ -27,6 +28,8 @@ public class FileFlowPane extends FlowPane {
      * @param TreeNode 目录树的节点
      */
     public void openDirectory(EntryTreeNode TreeNode){
+        currentTreeNode = TreeNode;
+//        System.out.println("open Directory" + currentTreeNode.getFullName());
         ArrayList<EntryTreeNode> entries = TreeNode.getChildList();
         FileArray.clear();
         for(EntryTreeNode de : entries){
@@ -35,6 +38,13 @@ public class FileFlowPane extends FlowPane {
         this.getChildren().setAll(FileArray);
 
         this.setOnMouseClicked(this::clickMouseHandler);
+    }
+
+    /**
+     * 刷新，重新读取文件
+     */
+    public void refresh(){
+        openDirectory(currentTreeNode);
     }
 
     /**
@@ -48,6 +58,7 @@ public class FileFlowPane extends FlowPane {
             assert clickNode instanceof ThumbnailPane;
         }
         System.out.println("FileFlowPane.clickMouseHandler: clickNode="+clickNode);
+        menu.setThumbnail(null);
         if(e.getButton() != MouseButton.SECONDARY) menu.hide(); // 不是点右键，菜单隐藏 (可能会造成 bug 点不到菜单按钮)
         // 双击左键
         if(e.getButton() == MouseButton.PRIMARY && e.getClickCount() == 2) {
@@ -60,7 +71,7 @@ public class FileFlowPane extends FlowPane {
                 }
             }
             else {
-                System.out.println("unresolve Node="+clickNode);
+                System.err.println("未定义处理节点 Node="+clickNode);
             }
         }
         // 鼠标右键
@@ -72,13 +83,14 @@ public class FileFlowPane extends FlowPane {
                 else{   // 右键文件
                     menu.switchMode(3);
                 }
-                menu.setEntry(thumbnail.getDirectory());
+                menu.setThumbnail(thumbnail);
             }
             else {  // 点到空白处
                 menu.switchMode(1);
-                menu.setEntry(null);
             }
             menu.show(this, e.getScreenX(), e.getScreenY());
         }
     }
+
+    public EntryTreeNode getCurrentTreeNode(){return currentTreeNode;}
 }

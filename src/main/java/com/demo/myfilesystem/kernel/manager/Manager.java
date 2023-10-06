@@ -57,11 +57,13 @@ public class Manager {
     }
 
     /**
-     * 相对路径创建文件
-     * @param fullName  文件名
-     * @param attribute 文件属性
+     * 相对路径创建文件/文件夹
+     * @param fullName  文件名.扩展名  文件名长度为3 创建文件夹只穿文件名
+     * @param attribute 文件属性        创文件夹时传 "00010000"
      * @param curNode   父目录节点
      * @return  是否成功
+     * xxx.xx       文件
+     * xxx          文件夹
      */
     public static int createEntry(String fullName, String attribute, EntryTreeNode curNode) {
         if (curNode == null) {
