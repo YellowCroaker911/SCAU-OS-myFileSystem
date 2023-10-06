@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="540d3fa8-8aa2-4bfa-bead-35bbcc881569" name="Changes" comment="first merge master OK">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/FileWindowMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/FileWindowMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/controller/MainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/entrytree/EntryTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/entrytree/EntryTreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/manager/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/manager/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/FileFlowPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/FileFlowPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/OperationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/OperationMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/ThumbnailPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/ThumbnailPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/myTreeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/myTreeItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +21,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2WDaxXzGlc4p4krEp4iO4LqgwPy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,10 +37,16 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.25287357&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Codes\Projects\Java projects\myFileSystem\src\main\resources\com\demo\myfilesystem" />
+      <recent name="D:\Codes\Projects\Java projects\myFileSystem\src\main\resources" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.demo.myfilesystem.Main" />
-      <module name="demo" />
+      <module name="myFileSystem" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.demo.myfilesystem.*" />
@@ -57,7 +59,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="应用程序.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -94,5 +96,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first merge master OK" />
     <option name="LAST_COMMIT_MESSAGE" value="first merge master OK" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.demo.myfilesystem.kernel.entry.Entry" memberName="info" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
