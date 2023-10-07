@@ -118,8 +118,20 @@ public class MainViewController {
     }
     public void refreshTree(EntryTreeNode entryTreeNode){
 //        TreeViewFile.
-        // TODO:更新目录树对应节点(更新isLeaf和孩子)
-
+        // TODO: 普遍情况可能要更新整个目录树的所有节点
+        TreeItem<String> openedTreeItem = TreeViewFile.getSelectionModel().getSelectedItem();
+        ((myTreeItem)openedTreeItem).resetInitialize();
+        System.out.println("refreshTree: " + openedTreeItem);
+        assert(openedTreeItem.getChildren().contains(entryTreeNode));
+        boolean ok = false;
+        for(var child:openedTreeItem.getChildren()){
+            if(((myTreeItem)child).getEntryTreeNode() == entryTreeNode){ // 就是判引用
+                ok = true;
+                break;
+            }
+        }
+        System.out.println(ok);
+        assert(ok); // 怎么这个assert不出来
     }
 
     @FXML
