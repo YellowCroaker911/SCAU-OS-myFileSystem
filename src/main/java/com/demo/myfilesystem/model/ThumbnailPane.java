@@ -39,7 +39,7 @@ public class ThumbnailPane extends BorderPane {
         this.setPrefSize(SIZE+30, SIZE+50);
         this.directory = entry;
 
-        imageName = new Text(entry.getFullName());
+        imageName = new Text(entry.getFullName().replace("$",""));  // 去掉$符号
         this.setBottom(imageName);
         BorderPane.setAlignment(imageName, Pos.CENTER); // 文字居中
         String path;
@@ -49,7 +49,7 @@ public class ThumbnailPane extends BorderPane {
         else{
             path =  Main.class.getResource("")+"icon/file.png";
         }
-        this.setCenter(new ImageView(new Image(path, 120, 120, true, true)));   // TODO:图片应该可以改成一次性加载
+        this.setCenter(new ImageView(new Image(path, 100, 100, true, true)));   // TODO:图片应该可以改成一次性加载
 
 //        setOnMouseClicked(e->{
 //            myFlowPane father = (myFlowPane) this.getParent();  // 获取他爹

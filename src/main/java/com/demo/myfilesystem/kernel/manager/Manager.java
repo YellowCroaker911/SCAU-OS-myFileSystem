@@ -101,6 +101,11 @@ public class Manager {
         return 1;
     }
 
+    /**
+     * 删除文件
+     * @param fullName  文件全名
+     * @param curNode   要删除文件所在的文件夹
+     */
     public static int deleteEntry(String fullName, EntryTreeNode curNode) {
         if (curNode == null) {
             curNode = pathStack.lastElement();

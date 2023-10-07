@@ -11,7 +11,6 @@ import java.util.Optional;
 
 /**
  * 右键后展示的菜单
- * TODO: 对文件进行操作后要对目录树进行相应的更新
  * 原项目做法是在这里记录FlowPane 然后它的调方法
  */
 public class OperationMenu extends ContextMenu {
@@ -54,7 +53,7 @@ public class OperationMenu extends ContextMenu {
      */
     public void switchMode(int mode){
         assert this.getItems().size() != 6: "number of buttons changed";
-        switch (mode){// 增加不可读性
+        switch (mode){// 增加不可读性 (x
             case 1 -> switchMode_state(0b001100);   // 空白处
             case 2 -> switchMode_state(0b111101);   // 文件夹
             case 3 -> switchMode_state(0b111111);   // 文件
@@ -81,8 +80,14 @@ public class OperationMenu extends ContextMenu {
     }
 
     private void openReadWrite(ActionEvent actionEvent) {
-        // TODO: 读写打开
-        // 要判断该文件是否可以读写打开
+        // TODO: 读写打开 要判断该文件是否可以读写打开
+        assert(!thumbnail.isDirectory());
+        // 只读文件不可读写打开
+        if(thumbnail.getDirectory().getEntry().getInfo().isOnlyRead()){
+            GenerateDialog.AlertInformation(
+                    "该文件为只读文件，不可读写打开!","",AlertType.ERROR,ButtonType.OK);
+            return;
+        }
         thumbnail.openFile("rw");
     }
 
@@ -122,7 +127,7 @@ public class OperationMenu extends ContextMenu {
         if(option.isPresent()){     // 确认新建
             String FullName = option.get();
             assert(FullName.length() == 3);
-            if(FullName.equals("$$$")){
+            if(FullName.equals("$$$")){ // 文件夹名字为空
                 GenerateDialog.AlertInformation(
                         "文件夹名称不能为空", "", AlertType.ERROR, ButtonType.OK);
             }
@@ -148,7 +153,7 @@ public class OperationMenu extends ContextMenu {
             System.err.println("deleteFile() entry为空");
             return;
         }
-        int result = Manager.deleteEntry(thumbnail.getDirectory().getFullName(), thumbnail.getDirectory());
+        int result = Manager.deleteEntry(thumbnail.getDirectory().getFullName(), flowPane.getCurrentTreeNode());
         if(result != 1){
             GenerateDialog.AlertInformation("删除文件失败","", AlertType.ERROR, ButtonType.OK);
         }
@@ -159,6 +164,7 @@ public class OperationMenu extends ContextMenu {
     }
 
     private void showProperty(ActionEvent actionEvent) {
+
         //TODO: 展示文件属性
     }
 
@@ -168,7 +174,13 @@ public class OperationMenu extends ContextMenu {
     }
 
     public void setThumbnail(ThumbnailPane thumbnail) {
+        if(this.thumbnail != null) {
+            this.thumbnail.unSelect();
+        }
         this.thumbnail = thumbnail;
+        if(this.thumbnail != null) {
+            this.thumbnail.Select();
+        }
     }
 
     public void setFlowPane(FileFlowPane flowPane){this.flowPane = flowPane;}

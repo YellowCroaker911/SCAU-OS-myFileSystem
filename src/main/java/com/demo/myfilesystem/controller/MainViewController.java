@@ -96,11 +96,12 @@ public class MainViewController {
     }
 
     private void initFlowPane(){
-        flowPane = new FileFlowPane();
+        flowPane = new FileFlowPane(this);
         FileAnchorPane.getChildren().add(flowPane);
     }
     private void autoAdapt(){
         // TODO:窗口自适应，FlowPane的大小没有布满中间，根Pane不能根随窗口变化而变化
+        // FlowPane大小始终布满中间
         flowPane.prefWidthProperty().bind(FileAnchorPane.widthProperty());
         flowPane.prefHeightProperty().bind(FileAnchorPane.heightProperty());
     }
@@ -112,7 +113,13 @@ public class MainViewController {
         assert(newValue != null);
         assert(newValue instanceof myTreeItem);
         myTreeItem item = (myTreeItem) newValue;
+        System.out.println("click node = " + item.getEntryTreeNode().getFullName());
         flowPane.openDirectory(item.getEntryTreeNode());
+    }
+    public void refreshTree(EntryTreeNode entryTreeNode){
+//        TreeViewFile.
+        // TODO:更新目录树对应节点(更新isLeaf和孩子)
+
     }
 
     @FXML
