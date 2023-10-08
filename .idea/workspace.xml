@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="540d3fa8-8aa2-4bfa-bead-35bbcc881569" name="Changes" comment="first merge master OK">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+    <list default="true" id="540d3fa8-8aa2-4bfa-bead-35bbcc881569" name="Changes" comment="fix相对路径访问">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/ThumbnailPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/ThumbnailPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/controller/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/BlockTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/BlockTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/myTreeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/MyTreeItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +16,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -32,9 +38,12 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;所有位置&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Codes/Projects/Java projects/Ioc&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.25287357&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.25287357&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -79,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696270895076</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix相对路径访问">
+      <created>1696599804705</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696599804705</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,7 +111,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first merge master OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="first merge master OK" />
+    <MESSAGE value="fix相对路径访问" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix相对路径访问" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
@@ -103,5 +120,9 @@
         <PinnedItemInfo parentTag="com.demo.myfilesystem.kernel.entry.Entry" memberName="info" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
