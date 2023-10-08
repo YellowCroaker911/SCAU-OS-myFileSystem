@@ -15,6 +15,8 @@ import java.io.File;
 import java.util.Optional;
 import com.demo.myfilesystem.Main;
 
+import static com.demo.myfilesystem.utils.Constant.*;
+
 // https://www.yiibai.com/javafx/javafx_borderpane.html
 
 /**
@@ -42,14 +44,13 @@ public class ThumbnailPane extends BorderPane {
         imageName = new Text(entry.getFullName().replace("$",""));  // 去掉$符号
         this.setBottom(imageName);
         BorderPane.setAlignment(imageName, Pos.CENTER); // 文字居中
-        String path;
-        if(this.directory.getEntry().getInfo().isDirectory()){
-            path = Main.class.getResource("")+"icon/direct.png";
+
+        if(this.directory.getEntry().getInfo().isDirectory()){ // 根据文件类型设图像
+            this.setCenter(new ImageView(DIRECTORY_ICON));
         }
         else{
-            path =  Main.class.getResource("")+"icon/file.png";
+            this.setCenter(new ImageView(FILE_ICON));
         }
-        this.setCenter(new ImageView(new Image(path, 100, 100, true, true)));   // TODO:图片应该可以改成一次性加载
 
 //        setOnMouseClicked(e->{
 //            myFlowPane father = (myFlowPane) this.getParent();  // 获取他爹

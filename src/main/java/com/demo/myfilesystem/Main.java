@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static com.demo.myfilesystem.utils.Constant.*;
+
 /**
  * 由于ROOT_FILE，仅适用于Windows(见GlobalValue)
  */
@@ -33,6 +35,10 @@ public class Main extends Application {
         IOtool.format();
         Manager.init();
         ArrayList<String> pathArray = new ArrayList<>();
+        System.out.println(DISK_ICON_SMALL);
+        System.out.println(DIRECTORY_ICON);
+        System.out.println(FILE_ICON);
+        System.out.println(FILE_ICON_SMALL);
         launch();
     }
 }

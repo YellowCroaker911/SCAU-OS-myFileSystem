@@ -5,6 +5,7 @@ import com.demo.myfilesystem.kernel.manager.Manager;
 import com.demo.myfilesystem.model.BlockTable;
 import com.demo.myfilesystem.model.FileFlowPane;
 import com.demo.myfilesystem.model.myTreeItem;
+import com.sun.source.tree.Tree;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -117,21 +118,18 @@ public class MainViewController {
         flowPane.openDirectory(item.getEntryTreeNode());
     }
     public void refreshTree(EntryTreeNode entryTreeNode){
-//        TreeViewFile.
-        // TODO: 普遍情况可能要更新整个目录树的所有节点
-        TreeItem<String> openedTreeItem = TreeViewFile.getSelectionModel().getSelectedItem();
-        ((myTreeItem)openedTreeItem).resetInitialize();
-        System.out.println("refreshTree: " + openedTreeItem);
-        assert(openedTreeItem.getChildren().contains(entryTreeNode));
-        boolean ok = false;
-        for(var child:openedTreeItem.getChildren()){
-            if(((myTreeItem)child).getEntryTreeNode() == entryTreeNode){ // 就是判引用
-                ok = true;
+        for(int i = 0;;i++){
+            myTreeItem item = (myTreeItem)TreeViewFile.getTreeItem(i);
+            if(item==null)break;
+            if(item.getEntryTreeNode() == entryTreeNode) {    // (判引用)这样是不是能降低开销
+                (item).resetInitialize();
+                if(item.isExpanded()){  // 通过关了再开实现孩子的更新
+                    item.setExpanded(false);
+                    item.setExpanded(true);
+                }
                 break;
             }
         }
-        System.out.println(ok);
-        assert(ok); // 怎么这个assert不出来
     }
 
     @FXML

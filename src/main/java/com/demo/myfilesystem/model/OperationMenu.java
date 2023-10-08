@@ -52,7 +52,7 @@ public class OperationMenu extends ContextMenu {
      * @param mode 1/2/3 空白处/文件夹/文件
      */
     public void switchMode(int mode){
-        assert this.getItems().size() != 6: "number of buttons changed";
+        assert this.getItems().size() == 6: "number of buttons changed";
         switch (mode){// 增加不可读性 (x
             case 1 -> switchMode_state(0b001100);   // 空白处
             case 2 -> switchMode_state(0b111101);   // 文件夹
