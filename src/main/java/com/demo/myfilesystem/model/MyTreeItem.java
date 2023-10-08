@@ -1,5 +1,6 @@
 package com.demo.myfilesystem.model;
 
+import com.demo.myfilesystem.Main;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
@@ -19,14 +20,16 @@ public class MyTreeItem extends TreeItem<String> {
     public MyTreeItem(EntryTreeNode treeNode){
         super(treeNode.getFullName().replace("$", ""));  // 忽略$符号
 
+        // TODO: 图片改为一次加载
         if(treeNode.getFullName().equals("roo")){   // 根目录(不准确)
-            this.setGraphic(new ImageView(DISK_ICON_SMALL));
+            this.setGraphic(new ImageView(new Image(Main.class.getResource("")+"icon/DiskManager.png", 20, 20, true, true)));
+
         }
         else if(treeNode.getEntry().getInfo().isDirectory()){
-            this.setGraphic(new ImageView(DIRECTORY_ICON_SMALL));
+            this.setGraphic(new ImageView(new Image(Main.class.getResource("")+"icon/direct.png", 20, 20, true, true)));
         }
         else{
-            this.setGraphic(new ImageView(FILE_ICON_SMALL));
+            this.setGraphic(new ImageView(new Image(Main.class.getResource("")+"icon/file.png", 20, 20, true, true)));
         }
 //        System.out.println(treeNode.getFullName());
         this.treeNode = treeNode;

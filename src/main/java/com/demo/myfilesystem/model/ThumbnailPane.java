@@ -4,6 +4,7 @@ import com.demo.myfilesystem.FileWindowMain;
 import com.demo.myfilesystem.Main;
 import com.demo.myfilesystem.kernel.entry.Entry;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
+import com.demo.myfilesystem.utils.Constant;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,10 +25,6 @@ import static com.demo.myfilesystem.utils.Constant.*;
  * 文件缩略图，窗口中间的 图标+文件名，每个文件一个实例
  */
 public class ThumbnailPane extends BorderPane {
-    private ImageView imageView;
-    private double actualWidth;
-    private double actualHeight;
-    private File imageFile;
     private Text imageName;
     private boolean isSelect;
     private final EntryTreeNode directory;
@@ -46,14 +43,13 @@ public class ThumbnailPane extends BorderPane {
         this.setBottom(imageName);
         BorderPane.setAlignment(imageName, Pos.CENTER); // 文字居中
 
-        System.out.println(DIRECTORY_ICON);
-        System.out.println(FILE_ICON_SMALL);
         if(this.directory.getEntry().getInfo().isDirectory()){ // 根据文件类型设图像
-            this.setCenter(new ImageView(DIRECTORY_ICON));
+            this.setCenter(new ImageView(new Image(Main.class.getResource("")+"icon/direct.png", 100, 100, true, true)));
         }
         else{
-            this.setCenter(new ImageView(FILE_ICON));
+            this.setCenter(new ImageView(new Image(Main.class.getResource("")+"icon/file.png", 100, 100, true, true)));
         }
+//        this.setCenter(new ImageView(new Image(Main.class.getResource("")+"icon/file.png", 100, 100, true, true)));
 
 //        setOnMouseClicked(e->{
 //            myFlowPane father = (myFlowPane) this.getParent();  // 获取他爹
@@ -106,9 +102,6 @@ public class ThumbnailPane extends BorderPane {
         isSelect = false;
     }
     public boolean getisSelect(){return isSelect;}
-    public File getImageFile(){return imageFile;}
-    public Image getImage(){return imageView.getImage();}
-    public long length(){return getImageFile().length();}
 
     /**
      * 重命名 不做就删了
@@ -153,6 +146,4 @@ public class ThumbnailPane extends BorderPane {
 //        }
 //        return 0;
     }
-    public double getActualWidth(){return actualWidth;}
-    public double getActualHeight(){return actualHeight;}
 }

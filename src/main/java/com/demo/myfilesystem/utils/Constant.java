@@ -24,9 +24,9 @@ public class Constant {
     // fileTable
     public static final int OPENED_FILE_TABLE_SIZE = 5;
     // icon
-    public static final Image FILE_ICON = new Image(Constant.class.getResource("")+"icon/file.png",100,100,true,true);
-    public static final Image DIRECTORY_ICON = new Image(Constant.class.getResource("")+"icon/direct.png",100,100,true,true);
-    public static final Image FILE_ICON_SMALL = new Image(Constant.class.getResource("")+"icon/file.png",20,20,true,true);
-    public static final Image DIRECTORY_ICON_SMALL = new Image(Constant.class.getResource("")+"icon/direct.png",20,20,true,true);
-    public static final Image DISK_ICON_SMALL = new Image(Constant.class.getResource("")+"icon/DiskManager.png",20,20,true,true);
+//    public static final Image FILE_ICON = new Image(Constant.class.getResource("")+"icon/file.png",100,100,true,true);
+//    public static final Image DIRECTORY_ICON = new Image(Constant.class.getResource("")+"icon/direct.png",100,100,true,true);
+//    public static final Image FILE_ICON_SMALL = new Image(Constant.class.getResource("")+"icon/file.png",20,20,true,true);
+//    public static final Image DIRECTORY_ICON_SMALL = new Image(Constant.class.getResource("")+"icon/direct.png",20,20,true,true);
+//    public static final Image DISK_ICON_SMALL = new Image(Constant.class.getResource("")+"icon/DiskManager.png",20,20,true,true);
 }

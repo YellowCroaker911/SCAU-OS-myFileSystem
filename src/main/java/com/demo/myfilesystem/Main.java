@@ -35,10 +35,6 @@ public class Main extends Application {
         IOtool.format();
         Manager.init();
         ArrayList<String> pathArray = new ArrayList<>();
-        System.out.println(DISK_ICON_SMALL);
-        System.out.println(DIRECTORY_ICON);
-        System.out.println(FILE_ICON);
-        System.out.println(FILE_ICON_SMALL);
         launch();
     }
 }
