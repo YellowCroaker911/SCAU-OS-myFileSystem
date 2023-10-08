@@ -130,6 +130,7 @@ public class MainViewController {
                 break;
             }
         }
+        blockTable.refresh();
     }
 
     @FXML

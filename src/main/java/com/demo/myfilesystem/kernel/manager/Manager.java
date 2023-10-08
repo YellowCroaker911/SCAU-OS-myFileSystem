@@ -17,7 +17,6 @@ import java.util.Stack;
 import static com.demo.myfilesystem.kernel.entrytree.EntryTreeHelper.traversal;
 import static com.demo.myfilesystem.kernel.io.IOtool.writeFATByte;
 import static com.demo.myfilesystem.kernel.manager.ManagerHelper.openUpSpace;
-import static com.demo.myfilesystem.kernel.manager.ManagerHelper.searchFreeBlock;
 import static com.demo.myfilesystem.utils.Constant.ENTRIES_NUM_OF_BLOCK;
 
 /**
@@ -35,26 +34,6 @@ public class Manager {
 
     public static Stack<EntryTreeNode> getPathStack() {
         return pathStack;
-    }
-
-    public static void pushPath(EntryTreeNode node) {
-        pathStack.push(node);
-    }
-
-    public static void popPath() {
-        pathStack.pop();
-    }
-
-    public static Stack<EntryTreeNode> getPathStack() {
-        return pathStack;
-    }
-
-    public static void pushPath(EntryTreeNode node) {
-        pathStack.push(node);
-    }
-
-    public static void popPath() {
-        pathStack.pop();
     }
 
     public static void pushPath(EntryTreeNode node) {
