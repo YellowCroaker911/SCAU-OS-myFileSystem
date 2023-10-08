@@ -17,7 +17,7 @@ public class FileTableHelper {
     public static FileNode open(EntryTreeNode tNode, String mode) {
         FileNode fNode = new FileNode(tNode.pathArray(), tNode.getEntry(), mode);
         // 只读文件不能写打开
-        if (fNode.getEntry().getInfo().isOnlyRead() && mode.equals("w")) {
+        if (fNode.getEntry().getInfo().isOnlyRead() && mode.equals(WRITE)) {
             return null;
         }
         // 已打开文件表已满

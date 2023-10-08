@@ -13,14 +13,12 @@ public class EntryInfo {
     private int length;
 
     public EntryInfo() {
-        // 虚拟根目录项"roo  "831
-        this.bytes = new byte[]{(byte) 0x72, (byte) 0x6F, (byte) 0x6F, (byte) 0x24,
-                (byte) 0x24, (byte) 0x08, (byte) 0x02, (byte) 0x01};
-        this.name = "roo";
-        this.typeName = "  ";
-        this.attribute = "00010000";
-        this.startBlockIndex = 2;
-        this.length = 1;
+        this.bytes = ROOT_ENTRY_BYTES;
+        this.name = ROOT_NAME;
+        this.typeName = DIRECTORY_TYPE_NAME;
+        this.attribute = DIRECTORY_ATTRIBUTE;
+        this.startBlockIndex = BLOCKS_NUM_OF_FAT;
+        this.length = 0;
     }
 
     public EntryInfo(byte[] bytes) {
@@ -29,11 +27,11 @@ public class EntryInfo {
     }
 
     public EntryInfo(String fullName, String attribute, int startBlockIndex) {
-        if (attribute.equals("00010000")) {
+        if (attribute.equals(DIRECTORY_ATTRIBUTE)) {
             this.name = fullName;
-            this.typeName = "  ";
+            this.typeName = DIRECTORY_TYPE_NAME;
         } else {
-            String[] names = fullName.split("\\.");
+            String[] names = fullName.split(FULL_NAME_SPLIT_REGEX);
             this.name = names[0];
             this.typeName = names[1];
         }
@@ -143,8 +141,7 @@ public class EntryInfo {
     }
 
     public void updateNull() {
-        this.bytes = new byte[]{(byte) 0x24, (byte) 0x00, (byte) 0x00, (byte) 0x00,
-                (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00};
+        this.bytes = NULL_ENTRY_BYTES;
         this.updateFromBytes();
     }
 
@@ -166,23 +163,23 @@ public class EntryInfo {
     }
 
     public boolean isNull() {
-        return this.name.charAt(0) == '$';
+        return this.name.charAt(0) == PLACEHOLDER_BYTE;
     }
 
     public String getFullName() {
         if (this.isDirectory()) {
             return this.name;
         } else {
-            return this.name + "." + this.typeName;
+            return this.name + FULL_NAME_SPLIT_CHAR + this.typeName;
         }
     }
 
     public Pointer startBytePointer(){
-        return new Pointer(this.startBlockIndex,0,"byte");
+        return new Pointer(this.startBlockIndex,0,BYTE);
     }
 
     public Pointer startEntryPointer(){
-        return new Pointer(this.startBlockIndex,0,"entry");
+        return new Pointer(this.startBlockIndex,0,ENTRY);
     }
 
 }

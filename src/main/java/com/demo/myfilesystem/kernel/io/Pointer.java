@@ -12,9 +12,9 @@ public class Pointer implements Cloneable {
 
     public Pointer(int blockIndex, int arg2, String mode) {
         this.blockIndex = blockIndex;
-        if (mode.equals("byte")) {
+        if (mode.equals(BYTE)) {
             this.byteOffset = arg2;
-        } else if (mode.equals("entry")) {
+        } else if (mode.equals(ENTRY)) {
             this.entryIndex = arg2;
             this.byteOffset = arg2 * BYTES_NUM_OF_ENTRY;
         }
@@ -22,11 +22,11 @@ public class Pointer implements Cloneable {
     }
 
     public boolean hasNext() {
-        if (this.mode.equals("entry")) {
+        if (this.mode.equals(ENTRY)) {
             if (this.entryIndex < ENTRIES_NUM_OF_BLOCK - 1) {
                 return true;
             }
-        } else if (this.mode.equals("byte")) {
+        } else if (this.mode.equals(BYTE)) {
             if (this.byteOffset < BYTES_NUM_OF_BLOCK - 1) {
                 return true;
             }
@@ -36,13 +36,13 @@ public class Pointer implements Cloneable {
     }
 
     public void next() {
-        if (this.mode.equals("entry")) {
+        if (this.mode.equals(ENTRY)) {
             if (this.entryIndex < ENTRIES_NUM_OF_BLOCK - 1) {
                 this.entryIndex++;
                 this.byteOffset += BYTES_NUM_OF_ENTRY;
                 return;
             }
-        } else if (this.mode.equals("byte")) {
+        } else if (this.mode.equals(BYTE)) {
             if (this.byteOffset < BYTES_NUM_OF_BLOCK - 1) {
                 this.byteOffset++;
                 return;

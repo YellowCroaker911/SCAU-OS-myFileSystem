@@ -53,6 +53,10 @@ public class Manager {
         if (curNode == null) {
             curNode = pathStack.lastElement();
         }
+        // 判断当前目录是否有同名目录项
+        if (curNode.match(fullName) != null) {
+            return -1;
+        }
         // 若无可用空间创建目录项则分配新的block
         if (curNode.childNum() / ENTRIES_NUM_OF_BLOCK >= curNode.getEntry().getInfo().getLength()) {
             if (openUpSpace(curNode) == -1) {

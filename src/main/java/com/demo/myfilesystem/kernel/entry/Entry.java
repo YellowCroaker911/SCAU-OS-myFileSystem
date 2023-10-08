@@ -72,7 +72,7 @@ public class Entry {
     public Pointer searchFreeEntry() {
         Pointer pointer = this.getInfo().startEntryPointer();
         while (true) {
-            if (pointer.loadByte() == '$') {
+            if (pointer.loadByte() == PLACEHOLDER_BYTE) {
                 return pointer.clone();
             }
             if (!pointer.hasNext()) {
@@ -118,7 +118,7 @@ public class Entry {
             writeEmptyEntryBlock(blockIndex);
         } else {
             byte[] buffer = new byte[BYTES_NUM_OF_BLOCK];
-            buffer[0] = '#';
+            buffer[0] = FILE_END_MARK_BYTE;
             writeBlock(blockIndex, buffer);
         }
     }

@@ -10,39 +10,39 @@ public class IOtool {
     private static final Disk disk = new Disk("src/main/resources/com/demo/myfilesystem/disk.txt");
 
     public static byte[] readBlock(int blockIndex) {
-        disk.IOBlock(blockIndex, "r");
+        disk.IOBlock(blockIndex, READ);
         return disk.readingBuffer;
     }
 
     public static void writeBlock(int blockIndex, byte[] buffer) {
         disk.writingBuffer = buffer;
-        disk.IOBlock(blockIndex, "w");
+        disk.IOBlock(blockIndex, WRITE);
     }
 
     public static byte readByte(int blockIndex, int byteOffset) {
-        disk.IOBlock(blockIndex, "r");
+        disk.IOBlock(blockIndex, READ);
         return disk.readingBuffer[byteOffset];
     }
 
     public static void writeByte(int blockIndex, int byteOffset, byte b) {
-        disk.IOBlock(blockIndex, "r");
+        disk.IOBlock(blockIndex, READ);
         disk.writingBuffer = disk.readingBuffer;
         disk.writingBuffer[byteOffset] = b;
-        disk.IOBlock(blockIndex, "w");
+        disk.IOBlock(blockIndex, WRITE);
     }
 
     public static byte[] readEntryByte(int blockIndex, int entryIndex) {
-        disk.IOBlock(blockIndex, "r");
+        disk.IOBlock(blockIndex, READ);
         byte[] newBytes = new byte[BYTES_NUM_OF_ENTRY];
         System.arraycopy(disk.readingBuffer, entryIndex * BYTES_NUM_OF_ENTRY, newBytes, 0, newBytes.length);
         return newBytes;
     }
 
     public static void writeEntryByte(int blockIndex, int entryIndex, byte[] newBytes) {
-        disk.IOBlock(blockIndex, "r");
+        disk.IOBlock(blockIndex, READ);
         disk.writingBuffer = disk.readingBuffer;
         System.arraycopy(newBytes, 0, disk.writingBuffer, entryIndex * BYTES_NUM_OF_ENTRY, newBytes.length);
-        disk.IOBlock(blockIndex, "w");
+        disk.IOBlock(blockIndex, WRITE);
     }
 
     public static int readFATByte(int blockIndex) {
@@ -65,7 +65,7 @@ public class IOtool {
     public static void writeEmptyEntryBlock(int blockIndex) {
         byte[] buffer = new byte[BYTES_NUM_OF_BLOCK];
         for (int offset = 0; offset < BYTES_NUM_OF_BLOCK; offset += BYTES_NUM_OF_ENTRY) {
-            buffer[offset] = '$';
+            buffer[offset] = PLACEHOLDER_BYTE;
         }
         writeBlock(blockIndex, buffer);
     }

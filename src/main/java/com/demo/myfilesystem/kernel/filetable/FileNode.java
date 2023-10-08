@@ -26,7 +26,7 @@ public class FileNode {
         this.entry = entry;
         this.mode = mode;
         this.rPointer = this.getEntry().getInfo().startBytePointer();
-        if (mode.equals("w")) {
+        if (mode.equals(WRITE)) {
             this.wPointer = this.tailPointer();
         } else {
             this.wPointer = this.getEntry().getInfo().startBytePointer();
@@ -36,7 +36,7 @@ public class FileNode {
     public Pointer tailPointer() {
         Pointer pointer = this.getEntry().getInfo().startBytePointer();
         while (true) {
-            if (pointer.loadByte() == '#') {
+            if (pointer.loadByte() == FILE_END_MARK_BYTE) {
                 return pointer.clone();
             }
             assert pointer.hasNext();
@@ -45,7 +45,7 @@ public class FileNode {
     }
 
     public int closeUpdate() {
-        if (this.mode.equals("w")) {
+        if (this.mode.equals(WRITE)) {
             if (this.appendEndMark() == -1) {
                 return -1;
             }
@@ -60,7 +60,7 @@ public class FileNode {
             }
         }
         this.wPointer.next();
-        this.wPointer.putByte((byte) '#');
+        this.wPointer.putByte(FILE_END_MARK_BYTE);
         return 1;
     }
 
