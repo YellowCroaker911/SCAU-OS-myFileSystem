@@ -46,6 +46,8 @@ public class ThumbnailPane extends BorderPane {
         this.setBottom(imageName);
         BorderPane.setAlignment(imageName, Pos.CENTER); // 文字居中
 
+        System.out.println(DIRECTORY_ICON);
+        System.out.println(FILE_ICON_SMALL);
         if(this.directory.getEntry().getInfo().isDirectory()){ // 根据文件类型设图像
             this.setCenter(new ImageView(DIRECTORY_ICON));
         }

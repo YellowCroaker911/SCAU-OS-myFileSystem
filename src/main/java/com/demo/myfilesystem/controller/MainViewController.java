@@ -1,5 +1,6 @@
 package com.demo.myfilesystem.controller;
 
+import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import com.demo.myfilesystem.kernel.manager.Manager;
 import com.demo.myfilesystem.model.BlockTable;
 import com.demo.myfilesystem.model.FileFlowPane;
@@ -118,7 +119,7 @@ public class MainViewController {
     }
     public void refreshTree(EntryTreeNode entryTreeNode){
         for(int i = 0;;i++){
-            myTreeItem item = (myTreeItem)TreeViewFile.getTreeItem(i);
+            MyTreeItem item = (MyTreeItem)TreeViewFile.getTreeItem(i);
             if(item==null)break;
             if(item.getEntryTreeNode() == entryTreeNode) {    // (判引用)这样是不是能降低开销
                 (item).resetInitialize();

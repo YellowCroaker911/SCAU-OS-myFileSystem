@@ -18,6 +18,7 @@ public class MyTreeItem extends TreeItem<String> {
 
     public MyTreeItem(EntryTreeNode treeNode){
         super(treeNode.getFullName().replace("$", ""));  // 忽略$符号
+
         if(treeNode.getFullName().equals("roo")){   // 根目录(不准确)
             this.setGraphic(new ImageView(DISK_ICON_SMALL));
         }
@@ -53,17 +54,17 @@ public class MyTreeItem extends TreeItem<String> {
         for(EntryTreeNode de : newChildren){    // 将新孩子加到目录树中
             boolean have = false;
             for(TreeItem<String> ch:children){
-                if (((myTreeItem) ch).getEntryTreeNode() == de) {
+                if (((MyTreeItem) ch).getEntryTreeNode() == de) {
                     have = true;
                     break;
                 }
             }
             if(!have){
-                children.add(new myTreeItem(de));
+                children.add(new MyTreeItem(de));
             }
         }
         for(TreeItem<String> ch:children){
-            if(!newChildren.contains(((myTreeItem)ch).getEntryTreeNode())){
+            if(!newChildren.contains(((MyTreeItem)ch).getEntryTreeNode())){
                 children.remove(ch);
                 break;
             }
