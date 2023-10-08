@@ -1,6 +1,7 @@
 package com.demo.myfilesystem.model;
 
 import com.demo.myfilesystem.FileWindowMain;
+import com.demo.myfilesystem.Main;
 import com.demo.myfilesystem.kernel.entry.Entry;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import javafx.application.Platform;

@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import static com.demo.myfilesystem.utils.Constant.*;
 
 // TODO: 目录树有bug 是否更新孩子数组的判定有问题
-public class myTreeItem extends TreeItem<String> {
+public class MyTreeItem extends TreeItem<String> {
     EntryTreeNode treeNode;
     private boolean isInitialized = false;                          // child是否已加载
 //    private int getTime = 0;
 
-    public myTreeItem(EntryTreeNode treeNode){
+    public MyTreeItem(EntryTreeNode treeNode){
         super(treeNode.getFullName().replace("$", ""));  // 忽略$符号
         if(treeNode.getFullName().equals("roo")){   // 根目录(不准确)
             this.setGraphic(new ImageView(DISK_ICON_SMALL));
@@ -31,7 +31,6 @@ public class myTreeItem extends TreeItem<String> {
         this.treeNode = treeNode;
 //        System.out.println(isDirectory());
     }
-
     @Override
     public ObservableList<TreeItem<String>> getChildren() {         // 展开时发生事件
         ObservableList<TreeItem<String>> children = super.getChildren();

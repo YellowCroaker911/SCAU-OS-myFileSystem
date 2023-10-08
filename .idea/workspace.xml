@@ -4,16 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="540d3fa8-8aa2-4bfa-bead-35bbcc881569" name="Changes" comment="初步写了下更新目录树">
+    <list default="true" id="540d3fa8-8aa2-4bfa-bead-35bbcc881569" name="Changes" comment="first merge master OK">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/FileWindowMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/FileWindowMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/controller/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/entrytree/EntryTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/entrytree/EntryTreeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/manager/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/manager/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/FileFlowPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/FileFlowPane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/OperationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/OperationMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/ThumbnailPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/ThumbnailPane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/myTreeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/model/myTreeItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/test/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/test/TestMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/utils/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/utils/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/disk.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/disk.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,32 +29,37 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2WDaxXzGlc4p4krEp4iO4LqgwPy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "last_opened_file_path": "D:/coding/OSClassP/2/demo",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.25287357"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.25287357&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.Main">
+}</component>
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.demo.myfilesystem.Main" />
       <module name="demo" />
-      <option name="VM_PARAMETERS" value="-ea" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.demo.myfilesystem.*" />
@@ -80,7 +86,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.TestMain" />
       </list>
     </recent_temporary>
   </component>
@@ -100,35 +105,7 @@
       <option name="project" value="LOCAL" />
       <updated>1696270895076</updated>
     </task>
-    <task id="LOCAL-00002" summary="add some notes and test code">
-      <created>1696272799681</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1696272799681</updated>
-    </task>
-    <task id="LOCAL-00003" summary="完成创建/删除文件，修复加载图片bug，更改目录树加载判定">
-      <created>1696613539110</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1696613539110</updated>
-    </task>
-    <task id="LOCAL-00004" summary="修复删除文件bug，目录树增加图标，高亮被选中文件">
-      <created>1696695130934</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1696695130934</updated>
-    </task>
-    <task id="LOCAL-00005" summary="初步写了下更新目录树">
-      <created>1696696148530</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1696696148530</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,21 +121,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first merge master OK" />
-    <MESSAGE value="add some notes and test code" />
-    <MESSAGE value="完成创建/删除文件，修复加载图片bug，更改目录树加载判定" />
-    <MESSAGE value="修复删除文件bug，目录树增加图标，高亮被选中文件" />
-    <MESSAGE value="初步写了下更新目录树" />
-    <option name="LAST_COMMIT_MESSAGE" value="初步写了下更新目录树" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/controller/MainViewController.java</url>
-          <line>120</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="first merge master OK" />
   </component>
 </project>

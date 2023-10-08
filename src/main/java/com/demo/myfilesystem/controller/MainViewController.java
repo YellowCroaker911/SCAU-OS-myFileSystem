@@ -1,10 +1,9 @@
 package com.demo.myfilesystem.controller;
 
-import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import com.demo.myfilesystem.kernel.manager.Manager;
 import com.demo.myfilesystem.model.BlockTable;
 import com.demo.myfilesystem.model.FileFlowPane;
-import com.demo.myfilesystem.model.myTreeItem;
+import com.demo.myfilesystem.model.MyTreeItem;
 import com.sun.source.tree.Tree;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,7 +68,7 @@ public class MainViewController {
 
     private void initTreeView(){
 //        System.out.println("qweqwe");
-        myTreeItem root = new myTreeItem(Manager.getTopPath());
+        MyTreeItem root = new MyTreeItem(Manager.getTopPath());
 //        root.addChildren(new DirectoryEntry());
 //        var tmp = root.getDirectoryEntry().listDirectoryEntries();
 //        System.out.println(tmp.length);
@@ -112,9 +111,9 @@ public class MainViewController {
      */
     private void chooseDirectory(TreeItem<String> oldValue, TreeItem<String> newValue) {
         assert(newValue != null);
-        assert(newValue instanceof myTreeItem);
-        myTreeItem item = (myTreeItem) newValue;
-        System.out.println("click node = " + item.getEntryTreeNode().getFullName());
+        assert(newValue instanceof MyTreeItem);
+        MyTreeItem item = (MyTreeItem) newValue;
+		System.out.println("click node = " + item.getEntryTreeNode().getFullName());
         flowPane.openDirectory(item.getEntryTreeNode());
     }
     public void refreshTree(EntryTreeNode entryTreeNode){
