@@ -30,11 +30,10 @@ public class EntryTreeHelper {
                 continue;
             }
             EntryTreeNode child = new EntryTreeNode(childEntry);
-            curNode.childList.add(child);
+            curNode.getChildList().add(child);
             if (child.getEntry().getInfo().isDirectory()) {
                 loadTree(child);
             }
-
         }
     }
 
@@ -44,7 +43,6 @@ public class EntryTreeHelper {
         loadChild(curNode);
         return tempNodeList;
     }
-
 
     public static void loadChild(EntryTreeNode curNode) {
         for (EntryTreeNode child : curNode.getChildList()) {

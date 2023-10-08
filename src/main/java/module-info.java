@@ -3,7 +3,6 @@ module demo {
     requires javafx.fxml;
     requires javafx.controls;
     requires jdk.compiler;
-    requires org.jetbrains.annotations;
 
     opens com.demo.myfilesystem to javafx.fxml;
     exports com.demo.myfilesystem;
