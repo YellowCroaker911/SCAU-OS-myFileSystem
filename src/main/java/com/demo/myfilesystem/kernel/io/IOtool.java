@@ -2,6 +2,8 @@ package com.demo.myfilesystem.kernel.io;
 
 import com.demo.myfilesystem.disk.Disk;
 
+import java.util.Arrays;
+
 import static com.demo.myfilesystem.utils.Constant.*;
 
 public class IOtool {
@@ -12,6 +14,15 @@ public class IOtool {
     public static byte[] readBlock(int blockIndex) {
         disk.IOBlock(blockIndex, "r");
         return disk.readingBuffer;
+    }
+
+    public static byte[] getFattable()
+    {
+        readBlock(0);
+        byte[] fat= Arrays.copyOf(disk.readingBuffer,disk.readingBuffer.length*2);
+        IOtool.readBlock(1);
+        System.arraycopy(disk.readingBuffer,0,fat,disk.readingBuffer.length,disk.readingBuffer.length);
+        return fat;
     }
 
     public static void writeBlock(int blockIndex, byte[] buffer) {

@@ -63,8 +63,8 @@ public class BlockTable extends GridPane {
     }
 
     public void refresh(){
-
-        DebugTool.print(1);
+        //TODO 改成从函数获取同色节点
+        //DebugTool.print(2);
         byte[] a=IOtool.readBlock(0);
         byte[] fat= Arrays.copyOf(a,a.length*2);
         a=IOtool.readBlock(1);

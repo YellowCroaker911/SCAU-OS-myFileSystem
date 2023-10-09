@@ -1,9 +1,7 @@
 package com.demo.myfilesystem.controller;
 
 import com.demo.myfilesystem.kernel.manager.Manager;
-import com.demo.myfilesystem.model.BlockTable;
-import com.demo.myfilesystem.model.FileFlowPane;
-import com.demo.myfilesystem.model.MyTreeItem;
+import com.demo.myfilesystem.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -22,6 +20,8 @@ public class MainViewController {
 
     @FXML
     private ScrollPane FileScrollPane;
+    @FXML
+    private ScrollPane FATTableScroll;
 
     @FXML
     private Button ForwardButton;
@@ -139,6 +139,11 @@ public class MainViewController {
         blockTable.prefHeightProperty().bind(BlockInfoAnchor.heightProperty());
         blockTable.prefWidthProperty().bind(BlockInfoAnchor.widthProperty());
         BlockInfoAnchor.getChildren().add(blockTable);
+
+        TableView<ByteData> table = new FATTable();
+        table.prefHeightProperty().bind(FATTableScroll.heightProperty());
+        table.prefWidthProperty().bind(FATTableScroll.widthProperty());
+        FATTableScroll.setContent(table);
     }
 
 
