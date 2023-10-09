@@ -37,11 +37,14 @@ public class Entry {
 
     public ArrayList<Entry> list() {
         ArrayList<Entry> entriesArray = new ArrayList<Entry>();
-        for (int blockIndex : blocksIndex()) {
-            for (int index = 0; index < ENTRIES_NUM_OF_BLOCK; index++) {
-                Entry entry = new Entry(new Pointer(blockIndex, index, "entry"));
-                entriesArray.add(entry);
+        Pointer pointer = this.getInfo().startEntryPointer();
+        while (true) {
+            Entry entry = new Entry(pointer.clone());
+            entriesArray.add(entry);
+            if (!pointer.hasNext()) {
+                break;
             }
+            pointer.next();
         }
         return entriesArray;
     }
@@ -67,14 +70,15 @@ public class Entry {
 
     /* 获取信息 */
     public Pointer searchFreeEntry() {
-        byte[] buffer;
-        for (int index : blocksIndex()) {
-            buffer = readBlock(index);
-            for (int i = 0; i < ENTRIES_NUM_OF_BLOCK * BYTES_NUM_OF_ENTRY; i += BYTES_NUM_OF_ENTRY) {
-                if (buffer[i] == (byte) '$') {
-                    return new Pointer(index, i / BYTES_NUM_OF_ENTRY, "entry");
-                }
+        Pointer pointer = this.getInfo().startEntryPointer();
+        while (true) {
+            if (pointer.loadByte() == PLACEHOLDER_BYTE) {
+                return pointer.clone();
             }
+            if (!pointer.hasNext()) {
+                break;
+            }
+            pointer.next();
         }
         return null;
     }
@@ -93,11 +97,11 @@ public class Entry {
 
     /* IO */
     public byte[] loadEntryByte() {
-        return readEntryByte(this.selfPointer.getBlockIndex(), this.selfPointer.getEntryIndex());
+        return this.selfPointer.loadEntry();
     }
 
     public void updateEntryByte() {
-        writeEntryByte(this.selfPointer.getBlockIndex(), this.selfPointer.getEntryIndex(), this.info.getBytes());
+        this.selfPointer.putEntry(this.getInfo().getBytes());
     }
 
     public void linkBlock(int newBlockIndex) {
@@ -114,7 +118,7 @@ public class Entry {
             writeEmptyEntryBlock(blockIndex);
         } else {
             byte[] buffer = new byte[BYTES_NUM_OF_BLOCK];
-            buffer[0] = '#';
+            buffer[0] = FILE_END_MARK_BYTE;
             writeBlock(blockIndex, buffer);
         }
     }

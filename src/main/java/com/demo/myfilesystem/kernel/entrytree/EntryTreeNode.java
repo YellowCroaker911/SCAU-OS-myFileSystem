@@ -3,6 +3,7 @@ package com.demo.myfilesystem.kernel.entrytree;
 import com.demo.myfilesystem.kernel.entry.Entry;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -11,10 +12,10 @@ import java.util.List;
  */
 public class EntryTreeNode {
 
-    protected String fullName;
-    protected Entry entry;  // 存文件相关信息
-    protected EntryTreeNode parentNode;
-    protected ArrayList<EntryTreeNode> childList;
+    private String fullName;
+    private Entry entry;
+    private EntryTreeNode parentNode;
+    private ArrayList<EntryTreeNode> childList;
 
     public EntryTreeNode(Entry file) {
         this.fullName = file.getInfo().getFullName();
@@ -52,6 +53,10 @@ public class EntryTreeNode {
         return entry;
     }
 
+    public EntryTreeNode getParentNode() {
+        return parentNode;
+    }
+
     public ArrayList<EntryTreeNode> getChildList() {
         return childList;
     }
@@ -62,6 +67,15 @@ public class EntryTreeNode {
 
     public int childNum() {
         return this.childList.size();
+    }
+
+    public ArrayList<String> pathArray() {
+        ArrayList<String> pathArray = new ArrayList<String>();
+        for (EntryTreeNode node = this.getParentNode(); node.getParentNode() != null; node = node.getParentNode()) {
+            pathArray.add(node.fullName);
+        }
+        Collections.reverse(pathArray);
+        return pathArray;
     }
 
 }

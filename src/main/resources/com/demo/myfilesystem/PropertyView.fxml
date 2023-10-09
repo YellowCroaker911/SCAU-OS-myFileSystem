@@ -34,6 +34,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -41,43 +42,49 @@
 
 <VBox prefHeight="541.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane prefHeight="104.0" prefWidth="350.0" />
+      <BorderPane prefHeight="104.0" prefWidth="350.0">
+         <left>
+            <ImageView fx:id="FileImage" fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </left>
+         <center>
+            <Text fx:id="FileNameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="264.2403163909912" BorderPane.alignment="CENTER" />
+         </center></BorderPane>
       <BorderPane fx:id="TypeInfoBorder" prefHeight="90.0" prefWidth="350.0">
          <left>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="80.24023056030273" BorderPane.alignment="CENTER" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.24023056030273" BorderPane.alignment="CENTER" />
          </left>
          <center>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="267.4402503967285" BorderPane.alignment="CENTER" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="267.4402503967285" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
       <BorderPane prefHeight="90.0" prefWidth="350.0">
          <left>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="80.24023056030273" BorderPane.alignment="CENTER" />
+            <Text fx:id="SizeTag" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.24023056030273" BorderPane.alignment="CENTER" />
          </left>
          <center>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="267.4402503967285" BorderPane.alignment="CENTER" />
+            <Text fx:id="SizeInfo" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="267.4402503967285" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
       <BorderPane prefHeight="90.0" prefWidth="350.0">
          <left>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="80.24023056030273" BorderPane.alignment="CENTER" />
+            <Text fx:id="OccupyTag" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.24023056030273" BorderPane.alignment="CENTER" />
          </left>
          <center>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="267.4402503967285" BorderPane.alignment="CENTER" />
+            <Text fx:id="OccupyInfo" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="267.4402503967285" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
       <BorderPane prefHeight="42.0" prefWidth="350.0">
          <left>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="80.24023056030273" BorderPane.alignment="CENTER" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="80.24023056030273" BorderPane.alignment="CENTER" />
          </left>
          <center>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="267.4402503967285" BorderPane.alignment="CENTER" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="267.4402503967285" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
       <HBox alignment="CENTER" prefHeight="80.0" prefWidth="350.0" spacing="30.0">
          <children>
-            <RadioButton mnemonicParsing="false" text="只读" />
-            <RadioButton mnemonicParsing="false" text="读/写" />
+            <RadioButton fx:id="ReadOnlyButton" mnemonicParsing="false" onAction="#setReadOnly" text="只读" />
+            <RadioButton fx:id="ReadWriteButton" mnemonicParsing="false" onAction="#setReadWrite" text="读/写" />
          </children>
          <VBox.margin>
             <Insets />

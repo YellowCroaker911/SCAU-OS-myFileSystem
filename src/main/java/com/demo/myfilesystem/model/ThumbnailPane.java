@@ -4,6 +4,7 @@ import com.demo.myfilesystem.FileWindowMain;
 import com.demo.myfilesystem.Main;
 import com.demo.myfilesystem.kernel.entry.Entry;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
+import com.demo.myfilesystem.utils.Constant;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,6 +15,9 @@ import javafx.scene.text.Text;
 
 import java.io.File;
 import java.util.Optional;
+import com.demo.myfilesystem.Main;
+
+import static com.demo.myfilesystem.utils.Constant.*;
 
 // https://www.yiibai.com/javafx/javafx_borderpane.html
 
@@ -21,10 +25,6 @@ import java.util.Optional;
  * 文件缩略图，窗口中间的 图标+文件名，每个文件一个实例
  */
 public class ThumbnailPane extends BorderPane {
-    private ImageView imageView;
-    private double actualWidth;
-    private double actualHeight;
-    private File imageFile;
     private Text imageName;
     private boolean isSelect;
     private final EntryTreeNode directory;
@@ -37,14 +37,20 @@ public class ThumbnailPane extends BorderPane {
         this.setMinSize(SIZE + 10, SIZE + 50);
         this.setPadding(INSETS);    //设置边距
         this.setPrefSize(SIZE+30, SIZE+50);
+        this.directory = entry;
 
-        imageName = new Text(entry.getFullName());
+        imageName = new Text(entry.getFullName().replace("$",""));  // 去掉$符号
         this.setBottom(imageName);
         BorderPane.setAlignment(imageName, Pos.CENTER); // 文字居中
-        String path=Main.class.getResource("")+"icon/file.png";
-        this.setCenter(new ImageView(new Image(path, 120, 120, true, true)));   // TODO:图片应该可以改成一次性加载
 
-        this.directory = entry;
+        if(this.directory.getEntry().getInfo().isDirectory()){ // 根据文件类型设图像
+            this.setCenter(new ImageView(new Image(Main.class.getResource("")+"icon/direct.png", 100, 100, true, true)));
+        }
+        else{
+            this.setCenter(new ImageView(new Image(Main.class.getResource("")+"icon/file.png", 100, 100, true, true)));
+        }
+//        this.setCenter(new ImageView(new Image(Main.class.getResource("")+"icon/file.png", 100, 100, true, true)));
+
 //        setOnMouseClicked(e->{
 //            myFlowPane father = (myFlowPane) this.getParent();  // 获取他爹
 //            // 左键单击
@@ -96,9 +102,6 @@ public class ThumbnailPane extends BorderPane {
         isSelect = false;
     }
     public boolean getisSelect(){return isSelect;}
-    public File getImageFile(){return imageFile;}
-    public Image getImage(){return imageView.getImage();}
-    public long length(){return getImageFile().length();}
 
     /**
      * 重命名 不做就删了
@@ -143,6 +146,4 @@ public class ThumbnailPane extends BorderPane {
 //        }
 //        return 0;
     }
-    public double getActualWidth(){return actualWidth;}
-    public double getActualHeight(){return actualHeight;}
 }

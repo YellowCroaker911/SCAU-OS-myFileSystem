@@ -23,5 +23,11 @@ public class DebugTool {
         System.out.println("---------------------------------------------------");
     }
 
-
+    public static void printStackTrace(String printInfo){
+        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+        System.out.println(printInfo + "  调用堆栈情况:");
+        for(StackTraceElement e : stack){
+            System.out.println("类路径："+e.getClassName() + "  方法名：" + e.getMethodName() + "  调用行号："+ e.getLineNumber());
+        }
+    }
 }

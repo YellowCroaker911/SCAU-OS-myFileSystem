@@ -1,6 +1,11 @@
 package com.demo.myfilesystem.controller;
 
+import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import com.demo.myfilesystem.kernel.manager.Manager;
+import com.demo.myfilesystem.model.BlockTable;
+import com.demo.myfilesystem.model.FileFlowPane;
+import com.demo.myfilesystem.model.MyTreeItem;
+import com.sun.source.tree.Tree;
 import com.demo.myfilesystem.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -95,11 +100,14 @@ public class MainViewController {
     }
 
     private void initFlowPane(){
-        flowPane = new FileFlowPane();
+        flowPane = new FileFlowPane(this);
         FileAnchorPane.getChildren().add(flowPane);
     }
     private void autoAdapt(){
         // TODO:窗口自适应，FlowPane的大小没有布满中间，根Pane不能根随窗口变化而变化
+        // FlowPane大小始终布满中间
+        flowPane.prefWidthProperty().bind(FileAnchorPane.widthProperty());
+        flowPane.prefHeightProperty().bind(FileAnchorPane.heightProperty());
     }
 
     /**
@@ -109,7 +117,23 @@ public class MainViewController {
         assert(newValue != null);
         assert(newValue instanceof MyTreeItem);
         MyTreeItem item = (MyTreeItem) newValue;
+		System.out.println("click node = " + item.getEntryTreeNode().getFullName());
         flowPane.openDirectory(item.getEntryTreeNode());
+    }
+    public void refreshTree(EntryTreeNode entryTreeNode){
+        for(int i = 0;;i++){
+            MyTreeItem item = (MyTreeItem)TreeViewFile.getTreeItem(i);
+            if(item==null)break;
+            if(item.getEntryTreeNode() == entryTreeNode) {    // (判引用)这样是不是能降低开销
+                (item).resetInitialize();
+                if(item.isExpanded()){  // 通过关了再开实现孩子的更新
+                    item.setExpanded(false);
+                    item.setExpanded(true);
+                }
+                break;
+            }
+        }
+        blockTable.refresh();
     }
 
     @FXML
