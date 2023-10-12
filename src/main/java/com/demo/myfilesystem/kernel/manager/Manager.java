@@ -254,7 +254,7 @@ public class Manager {
         ArrayList<Integer>:同一目录项所占用空间的块下标
         boolean:0为文件1为目录
         */
-        ArrayList<Pair<ArrayList<Integer>,Entry>> blockLinks = new ArrayList<Pair<ArrayList<Integer>,Entry>>();
+        ArrayList<Pair<ArrayList<Integer>,Entry>>  blockLinks = new ArrayList<Pair<ArrayList<Integer>,Entry>>();
         ArrayList<EntryTreeNode> treeNodes = traversal(EntryTreeHelper.getRoot());
         for (EntryTreeNode node : treeNodes) {
             blockLinks.add(new Pair(node.getEntry().blocksIndex(),node.getEntry()));

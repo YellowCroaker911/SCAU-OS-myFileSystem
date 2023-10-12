@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1119aeb8-8e8b-4ab7-85ec-7a59b9bf57c8" name="变更" comment="public static ArrayList&lt;Pair&lt;ArrayList&lt;Integer&gt;,boolean&gt;&gt; listFATBlockLink()">
+    <list default="true" id="1119aeb8-8e8b-4ab7-85ec-7a59b9bf57c8" name="变更" comment="Revert &quot;public static ArrayList&lt;Pair&lt;ArrayList&lt;Integer&gt;,boolean&gt;&gt; listFATBlockLink()&quot;&#10;&#10;This reverts commit 6def9a8d">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/manager/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/manager/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/disk.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/demo/myfilesystem/disk.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697125847634</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="public static ArrayList&lt;Pair&lt;ArrayList&lt;Integer&gt;,Entry&gt;&gt; listFATBlockLink()">
+      <created>1697126402603</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1697126402603</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -276,7 +283,8 @@
     <MESSAGE value="基本功能完成，尚未测试" />
     <MESSAGE value="增加创建entry命名冲突，封装了一些常量" />
     <MESSAGE value="public static ArrayList&lt;Pair&lt;ArrayList&lt;Integer&gt;,boolean&gt;&gt; listFATBlockLink()" />
-    <option name="LAST_COMMIT_MESSAGE" value="public static ArrayList&lt;Pair&lt;ArrayList&lt;Integer&gt;,boolean&gt;&gt; listFATBlockLink()" />
+    <MESSAGE value="public static ArrayList&lt;Pair&lt;ArrayList&lt;Integer&gt;,Entry&gt;&gt; listFATBlockLink()" />
+    <option name="LAST_COMMIT_MESSAGE" value="public static ArrayList&lt;Pair&lt;ArrayList&lt;Integer&gt;,Entry&gt;&gt; listFATBlockLink()" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
