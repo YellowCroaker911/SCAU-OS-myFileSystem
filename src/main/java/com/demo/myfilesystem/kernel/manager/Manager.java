@@ -3,6 +3,7 @@ package com.demo.myfilesystem.kernel.manager;
 import com.demo.myfilesystem.kernel.entry.*;
 import com.demo.myfilesystem.kernel.entrytree.*;
 import com.demo.myfilesystem.kernel.filetable.*;
+import javafx.util.Pair;
 
 
 import static com.demo.myfilesystem.kernel.entrytree.EntryTreeHelper.*;
@@ -246,6 +247,19 @@ public class Manager {
             System.arraycopy(buffer, 0, bs, i * BYTES_NUM_OF_BLOCK, BYTES_NUM_OF_BLOCK);
         }
         return bs;
+    }
+
+    public static ArrayList<Pair<ArrayList<Integer>,Entry>> listFATBlockLink() {
+        /*
+        ArrayList<Integer>:同一目录项所占用空间的块下标
+        boolean:0为文件1为目录
+        */
+        ArrayList<Pair<ArrayList<Integer>,Entry>> blockLinks = new ArrayList<Pair<ArrayList<Integer>,Entry>>();
+        ArrayList<EntryTreeNode> treeNodes = traversal(EntryTreeHelper.getRoot());
+        for (EntryTreeNode node : treeNodes) {
+            blockLinks.add(new Pair(node.getEntry().blocksIndex(),node.getEntry()));
+        }
+        return blockLinks;
     }
 
 }
