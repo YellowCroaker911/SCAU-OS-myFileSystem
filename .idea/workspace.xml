@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1119aeb8-8e8b-4ab7-85ec-7a59b9bf57c8" name="变更" comment="基本功能完成，尚未测试">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/utils/WrongMsg.java" afterDir="false" />
+    <list default="true" id="1119aeb8-8e8b-4ab7-85ec-7a59b9bf57c8" name="变更" comment="增加创建entry命名冲突，封装了一些常量">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/entry/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/entry/Entry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/entry/EntryInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/entry/EntryInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/filetable/FileNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/filetable/FileNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/filetable/FileTableHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/filetable/FileTableHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/io/IOtool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/io/IOtool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/io/Pointer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/io/Pointer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/manager/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/kernel/manager/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/utils/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/myfilesystem/utils/Constant.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +211,28 @@
       <option name="project" value="LOCAL" />
       <updated>1696605343602</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="增加创建entry命名冲突，封装了一些常量">
+      <created>1696754550934</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1696754550934</updated>
+    </task>
+    <task id="LOCAL-00021" summary="增加创建entry命名冲突，封装了一些常量">
+      <created>1696754577768</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1696754577768</updated>
+    </task>
+    <task id="LOCAL-00022" summary="增加创建entry命名冲突，封装了一些常量">
+      <created>1696754650478</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1696754650478</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -254,7 +267,8 @@
     <MESSAGE value="创建、删除目录项+简单测试" />
     <MESSAGE value="创建了FileNode和FileTable类&#10;丰富了Pointer类，想通过Pointer实现读写遍历的封装&#10;实现了打开、关闭文件&#10;Manager中提供传入targetNode的接口" />
     <MESSAGE value="基本功能完成，尚未测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="基本功能完成，尚未测试" />
+    <MESSAGE value="增加创建entry命名冲突，封装了一些常量" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加创建entry命名冲突，封装了一些常量" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
