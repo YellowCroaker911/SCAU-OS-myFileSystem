@@ -10,39 +10,43 @@ public class TestMain {
         ArrayList<String> pathArray = new ArrayList<>();
         IOtool.format();
         Manager.init();
+        IOtool.writeByte(1,1,(byte) 50);
+        byte b = IOtool.readByte(1,1);
+        System.out.print(b);
+
 //        DebugTool.print(128);
 
-        pathArray.add("roo");
-        for (int i = 0; i < 10; i++) {
-            Manager.createEntry(pathArray, Integer.toString(i)+"$$", "00010000");
-        }
-        for (int i = 10; i < 12; i++) {
-            Manager.createEntry(pathArray, Integer.toString(i)+"$.t$", "00000000");
-        }
+//        pathArray.add("roo");
+//        for (int i = 0; i < 10; i++) {
+//            Manager.createEntry(pathArray, Integer.toString(i)+"$$", "00010000");
+//        }
+//        for (int i = 10; i < 12; i++) {
+//            Manager.createEntry(pathArray, Integer.toString(i)+"$.t$", "00000000");
+//        }
+////        DebugTool.print(128);
+//
+//        pathArray.add("0$$");
+//        for (int i = 10; i < 30; i++) {
+//            Manager.createEntry(pathArray, Integer.toString(i)+"$", "00010000");
+//        }
+////        DebugTool.print(128);
+//
+//        pathArray.add("10$");
+//        Manager.createEntry(pathArray, "30$.t$", "00000000");
+//        for (int i = 31; i < 40; i++) {
+//            Manager.createEntry(pathArray, Integer.toString(i)+"$", "00010000");
+//        }
 //        DebugTool.print(128);
-
-        pathArray.add("0$$");
-        for (int i = 10; i < 30; i++) {
-            Manager.createEntry(pathArray, Integer.toString(i)+"$", "00010000");
-        }
-//        DebugTool.print(128);
-
-        pathArray.add("10$");
-        Manager.createEntry(pathArray, "30$.t$", "00000000");
-        for (int i = 31; i < 40; i++) {
-            Manager.createEntry(pathArray, Integer.toString(i)+"$", "00010000");
-        }
-        DebugTool.print(128);
-
-        pathArray.remove(2);
-        pathArray.remove(1);
-        Manager.deleteEntry(pathArray,"0$$");
-//        DebugTool.print(128);
-
-        for (int i = 40; i < 50; i++) {
-            Manager.createEntry(pathArray, Integer.toString(i)+"$", "00010000");
-        }
-//        DebugTool.print(128);
+//
+//        pathArray.remove(2);
+//        pathArray.remove(1);
+//        Manager.deleteEntry(pathArray,"0$$");
+////        DebugTool.print(128);
+//
+//        for (int i = 40; i < 50; i++) {
+//            Manager.createEntry(pathArray, Integer.toString(i)+"$", "00010000");
+//        }
+////        DebugTool.print(128);
 
     }
 }
