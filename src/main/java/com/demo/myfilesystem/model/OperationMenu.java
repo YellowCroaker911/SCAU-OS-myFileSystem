@@ -23,7 +23,7 @@ public class OperationMenu extends ContextMenu {
     private final MenuItem deleteButton;      // 删除文件/空目录
     private final MenuItem propertyButton;    // 显示文件属性(使用新窗口展示)
     private ThumbnailPane thumbnail = null;   // 打开菜单时点到的这个文件是谁
-    private FileFlowPane flowPane = null;
+    private FileFlowPane flowPane;
     public OperationMenu(FileFlowPane parent){
         super();
         flowPane = parent;
@@ -107,7 +107,7 @@ public class OperationMenu extends ContextMenu {
             }
             else{
                 // TODO:设置默认的文件属性
-                int result = Manager.createEntry(FullName, "00000000", flowPane.getCurrentTreeNode());
+                int result = Manager.createEntry(FullName, "00100000", flowPane.getCurrentTreeNode());
                 if(result != 1){   // 创建文件失败
                     GenerateDialog.AlertInformation(
                             "创建文件失败", "", AlertType.ERROR, ButtonType.OK);

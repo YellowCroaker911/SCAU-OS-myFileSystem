@@ -2,6 +2,7 @@ package com.demo.myfilesystem;
 
 import com.demo.myfilesystem.kernel.io.IOtool;
 import com.demo.myfilesystem.kernel.manager.Manager;
+import com.demo.myfilesystem.utils.Constant;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,6 +20,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+//        System.out.println(RESOURCE_PATH);
+//        System.out.println((Main.class.getResource("").getPath()+"icon/file.png").substring(1));
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1100, 700);
         stage.setMinHeight(400);

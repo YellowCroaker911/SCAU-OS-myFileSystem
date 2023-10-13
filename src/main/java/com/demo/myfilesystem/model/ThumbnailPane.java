@@ -11,6 +11,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
+import static com.demo.myfilesystem.utils.Constant.DIRECTORY_ICON;
+import static com.demo.myfilesystem.utils.Constant.FILE_ICON;
+
 // https://www.yiibai.com/javafx/javafx_borderpane.html
 
 /**
@@ -35,15 +38,12 @@ public class ThumbnailPane extends BorderPane {
         this.setBottom(FileName);
         BorderPane.setAlignment(FileName, Pos.CENTER); // 文字居中
 
-        Image img = null;
         if(this.directory.getEntry().getInfo().isDirectory()){ // 根据文件类型设图像
-            img = new Image(Main.class.getResource("")+"icon/direct.png");
+            this.setCenter(new ImageView(DIRECTORY_ICON));
         }
         else{
-            img = new Image(Main.class.getResource("")+"icon/file.png");
+            this.setCenter(new ImageView(FILE_ICON));
         }
-        System.out.println(img.getUrl());
-        this.setCenter(new ImageView(img));
 //        this.setCenter(new ImageView(new Image(Main.class.getResource("")+"icon/file.png", 100, 100, true, true)));
 
     }

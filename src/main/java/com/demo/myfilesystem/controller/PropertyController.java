@@ -2,6 +2,8 @@ package com.demo.myfilesystem.controller;
 
 import com.demo.myfilesystem.Main;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
+import com.demo.myfilesystem.kernel.manager.Manager;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,10 +11,16 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
-import static com.demo.myfilesystem.utils.Constant.BYTES_NUM_OF_BLOCK;
+import static com.demo.myfilesystem.utils.Constant.*;
 
+/**
+ * 属性面板的controller
+ * 支持修改文件是否只读
+ */
 public class PropertyController {
 
     @FXML
@@ -54,14 +62,18 @@ public class PropertyController {
     @FXML
     private Button closeButton;
 
+    EntryTreeNode entry;
+    boolean isReadOnly;
     @FXML
     void applySetting(ActionEvent event) {
-
+        assert entry.getEntry().getInfo().isOnlyRead() != isReadOnly : "改了还一样";
     }
 
     @FXML
     void closeWindow(ActionEvent event) {
-
+        // zmn
+        Stage stage =  (Stage)closeButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -79,6 +91,7 @@ public class PropertyController {
      * @param entry 文件
      */
     public void initInfo(EntryTreeNode entry){
+        this.entry = entry;
         CommentButton.setSelected(entry.getEntry().getInfo().isCommon());
         SystemFilebutton.setSelected(entry.getEntry().getInfo().isSystem());
         // 设置只读/读写按钮
@@ -90,19 +103,26 @@ public class PropertyController {
             ReadOnlyButton.setSelected(false);
             ReadWriteButton.setSelected(true);
         }
+        if(entry.getEntry().getInfo().isDirectory()){
+            ReadOnlyButton.setDisable(true);
+            ReadWriteButton.setDisable(true);
+        }
         // 设置图标
         if(entry.getEntry().getInfo().isDirectory()) {
-            FileImage.setImage(new Image(Main.class.getResource("")+"icon/direct.png", 30, 30, true, true));
+            FileImage.setImage(DIRECTORY_ICON);
         }
         else{
-            FileImage.setImage(new Image(Main.class.getResource("")+"icon/file.png", 30, 30, true, true));
+            FileImage.setImage(FILE_ICON);
         }
         // 文件名
-        FileNameText.setText(entry.getFullName().replace("$",""));
+        FileNameText.setText("文件名称：  " + entry.getFullName().replace("$",""));
         // 文件实际大小
         SizeInfo.setText(""+entry.getEntry().getInfo().getLength()+"bytes");
         // 文件占磁盘大小(块数*块大小)
         OccupyInfo.setText(""+entry.getEntry().list().size()*BYTES_NUM_OF_BLOCK + "bytes");
+
+        applyButton.setDisable(true);
+        isReadOnly = entry.getEntry().getInfo().isOnlyRead();
     }
 }
 

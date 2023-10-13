@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import static com.demo.myfilesystem.utils.Constant.*;
 
-// TODO: 目录树有bug 是否更新孩子数组的判定有问题
 public class MyTreeItem extends TreeItem<String> {
     EntryTreeNode treeNode;
     private boolean isInitialized = false;                          // child是否已加载
@@ -20,16 +19,14 @@ public class MyTreeItem extends TreeItem<String> {
     public MyTreeItem(EntryTreeNode treeNode){
         super(treeNode.getFullName().replace("$", ""));  // 忽略$符号
 
-        // TODO: 图片改为一次加载
         if(treeNode.getFullName().equals("roo")){   // 根目录(不准确)
-            this.setGraphic(new ImageView(new Image(Main.class.getResource("")+"icon/DiskManager.png", 20, 20, true, true)));
-
+            this.setGraphic(new ImageView(DISK_ICON_SMALL));
         }
         else if(treeNode.getEntry().getInfo().isDirectory()){
-            this.setGraphic(new ImageView(new Image(Main.class.getResource("")+"icon/direct.png", 20, 20, true, true)));
+            this.setGraphic(new ImageView(DIRECTORY_ICON_SMALL));
         }
         else{
-            this.setGraphic(new ImageView(new Image(Main.class.getResource("")+"icon/file.png", 20, 20, true, true)));
+            this.setGraphic(new ImageView(FILE_ICON_SMALL));
         }
 //        System.out.println(treeNode.getFullName());
         this.treeNode = treeNode;
