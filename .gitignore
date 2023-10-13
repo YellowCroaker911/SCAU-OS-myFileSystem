@@ -5,6 +5,7 @@ target/
 
 ### IntelliJ IDEA ###
 .idea/
+out/
 .idea/workspace.xml
 *.iws
 *.iml
