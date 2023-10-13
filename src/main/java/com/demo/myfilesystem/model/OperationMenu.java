@@ -90,7 +90,7 @@ public class OperationMenu extends ContextMenu {
                     "该文件为只读文件，不可读写打开!","",AlertType.ERROR,ButtonType.OK);
             return;
         }
-        thumbnail.openFile("rw");
+        thumbnail.openFile("w");
     }
 
     private void newFile(ActionEvent actionEvent) {
