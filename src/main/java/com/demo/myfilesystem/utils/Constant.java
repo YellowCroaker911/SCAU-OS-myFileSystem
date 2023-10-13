@@ -20,6 +20,7 @@ public class Constant {
     public static final int LENGTH_OFFSET = 7;
 
     // attribute
+
     public static final int IS_ONLY_READ = 0;
     public static final int IS_SYSTEM = 1;
     public static final int IS_COMMON = 2;

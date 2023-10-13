@@ -32,18 +32,16 @@ public class FATTable extends TableView<ByteData> {
         this.getColumns().addAll(c1,c2);
         this.setEditable(false);
 
-        re();
+        refreshTable();
     }
 
-    private void re()
-    {
-        byte[] fat= IOtool.getFattable();
+    public void refreshTable() {
+        byte[] fat = IOtool.getFattable();
         ObservableList<ByteData> data = FXCollections.observableArrayList();
         for (int i = 0; i < fat.length; i++) {
             data.add(new ByteData(i, fat[i]));
         }
 
         this.setItems(data);
-
     }
 }

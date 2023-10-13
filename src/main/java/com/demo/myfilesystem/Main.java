@@ -23,7 +23,7 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1100, 700);
         stage.setMinHeight(400);
         stage.setMinWidth(700);
-        stage.setTitle("wwwwww");
+        stage.setTitle("文件管理系统");
 //        stage.getIcons().add(new Image(Main.class.getResource("icon.png").toExternalForm()));
         stage.setScene(scene);
 //        MainViewController controller = fxmlLoader.getController();
@@ -34,7 +34,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         IOtool.format();
         Manager.init();
-        ArrayList<String> pathArray = new ArrayList<>();
         launch();
     }
 }

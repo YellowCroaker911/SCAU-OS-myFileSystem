@@ -2,9 +2,7 @@ package com.demo.myfilesystem.model;
 
 import com.demo.myfilesystem.FileWindowMain;
 import com.demo.myfilesystem.Main;
-import com.demo.myfilesystem.kernel.entry.Entry;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
-import com.demo.myfilesystem.utils.Constant;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,19 +11,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
-import java.io.File;
-import java.util.Optional;
-import com.demo.myfilesystem.Main;
-
-import static com.demo.myfilesystem.utils.Constant.*;
-
 // https://www.yiibai.com/javafx/javafx_borderpane.html
 
 /**
  * 文件缩略图，窗口中间的 图标+文件名，每个文件一个实例
  */
 public class ThumbnailPane extends BorderPane {
-    private Text imageName;
+    private Text FileName;
     private boolean isSelect;
     private final EntryTreeNode directory;
     private static final double SIZE = 100;  // 缩略图大小 (小于加载图片的大小)
@@ -39,36 +31,20 @@ public class ThumbnailPane extends BorderPane {
         this.setPrefSize(SIZE+30, SIZE+50);
         this.directory = entry;
 
-        imageName = new Text(entry.getFullName().replace("$",""));  // 去掉$符号
-        this.setBottom(imageName);
-        BorderPane.setAlignment(imageName, Pos.CENTER); // 文字居中
+        FileName = new Text(entry.getFullName().replace("$",""));  // 去掉$符号
+        this.setBottom(FileName);
+        BorderPane.setAlignment(FileName, Pos.CENTER); // 文字居中
 
+        Image img = null;
         if(this.directory.getEntry().getInfo().isDirectory()){ // 根据文件类型设图像
-            this.setCenter(new ImageView(new Image(Main.class.getResource("")+"icon/direct.png", 100, 100, true, true)));
+            img = new Image(Main.class.getResource("")+"icon/direct.png");
         }
         else{
-            this.setCenter(new ImageView(new Image(Main.class.getResource("")+"icon/file.png", 100, 100, true, true)));
+            img = new Image(Main.class.getResource("")+"icon/file.png");
         }
+        System.out.println(img.getUrl());
+        this.setCenter(new ImageView(img));
 //        this.setCenter(new ImageView(new Image(Main.class.getResource("")+"icon/file.png", 100, 100, true, true)));
-
-//        setOnMouseClicked(e->{
-//            myFlowPane father = (myFlowPane) this.getParent();  // 获取他爹
-//            // 左键单击
-//            if(e.getButton() == MouseButton.PRIMARY && e.getClickCount() == 1){
-//                if(e.isControlDown()) {     // 按下Ctrl
-//                    if(getisSelect())father.unSelect(this);
-//                    else father.Select(this);
-//                }
-//                else {
-//                    father.unSelectAll();   //清空选择
-//                    father.Select(this);
-//                }
-//                father.updateTipInfoLabel();
-//            }
-//            else if(e.getButton() == MouseButton.PRIMARY && e.getClickCount() == 2){
-//                Platform.runLater(()->ImageMain.main(imageFile.getAbsolutePath(), mainController, false));
-//            }
-//        });
 
     }
 

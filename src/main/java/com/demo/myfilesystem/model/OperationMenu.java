@@ -1,8 +1,10 @@
 package com.demo.myfilesystem.model;
 
+import com.demo.myfilesystem.PropertyMain;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import com.demo.myfilesystem.kernel.manager.Manager;
 import com.demo.myfilesystem.utils.GenerateDialog;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
@@ -166,6 +168,7 @@ public class OperationMenu extends ContextMenu {
     private void showProperty(ActionEvent actionEvent) {
 
         //TODO: 展示文件属性
+        Platform.runLater(()->new PropertyMain(thumbnail.getDirectory()));
     }
 
 

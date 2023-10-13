@@ -57,6 +57,7 @@ public class MainViewController {
 
     private FileFlowPane flowPane;
     private BlockTable blockTable;
+    private FATTable FatTable;
 
     @FXML
     private void initialize(){
@@ -134,6 +135,7 @@ public class MainViewController {
             }
         }
         blockTable.refresh();
+        FatTable.refreshTable();
     }
 
     @FXML
@@ -164,10 +166,10 @@ public class MainViewController {
         blockTable.prefWidthProperty().bind(BlockInfoAnchor.widthProperty());
         BlockInfoAnchor.getChildren().add(blockTable);
 
-        TableView<ByteData> table = new FATTable();
-        table.prefHeightProperty().bind(FATTableScroll.heightProperty());
-        table.prefWidthProperty().bind(FATTableScroll.widthProperty());
-        FATTableScroll.setContent(table);
+        FatTable = new FATTable();
+        FatTable.prefHeightProperty().bind(FATTableScroll.heightProperty());
+        FatTable.prefWidthProperty().bind(FATTableScroll.widthProperty());
+        FATTableScroll.setContent(FatTable);
     }
 
 
