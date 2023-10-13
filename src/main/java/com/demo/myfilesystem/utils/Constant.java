@@ -30,7 +30,7 @@ public class Constant {
     public static final int OPENED_FILE_TABLE_SIZE = 5;
     // icon
     // 资源文件夹路径
-    public static final String RESOURCE_PATH = Main.class.getResource("").getPath().substring(1);
+    public static final String RESOURCE_PATH = Main.class.getResource("").getPath().substring(1).replace("%20"," ");
     public static final Image FILE_ICON = new Image(RESOURCE_PATH+"icon/file.png",100,100,true,true);
     public static final Image DIRECTORY_ICON = new Image(RESOURCE_PATH+"icon/direct.png",100,100,true,true);
     public static final Image FILE_ICON_SMALL = new Image(RESOURCE_PATH+"icon/file.png",20,20,true,true);

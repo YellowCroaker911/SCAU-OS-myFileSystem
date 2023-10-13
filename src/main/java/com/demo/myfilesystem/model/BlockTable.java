@@ -1,6 +1,8 @@
 package com.demo.myfilesystem.model;
 
+import com.demo.myfilesystem.kernel.entry.Entry;
 import com.demo.myfilesystem.kernel.io.IOtool;
+import com.demo.myfilesystem.kernel.manager.Manager;
 import com.demo.myfilesystem.test.DebugTool;
 import com.demo.myfilesystem.utils.Constant;
 import javafx.geometry.Insets;
@@ -8,11 +10,13 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Pair;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static com.demo.myfilesystem.utils.Constant.BLOCKS_NUM_OF_DISK;
 
@@ -30,7 +34,7 @@ public class BlockTable extends GridPane {
     static{
         String[] strs={"B0C4DE", "FF00FF", "1E90FF", "FA8072", "EEE8AA", "FF1493", "7B68EE",
                 "FFC0CB", "696969", "556B2F", "CD853F", "000080", "32CD32", "7F007F",
-                "B03060", "800000", "483D8B", "008000", "3CB371", "008B8B", "FF0000",
+                "B03060", "800000", "483D8B", "3CB371", "008B8B", "FF0000",
                 "FF8C00", "FFD700", "00FF00", "9400D3", "00FA9A", "DC143C", "00FFFF",
                 "00BFFF", "0000FF", "ADFF2F", "DA70D6"};
         colors=new Color[strs.length];
@@ -63,40 +67,20 @@ public class BlockTable extends GridPane {
     }
 
     public void refresh(){
-        //TODO 改成从函数获取同色节点
-//        DebugTool.print(2);
-        byte[] a=IOtool.readBlock(0);
-        byte[] fat= Arrays.copyOf(a,a.length*2);
-        a=IOtool.readBlock(1);
-        System.arraycopy(a,0,fat,a.length,a.length);
-
-        int ind=0;
-
-        for(int i=0;i< fat.length;i++)
+        for(int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                table[i][j].setFill(Color.GREEN);
+            }
+        }
+        table[0][0].setFill(colors[0]);
+        table[0][1].setFill(colors[1]);
+        ArrayList<Pair<ArrayList<Integer>, Entry>> arr= Manager.listFATBlockLink();
+        for(int i=0;i<arr.size();i++)
         {
-            if(fat[i]==0)
+            List<Integer> l=arr.get(i).getKey();
+            for(int j=0;j<l.size();j++)
             {
-
-                table[i/COLS][i%COLS].setFill(Color.GREEN);
-                fat[i]=-13;//标记读过
-            }
-            else if(fat[i]==-13)
-            {
-                continue;
-            }
-            else
-            {
-                int j=i;
-                while(fat[j]!=-1)
-                {
-                    table[j/COLS][j%COLS].setFill(colors[ind]);
-                    int t=j;
-                    j=fat[j];
-                    fat[t]=-13;
-                }
-                table[j/COLS][j%COLS].setFill(colors[ind]);
-                fat[j]=-13;
-                ind=(ind+1)%colors.length;
+                table[l.get(j)/COLS][l.get(j)%COLS].setFill(colors[(i+2)%colors.length]);
             }
         }
     }
