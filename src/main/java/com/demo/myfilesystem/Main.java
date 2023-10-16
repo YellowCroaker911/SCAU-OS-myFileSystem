@@ -2,6 +2,7 @@ package com.demo.myfilesystem;
 
 import com.demo.myfilesystem.kernel.io.IOtool;
 import com.demo.myfilesystem.kernel.manager.Manager;
+import com.demo.myfilesystem.test.DebugTool;
 import com.demo.myfilesystem.utils.Constant;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

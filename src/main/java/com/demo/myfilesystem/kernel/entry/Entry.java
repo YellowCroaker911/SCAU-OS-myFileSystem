@@ -14,6 +14,7 @@ public class Entry {
 
     public Entry() {
         this.selfPointer = null;
+
         this.info = new EntryInfo();
     }
 

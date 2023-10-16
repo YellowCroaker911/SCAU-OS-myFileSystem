@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
+import static com.demo.myfilesystem.kernel.manager.Manager.closeFile;
 import static com.demo.myfilesystem.utils.Constant.DIRECTORY_ICON;
 import static com.demo.myfilesystem.utils.Constant.FILE_ICON;
 

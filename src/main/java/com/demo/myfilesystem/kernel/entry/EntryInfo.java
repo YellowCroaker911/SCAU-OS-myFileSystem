@@ -2,6 +2,8 @@ package com.demo.myfilesystem.kernel.entry;
 
 import com.demo.myfilesystem.kernel.io.Pointer;
 
+import java.util.Arrays;
+
 import static com.demo.myfilesystem.utils.Constant.*;
 
 public class EntryInfo {
@@ -18,7 +20,7 @@ public class EntryInfo {
         this.typeName = DIRECTORY_TYPE_NAME;
         this.attribute = DIRECTORY_ATTRIBUTE;
         this.startBlockIndex = BLOCKS_NUM_OF_FAT;
-        this.length = 0;
+        this.length = 1;
     }
 
     public EntryInfo(byte[] bytes) {

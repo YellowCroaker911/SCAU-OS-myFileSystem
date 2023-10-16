@@ -3,11 +3,14 @@ package com.demo.myfilesystem;
 import com.demo.myfilesystem.kernel.entry.Entry;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import com.demo.myfilesystem.kernel.filetable.FileNode;
+import com.demo.myfilesystem.kernel.io.IOtool;
 import com.demo.myfilesystem.kernel.io.Pointer;
+import com.demo.myfilesystem.test.DebugTool;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -15,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.File;
 
@@ -40,41 +44,43 @@ public class FileWindowMain {
         stage.setScene(scene);
         stage.setWidth(800);
         stage.setHeight(800);
-        System.out.println(111);
 
         FileNode fileNode = openFile(entry,mode);
-        System.out.println(111);
 
-        String s = readFile(fileNode,fileNode.bytesLength());
-        System.out.println(111);
 
-        System.out.println(s);
-        textArea.appendText(s);
         textArea.setEditable(true);
+
+
 //        textArea.setWrapText(true);
         if(mode.equals("w")) {
-            String[] str = {""};
             textArea.textProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
-                    str[0] = newValue;
+                    oldValue = newValue;
                 }
             });
-
             save.setOnAction(event-> {
-                textArea.clear();
-                textArea.appendText(str[0]);
-                System.out.println(1111);
-                writeFile(fileNode,str[0]);
+                writeFile(fileNode,textArea.getText());
+            });
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent windowEvent) {
+                    DebugTool.print(32);
+                    closeFile(entry);
+                    DebugTool.print(32);
+                }
             });
         }
         else {
-            System.out.println(111);
-
             textArea.setEditable(false);
+            textArea.appendText(readFile(fileNode,fileNode.bytesLength()));
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent windowEvent) {
+                    closeFile(entry);
+                }
+            });
         }
-        System.out.println(111);
-
         stage.show();
     }
 }

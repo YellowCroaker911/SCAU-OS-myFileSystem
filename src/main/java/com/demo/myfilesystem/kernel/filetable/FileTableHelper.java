@@ -26,6 +26,7 @@ public class FileTableHelper {
         }
         // 文件已被打开
         if (openedFileNodes.contains(fNode)) {
+            System.out.println(222);
             return null;
         }
         openedFileNodes.add(fNode);

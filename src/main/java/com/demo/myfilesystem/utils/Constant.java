@@ -51,11 +51,11 @@ public class Constant {
     public static final byte[] ROOT_ENTRY_BYTES = new byte[]{
             (byte) ROOT_NAME.charAt(0), (byte) ROOT_NAME.charAt(1), (byte) ROOT_NAME.charAt(2),
             (byte) DIRECTORY_TYPE_NAME.charAt(0), (byte) DIRECTORY_TYPE_NAME.charAt(1),
-            (byte) DIRECTORY_ATTRIBUTE_BYTE, (byte) BLOCKS_NUM_OF_FAT, (byte) 0x00
+            (byte) DIRECTORY_ATTRIBUTE_BYTE, (byte) BLOCKS_NUM_OF_FAT, (byte) 0x01
     };
     public static final byte[] NULL_ENTRY_BYTES = new byte[]{FILE_END_MARK_BYTE, (byte) 0x00, (byte) 0x00,
             (byte) 0x00, (byte) 0x00,
-            (byte) 0x00, (byte) 0x00, (byte) 0x00};
+            (byte) 0x00, (byte) 0x00, (byte) 0x01};
     // mode
     public static final String BYTE = "byte";
     public static final String ENTRY = "entry";
