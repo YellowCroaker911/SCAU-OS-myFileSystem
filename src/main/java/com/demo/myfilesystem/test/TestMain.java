@@ -2,24 +2,29 @@ package com.demo.myfilesystem.test;
 
 import com.demo.myfilesystem.kernel.io.IOtool;
 import com.demo.myfilesystem.kernel.manager.Manager;
+import com.demo.myfilesystem.Main;
+
 
 import java.util.ArrayList;
 
 public class TestMain {
     public static void main(String[] args) {
+
         ArrayList<String> pathArray = new ArrayList<>();
         IOtool.format();
         Manager.init();
-        IOtool.writeByte(1,1,(byte) 50);
-        byte b = IOtool.readByte(1,1);
-        System.out.print(b);
+
+//        IOtool.writeByte(1,1,(byte) 50);
+//        byte b = IOtool.readByte(1,1);
+//        System.out.print(b);
 
 //        DebugTool.print(128);
-
+//
 //        pathArray.add("roo");
 //        for (int i = 0; i < 10; i++) {
 //            Manager.createEntry(pathArray, Integer.toString(i)+"$$", "00010000");
 //        }
+//        DebugTool.print(128);
 //        for (int i = 10; i < 12; i++) {
 //            Manager.createEntry(pathArray, Integer.toString(i)+"$.t$", "00000000");
 //        }

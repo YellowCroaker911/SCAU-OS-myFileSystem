@@ -46,27 +46,22 @@ public class FileNode {
 
     public int closeUpdate() {
         if (this.mode.equals(WRITE)) {
-            if (this.appendEndMark() == -1) {
-                return -1;
-            }
+            this.appendEndMark();
         }
         return 1;
     }
 
-    public int appendEndMark() {
-        if (!this.wPointer.hasNext()) {
-            if (openUpSpace(this) == -1) {
-                return -1;
-            }
-        }
-        this.wPointer.next();
+    public void appendEndMark() {
         this.wPointer.putByte(FILE_END_MARK_BYTE);
-        return 1;
     }
 
     public int requiredFreeSpaceNum(String str) {
         int remainingFreeByte = BYTES_NUM_OF_BLOCK - this.tailPointer().getByteOffset();
-        return (str.length() - remainingFreeByte + 1) / BYTES_NUM_OF_BLOCK + 1; // 第一个+1考虑预留文件结束符那一位
+        int len = str.length() + 1; // 第一个+1考虑预留文件结束符那一位
+        if (len <= remainingFreeByte) return 0;
+        else {
+            return (len - remainingFreeByte + BYTES_NUM_OF_BLOCK - 1) / BYTES_NUM_OF_BLOCK;
+        }
     }
 
     public void write(String str) {
@@ -84,7 +79,7 @@ public class FileNode {
     public String read(int len) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < len; i++) {
-            sb.append(this.rPointer.loadByte());
+            sb.append((char) this.rPointer.loadByte());
             assert this.rPointer.hasNext();
             this.rPointer.next();
         }
