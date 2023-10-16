@@ -51,7 +51,7 @@ public class MyTreeItem extends TreeItem<String> {
      */
     private void updateChildren(ObservableList<TreeItem<String>> children){
         ArrayList<EntryTreeNode> newChildren = treeNode.getChildList();
-        for(EntryTreeNode de : newChildren){    // 将新孩子加到目录树中
+        for(EntryTreeNode de : newChildren)if(de.getEntry().getInfo().isDirectory()){    // 将新孩子加到目录树中
             boolean have = false;
             for(TreeItem<String> ch:children){
                 if (((MyTreeItem) ch).getEntryTreeNode() == de) {

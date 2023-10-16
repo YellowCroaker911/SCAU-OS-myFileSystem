@@ -55,9 +55,14 @@ public class ThumbnailPane extends BorderPane {
      */
     public boolean openFile(String mode){
         assert !isDirectory(): "ThumbnailPane.openFile() directory cannot open as File";
-        if(mode.equals("r") || mode.equals("rw")){
+        if(mode == null){
+            if(getDirectory().getEntry().getInfo().isOnlyRead())mode = "r";
+            else mode = "w";
+        }
+        if(mode.equals("r") || mode.equals("w")){
             // 本质就是开了一个新线程跑FileWindowMain
-            Platform.runLater(()->new FileWindowMain(directory, mode));
+            String finalMode = mode;
+            Platform.runLater(()->new FileWindowMain(directory, finalMode));
             return true;
         }
         else {

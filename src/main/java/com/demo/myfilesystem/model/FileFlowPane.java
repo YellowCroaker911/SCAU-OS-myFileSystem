@@ -82,7 +82,7 @@ public class FileFlowPane extends FlowPane {
                     openDirectory(thumbnail.getDirectory());    // 打开文件夹
                 }
                 else{   // 双击文件
-                    thumbnail.openFile("r");        // 双击打开 按只读打开
+                    thumbnail.openFile(null);        // 双击打开 按只读打开
                 }
             }
             else if(clickNode instanceof FileFlowPane){;} // 忽略
