@@ -8,7 +8,7 @@ import static com.demo.myfilesystem.utils.Constant.*;
 
 public class FileTableHelper {
 
-    private static ArrayList<FileNode> openedFileNodes;
+    private static ArrayList<FileNode> openedFileNodes = new ArrayList<>();
 
     public static void init() {
         openedFileNodes = new ArrayList<FileNode>();
