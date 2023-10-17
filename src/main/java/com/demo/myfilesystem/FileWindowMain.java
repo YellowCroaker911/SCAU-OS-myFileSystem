@@ -43,7 +43,8 @@ public class FileWindowMain {
         TextArea textArea1 = new TextArea();
         Button save = new Button("保存");
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(save,textArea,textArea1);
+        vBox.getChildren().addAll(textArea1,textArea,save);
+        vBox.setSpacing(10);
         anchorPane.getChildren().add(vBox);
         AnchorPane.setTopAnchor(vBox,50.0);
         AnchorPane.setLeftAnchor(vBox,100.0);
@@ -65,10 +66,11 @@ public class FileWindowMain {
         textArea.setEditable(true);
         textArea1.appendText(readFile(fileNode,fileNode.bytesLength()));
         textArea1.setEditable(false);
+
+        textArea1.setWrapText(true);
         textArea.setWrapText(true);
 
 
-//        textArea.setWrapText(true);
         if(mode.equals("w")) {
             textArea.textProperty().addListener(new ChangeListener<String>() {
                 @Override
@@ -82,11 +84,12 @@ public class FileWindowMain {
                     writeFile(fileNode, textArea.getText());
                     var end = System.currentTimeMillis();
                     textArea1.appendText(textArea.getText());
-                GenerateDialog.AlertInformation("保存成功", "consume time = " + (end-beg) + "ms", Alert.AlertType.INFORMATION, ButtonType.OK);
+                    MainController.refreshDiskInfo();
+                    GenerateDialog.AlertInformation("保存成功", "consume time = " + (end-beg) + "ms", Alert.AlertType.INFORMATION, ButtonType.OK);
                 }catch (Exception e){
+                    MainController.refreshDiskInfo();
                     GenerateDialog.AlertInformation("写入错误", e.getMessage(), Alert.AlertType.ERROR, ButtonType.OK);
                 }
-                MainController.refreshDiskInfo();
             });
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override

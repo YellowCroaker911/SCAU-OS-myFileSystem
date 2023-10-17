@@ -128,6 +128,10 @@ public class MainViewController {
         }
         refreshDiskInfo();
     }
+    public void refreshDiskInfo(){
+        FatTable.refreshTable();
+        blockTable.refresh();
+    }
 
     /**********************顶部三个按钮相关***********************/
     private final Stack<EntryTreeNode> BackStack = new Stack<>();   // 栈顶为当前文件夹

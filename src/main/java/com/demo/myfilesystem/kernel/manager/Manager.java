@@ -288,16 +288,11 @@ public class Manager {
         return 1;
     }
 
-    /**
-     * 删除文件
-     * @param fullName  文件全名
-     * @param curNode   要删除文件所在的文件夹
-     */
     public static int alterAttribute(String fullName, EntryTreeNode curNode,String attribute)throws IOException {
         if (curNode == null) {
             curNode = pathStack.lastElement();
         }
-        // 根据目录树得到待删除目录项的节点
+
         EntryTreeNode targetNode = curNode.match(fullName);
         if (targetNode == null) {
             throw new IOException("文件节点不存在");

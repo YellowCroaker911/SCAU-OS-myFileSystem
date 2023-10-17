@@ -70,7 +70,12 @@ public class PropertyController {
     @FXML
     void applySetting(ActionEvent event) {
         assert entry.getEntry().getInfo().isOnlyRead() != isReadOnly : "改了还一样";
-        GenerateDialog.AlertInformation("没写","", Alert.AlertType.ERROR, ButtonType.OK);
+        String attr = (isReadOnly?"1":"0") + entry.getEntry().getInfo().getAttribute().substring(1);
+//        System.out.println(entry.getEntry().getInfo().getAttribute() + "   " +attr);
+        Manager.alterAttribute(entry, attr);
+        applyButton.setDisable(true);
+        isReadOnly = !isReadOnly;
+        GenerateDialog.AlertInformation("修改成功","", Alert.AlertType.INFORMATION, ButtonType.OK);
     }
 
     @FXML
