@@ -8,12 +8,14 @@ import com.demo.myfilesystem.model.FileFlowPane;
 import com.demo.myfilesystem.model.MyTreeItem;
 import com.sun.source.tree.Tree;
 import com.demo.myfilesystem.model.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class MainViewController {
@@ -54,7 +56,7 @@ public class MainViewController {
     private AnchorPane UpperPane;
 
     @FXML
-    private AnchorPane BlockInfoAnchor;
+    private BorderPane BlockInfoAnchor;
 
     @FXML
     private StackPane RootPane;
@@ -69,9 +71,7 @@ public class MainViewController {
     private void initialize(){
         initTreeView();     // 目录树
         initFlowPane();     // 中间文件详情页
-        initBlockInfo();
-        initFAT();
-        // TODO: 磁盘占用情况(饼图) 还没加到fxml中
+        initDiskInfo();
     }
     public void setStage(Stage stage){
         MainStage = stage;
@@ -93,12 +93,13 @@ public class MainViewController {
         FileAnchorPane.getChildren().add(flowPane);
     }
     private void autoAdapt(){
-        // TODO:窗口自适应，FlowPane的大小没有布满中间，根Pane不能根随窗口变化而变化
         // FlowPane大小始终布满中间
         flowPane.prefWidthProperty().bind(FileAnchorPane.widthProperty());
         flowPane.prefHeightProperty().bind(FileAnchorPane.heightProperty());
         FileAnchorPane.prefHeightProperty().bind(SplitPane.heightProperty());
         SplitPane.prefHeightProperty().bind(MainStage.heightProperty());
+
+
     }
 
     /**
@@ -182,26 +183,20 @@ public class MainViewController {
     }
 
     /****************窗口右侧的信息展示有关************************/
-    public void refreshDiskInfo(){
-        blockTable.refresh();
-        FatTable.refreshTable();
-    }
-    private void initFAT() {
-        // TODO: FAT 右下角表格
-    }
-
-    private void initBlockInfo() {
-        // TODO: 块信息 右上角
+    private void initDiskInfo() {
         blockTable = new BlockTable();
+//        blockTable.prefHeightProperty()
         // 将blockTable的宽高和他爹绑定
-        blockTable.prefHeightProperty().bind(BlockInfoAnchor.heightProperty());
-        blockTable.prefWidthProperty().bind(BlockInfoAnchor.widthProperty());
-        BlockInfoAnchor.getChildren().add(blockTable);
+        BlockInfoAnchor.setCenter(blockTable);
+//        blockTable.prefHeightProperty().bind(BlockInfoAnchor.prefHeightProperty());
+//        blockTable.prefWidthProperty().bind(BlockInfoAnchor.prefWidthProperty());
 
         FatTable = new FATTable();
         FatTable.prefHeightProperty().bind(FATTableAnchor.heightProperty());
         FatTable.prefWidthProperty().bind(FATTableAnchor.widthProperty());
         FATTableAnchor.getChildren().add(FatTable);
+
+        RightSplitPane.setDividerPosition(0,0.5);
     }
 
 

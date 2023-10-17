@@ -7,9 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-/**
- * TODO:右下角FAT
- */
+
 public class FATTable extends TableView<ByteData> {
     private TableColumn<ByteData,Integer> c1;
     private TableColumn<ByteData,Byte> c2;

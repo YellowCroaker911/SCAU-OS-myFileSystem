@@ -48,8 +48,8 @@ public class BlockTable extends GridPane {
     private final Rectangle[][] table;
     public BlockTable(){
         super();
-        this.setPadding(new Insets(0,0,0,10));
-        this.setAlignment(Pos.CENTER_LEFT);  // 居中
+//        this.setPadding(new Insets(0,0,0,10));
+        this.setAlignment(Pos.CENTER);  // 居中
         this.setVgap(5);   // 垂直距离
         this.setHgap(8);   // 水平距离
         table = new Rectangle[ROWS][COLS];
