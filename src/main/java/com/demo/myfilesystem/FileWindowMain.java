@@ -33,7 +33,7 @@ import static com.demo.myfilesystem.kernel.manager.Manager.*;
  * mode为"r"/"rw" 只读/读写
  */
 public class FileWindowMain {
-    public FileWindowMain(EntryTreeNode entry, String mode){
+    public FileWindowMain(Stage ParentStage, EntryTreeNode entry, String mode){
         AnchorPane anchorPane = new AnchorPane();
         TextArea textArea = new TextArea();
         Button save = new Button("保存");
@@ -44,6 +44,7 @@ public class FileWindowMain {
         AnchorPane.setLeftAnchor(vBox,100.0);
         Scene scene = new Scene(anchorPane);
         Stage stage = new Stage();
+        stage.initOwner(ParentStage);   // 父窗口关子窗口跟着关
         stage.setScene(scene);
         stage.setWidth(800);
         stage.setHeight(800);

@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
 import java.util.Optional;
 
@@ -169,7 +170,8 @@ public class OperationMenu extends ContextMenu {
     private void showProperty(ActionEvent actionEvent) {
 
         //TODO: 展示文件属性
-        Platform.runLater(()->new PropertyMain(thumbnail.getDirectory()));
+        Stage stage =  (Stage)flowPane.getScene().getWindow();
+        Platform.runLater(()->new PropertyMain(stage, thumbnail.getDirectory()));
     }
 
 

@@ -19,7 +19,7 @@ import java.util.Properties;
  */
 public class PropertyMain {
 
-    public PropertyMain(EntryTreeNode entry) {
+    public PropertyMain(Stage ParentStage, EntryTreeNode entry) {
         FXMLLoader fxmlLoader = new FXMLLoader(com.demo.myfilesystem.PropertyMain.class.getResource("PropertyView.fxml"));
         Scene scene = null;
         try {
@@ -28,6 +28,7 @@ public class PropertyMain {
             e.printStackTrace();
         }
         Stage stage = new Stage();
+        stage.initOwner(ParentStage);   // 父窗口关子窗口跟着关
         stage.setMinHeight(400);
         stage.setMinWidth(200);
         stage.setTitle("属性");

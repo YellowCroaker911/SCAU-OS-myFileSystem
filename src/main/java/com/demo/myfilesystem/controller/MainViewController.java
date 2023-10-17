@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
 import java.util.Stack;
 
@@ -29,7 +30,7 @@ public class MainViewController {
     @FXML
     private ScrollPane FileScrollPane;
     @FXML
-    private ScrollPane FATTableScroll;
+    private AnchorPane FATTableAnchor;
 
     @FXML
     private Button ForwardButton;
@@ -57,44 +58,28 @@ public class MainViewController {
 
     @FXML
     private StackPane RootPane;
+    @FXML
+    private SplitPane RightSplitPane;
 
     private FileFlowPane flowPane;
     private BlockTable blockTable;
     private FATTable FatTable;
-
+    private Stage MainStage;
     @FXML
     private void initialize(){
         initTreeView();     // 目录树
         initFlowPane();     // 中间文件详情页
-        autoAdapt();
         initBlockInfo();
         initFAT();
         // TODO: 磁盘占用情况(饼图) 还没加到fxml中
     }
-
-
+    public void setStage(Stage stage){
+        MainStage = stage;
+        autoAdapt();
+    }
 
     private void initTreeView(){
-//        System.out.println("qweqwe");
         MyTreeItem root = new MyTreeItem(Manager.getTopPath());
-//        root.addChildren(new DirectoryEntry());
-//        var tmp = root.getDirectoryEntry().listDirectoryEntries();
-//        System.out.println(tmp.length);
-//        for(var c:tmp){
-//            String s = c.getName();
-//            for(int i = 0; i < s.length(); i++){
-//                System.out.print((int)(s.charAt(i)));
-//                System.out.print(" ");
-//            }
-//            System.out.print("  ");
-//            s = c.getTypeName();
-//            for(int i = 0; i < s.length(); i++){
-//                System.out.print((int)(s.charAt(i)));
-//                System.out.print(" ");
-//            }
-//            System.out.println("");
-//        }
-//        System.out.println(root.isLeaf());
         TreeViewFile.setRoot(root);
 
         // 双击目录项触发
@@ -112,6 +97,8 @@ public class MainViewController {
         // FlowPane大小始终布满中间
         flowPane.prefWidthProperty().bind(FileAnchorPane.widthProperty());
         flowPane.prefHeightProperty().bind(FileAnchorPane.heightProperty());
+        FileAnchorPane.prefHeightProperty().bind(SplitPane.heightProperty());
+        SplitPane.prefHeightProperty().bind(MainStage.heightProperty());
     }
 
     /**
@@ -209,9 +196,9 @@ public class MainViewController {
         BlockInfoAnchor.getChildren().add(blockTable);
 
         FatTable = new FATTable();
-        FatTable.prefHeightProperty().bind(FATTableScroll.heightProperty());
-        FatTable.prefWidthProperty().bind(FATTableScroll.widthProperty());
-        FATTableScroll.setContent(FatTable);
+        FatTable.prefHeightProperty().bind(FATTableAnchor.heightProperty());
+        FatTable.prefWidthProperty().bind(FATTableAnchor.widthProperty());
+        FATTableAnchor.getChildren().add(FatTable);
     }
 
 

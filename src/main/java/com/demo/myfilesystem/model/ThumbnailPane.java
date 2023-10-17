@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import static com.demo.myfilesystem.kernel.manager.Manager.closeFile;
 import static com.demo.myfilesystem.utils.Constant.DIRECTORY_ICON;
@@ -63,7 +64,8 @@ public class ThumbnailPane extends BorderPane {
         if(mode.equals("r") || mode.equals("w")){
             // 本质就是开了一个新线程跑FileWindowMain
             String finalMode = mode;
-            Platform.runLater(()->new FileWindowMain(directory, finalMode));
+            Stage stage = (Stage)this.getScene().getWindow();
+            Platform.runLater(()->new FileWindowMain(stage, directory, finalMode));
             return true;
         }
         else {
