@@ -40,9 +40,10 @@ public class FileWindowMain {
     public FileWindowMain(EntryTreeNode entry, String mode, Stage ParentStage, MainViewController MainController) {
         AnchorPane anchorPane = new AnchorPane();
         TextArea textArea = new TextArea();
+        TextArea textArea1 = new TextArea();
         Button save = new Button("保存");
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(save,textArea);
+        vBox.getChildren().addAll(save,textArea,textArea1);
         anchorPane.getChildren().add(vBox);
         AnchorPane.setTopAnchor(vBox,50.0);
         AnchorPane.setLeftAnchor(vBox,100.0);
@@ -62,6 +63,8 @@ public class FileWindowMain {
         stage.setWidth(800);
         stage.setHeight(800);
         textArea.setEditable(true);
+        textArea1.appendText(readFile(fileNode,fileNode.bytesLength()));
+        textArea1.setEditable(false);
         textArea.setWrapText(true);
 
 
@@ -78,7 +81,8 @@ public class FileWindowMain {
                     var beg = System.currentTimeMillis();
                     writeFile(fileNode, textArea.getText());
                     var end = System.currentTimeMillis();
-                    GenerateDialog.AlertInformation("保存成功", "consume time = " + (end-beg) + "ms", Alert.AlertType.INFORMATION, ButtonType.OK);
+                    textArea1.appendText(textArea.getText());
+                GenerateDialog.AlertInformation("保存成功", "consume time = " + (end-beg) + "ms", Alert.AlertType.INFORMATION, ButtonType.OK);
                 }catch (Exception e){
                     GenerateDialog.AlertInformation("写入错误", e.getMessage(), Alert.AlertType.ERROR, ButtonType.OK);
                 }
