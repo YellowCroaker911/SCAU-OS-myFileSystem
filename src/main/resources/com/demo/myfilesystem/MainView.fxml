@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
@@ -11,7 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="RootPane" prefHeight="738.0" prefWidth="1019.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo.myfilesystem.controller.MainViewController">
+<StackPane fx:id="RootPane" prefHeight="738.0" prefWidth="1019.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo.myfilesystem.controller.MainViewController">
     <children>
         <VBox fx:id="MainVbox" prefHeight="733.0" prefWidth="1019.0">
             <children>
@@ -22,7 +26,7 @@
                                 <Button fx:id="BackButton" maxHeight="45.0" maxWidth="45.0" minHeight="45.0" minWidth="45.0" mnemonicParsing="false" onAction="#goBackward" prefHeight="45.0" prefWidth="45.0" text="&lt;-" />
                                 <Button fx:id="ForwardButton" maxHeight="45.0" maxWidth="45.0" minHeight="45.0" minWidth="45.0" mnemonicParsing="false" onAction="#goForeward" prefHeight="45.0" prefWidth="45.0" text="-&gt;" />
                                 <Button fx:id="FatherButton" maxHeight="45.0" maxWidth="45.0" minHeight="45.0" minWidth="45.0" mnemonicParsing="false" onAction="#goFather" prefHeight="45.0" prefWidth="45.0" text="↑" />
-                                <TextField fx:id="PathText" maxHeight="-Infinity" maxWidth="540.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="540.0">
+                                <TextField fx:id="PathText" maxHeight="-Infinity" maxWidth="628.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="628.0">
                                     <HBox.margin>
                                         <Insets />
                                     </HBox.margin>
@@ -41,9 +45,9 @@
                         </ScrollPane>
                         <AnchorPane>
                             <children>
-                                <SplitPane fx:id="RightSplitPane" dividerPositions="0.5" orientation="VERTICAL">
+                                <SplitPane fx:id="RightSplitPane" dividerPositions="0.5" orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <items>
-                                        <AnchorPane fx:id="BlockInfoAnchor" minHeight="0.0" minWidth="0.0" />
+                              <BorderPane fx:id="BlockInfoAnchor" />
                                         <AnchorPane fx:id="FATTableAnchor" minHeight="0.0" minWidth="0.0" />
                                     </items>
                                 </SplitPane>
