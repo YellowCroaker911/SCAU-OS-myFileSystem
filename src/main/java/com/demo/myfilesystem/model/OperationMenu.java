@@ -3,6 +3,7 @@ package com.demo.myfilesystem.model;
 import com.demo.myfilesystem.PropertyMain;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import com.demo.myfilesystem.kernel.manager.Manager;
+import com.demo.myfilesystem.test.DebugTool;
 import com.demo.myfilesystem.utils.GenerateDialog;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

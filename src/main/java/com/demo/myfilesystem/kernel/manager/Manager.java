@@ -251,6 +251,7 @@ public class Manager {
     public static int writeFile(FileNode targetFNode, String str) {
         // 检查写入长度是否超出硬盘空间
         int requiredFreeSpaceNum = targetFNode.requiredFreeSpaceNum(str);
+        System.out.print(requiredFreeSpaceNum);
         if (requiredFreeSpaceNum > freeBlockNum()) {
             return -1;
         }

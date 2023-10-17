@@ -65,9 +65,8 @@ public class FileWindowMain {
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent windowEvent) {
-                    DebugTool.print(32);
                     closeFile(entry);
-                    DebugTool.print(32);
+                    DebugTool.print(16);
                 }
             });
         }
