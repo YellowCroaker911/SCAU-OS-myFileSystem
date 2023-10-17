@@ -75,7 +75,7 @@ public class OperationMenu extends ContextMenu {
     private void openReadOnly(ActionEvent actionEvent){
         //TODO: 只读打开
         if(thumbnail.getDirectory().getEntry().getInfo().isDirectory()){    // 打开文件夹
-            flowPane.openDirectory(thumbnail.getDirectory());
+            flowPane.openDirectory(thumbnail.getDirectory(), true);
         }
         else{       // 打开文件
             thumbnail.openFile("r");

@@ -1,5 +1,6 @@
 package com.demo.myfilesystem.controller;
 
+import com.demo.myfilesystem.kernel.entry.Entry;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import com.demo.myfilesystem.kernel.manager.Manager;
 import com.demo.myfilesystem.model.BlockTable;
@@ -11,6 +12,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+
+import java.util.Stack;
 
 public class MainViewController {
 
@@ -101,7 +104,7 @@ public class MainViewController {
     }
 
     private void initFlowPane(){
-        flowPane = new FileFlowPane(this);
+        flowPane = new FileFlowPane(this, PathText);
         FileAnchorPane.getChildren().add(flowPane);
     }
     private void autoAdapt(){
@@ -119,9 +122,10 @@ public class MainViewController {
         assert(newValue instanceof MyTreeItem);
         MyTreeItem item = (MyTreeItem) newValue;
 		System.out.println("click node = " + item.getEntryTreeNode().getFullName());
-        flowPane.openDirectory(item.getEntryTreeNode());
+        flowPane.openDirectory(item.getEntryTreeNode(), true);    // 在文件夹内容窗口更新
     }
-    public void refreshTree(EntryTreeNode entryTreeNode){
+
+    public void refresh(EntryTreeNode entryTreeNode){
         for(int i = 0;;i++){
             MyTreeItem item = (MyTreeItem)TreeViewFile.getTreeItem(i);
             if(item==null)break;
@@ -138,19 +142,57 @@ public class MainViewController {
         FatTable.refreshTable();
     }
 
+    /**********************顶部三个按钮相关***********************/
+    private final Stack<EntryTreeNode> BackStack = new Stack<>();   // 栈顶为当前文件夹
+
+    private final Stack<EntryTreeNode> ForeStack = new Stack<>();
+
+    /**
+     * 打开文件夹的同时更新按钮
+     * @param entry 文件夹
+     */
+    public void updateToButton(EntryTreeNode entry){
+        // 更新按钮
+        if(!BackStack.empty() && BackStack.peek() == entry)
+            return;
+        BackStack.push(entry);
+        ForeStack.clear();     // 自己点了文件就清空向前栈
+
+        updateButtonState();
+    }
+    private void updateButtonState(){
+        BackButton.setDisable(BackStack.size() < 2);
+        ForwardButton.setDisable(ForeStack.size() == 0);
+        FatherButton.setDisable(BackStack.peek().getParentNode() == null); // 当前文件有爹才可以点
+    }
     @FXML
     private void goBackward(ActionEvent event) {
-        // TODO goBackward()
-    }
+        assert BackStack.size() < 2: "你不应该能按这东西";
+        ForeStack.push(BackStack.peek());
+        BackStack.pop();
+        EntryTreeNode target = BackStack.peek();
+        flowPane.openDirectory(target, false);
+        updateButtonState();
 
-    @FXML
-    private void goFather(ActionEvent event) {
-        // TODO goFather()
     }
 
     @FXML
     private void goForeward(ActionEvent event) {
-        // TODO goForeward()
+        assert !ForeStack.empty(): "你不应该能按这东西";
+        EntryTreeNode target = ForeStack.peek();
+        BackStack.push(target);
+        ForeStack.pop();
+        flowPane.openDirectory(target, false);
+        updateButtonState();
+    }
+
+    @FXML
+    private void goFather(ActionEvent event) {
+        EntryTreeNode current = BackStack.peek();
+        assert current.getParentNode() != null: "你不应该能按这东西";
+        EntryTreeNode parent = current.getParentNode();
+        // 和点击文件夹访问是一致的
+        flowPane.openDirectory(parent, true);
     }
 
     /****************窗口右侧的信息展示有关************************/

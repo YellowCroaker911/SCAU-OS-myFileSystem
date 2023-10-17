@@ -6,13 +6,16 @@ import com.demo.myfilesystem.kernel.filetable.FileNode;
 import com.demo.myfilesystem.kernel.io.IOtool;
 import com.demo.myfilesystem.kernel.io.Pointer;
 import com.demo.myfilesystem.test.DebugTool;
+import com.demo.myfilesystem.utils.GenerateDialog;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -61,6 +64,7 @@ public class FileWindowMain {
             });
             save.setOnAction(event-> {
                 writeFile(fileNode,textArea.getText());
+                GenerateDialog.AlertInformation("保存成功","", Alert.AlertType.INFORMATION, ButtonType.OK);
             });
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
