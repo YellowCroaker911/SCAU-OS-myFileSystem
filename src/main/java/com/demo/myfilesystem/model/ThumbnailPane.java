@@ -2,6 +2,7 @@ package com.demo.myfilesystem.model;
 
 import com.demo.myfilesystem.FileWindowMain;
 import com.demo.myfilesystem.Main;
+import com.demo.myfilesystem.controller.MainViewController;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -27,8 +28,10 @@ public class ThumbnailPane extends BorderPane {
     private final EntryTreeNode directory;
     private static final double SIZE = 100;  // 缩略图大小 (小于加载图片的大小)
     private static final Insets INSETS = new Insets(5, 5, 0, 5);
+    private final MainViewController MainController;
 
-    public ThumbnailPane(EntryTreeNode entry){
+    public ThumbnailPane(EntryTreeNode entry, MainViewController MainController){
+        this.MainController = MainController;
         this.setCache(false);
         this.setMaxSize(SIZE + 10, SIZE + 50);
         this.setMinSize(SIZE + 10, SIZE + 50);
@@ -65,7 +68,7 @@ public class ThumbnailPane extends BorderPane {
             // 本质就是开了一个新线程跑FileWindowMain
             String finalMode = mode;
             Stage stage = (Stage)this.getScene().getWindow();
-            Platform.runLater(()->new FileWindowMain(stage, directory, finalMode));
+            Platform.runLater(()->new FileWindowMain(directory, finalMode, stage, MainController));
             return true;
         }
         else {

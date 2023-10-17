@@ -44,7 +44,7 @@ public class FileFlowPane extends FlowPane {
         ArrayList<EntryTreeNode> entries = TreeNode.getChildList();
         FileArray.clear();
         for(EntryTreeNode de : entries){
-            FileArray.add(new ThumbnailPane(de));
+            FileArray.add(new ThumbnailPane(de, mainController));
         }
         this.getChildren().setAll(FileArray);
         this.setHgap(5);    // 文件控件的水平间距
@@ -55,9 +55,9 @@ public class FileFlowPane extends FlowPane {
         // 更新顶部绝对路径
         StringBuilder path = new StringBuilder();
         for(String s : TreeNode.pathArray()){
-            path.append("/").append(s);
+            path.append("/").append(s.replace("$",""));
         }
-        path.append("/").append(TreeNode.getFullName());
+        path.append("/").append(TreeNode.getFullName().replace("$",""));
         PathText.setText(path.toString());
         if(isUpdateButton)
             mainController.updateToButton(TreeNode);

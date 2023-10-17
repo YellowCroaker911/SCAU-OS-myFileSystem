@@ -1,5 +1,6 @@
 package com.demo.myfilesystem;
 
+import com.demo.myfilesystem.controller.MainViewController;
 import com.demo.myfilesystem.kernel.entry.Entry;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import com.demo.myfilesystem.kernel.filetable.FileNode;
@@ -32,9 +33,11 @@ import static com.demo.myfilesystem.kernel.manager.Manager.*;
  * TODO:打开一个文件时新建FileWindowMain实例，新建一个窗口展示文件内容
  * 改成静态也可以
  * mode为"r"/"rw" 只读/读写
+ * 传stage用来绑定新窗口的爹
+ * 传controller用来更新硬盘信息
  */
 public class FileWindowMain {
-    public FileWindowMain(Stage ParentStage, EntryTreeNode entry, String mode) {
+    public FileWindowMain(EntryTreeNode entry, String mode, Stage ParentStage, MainViewController MainController) {
         AnchorPane anchorPane = new AnchorPane();
         TextArea textArea = new TextArea();
         Button save = new Button("保存");
@@ -59,6 +62,7 @@ public class FileWindowMain {
         stage.setWidth(800);
         stage.setHeight(800);
         textArea.setEditable(true);
+        textArea.setWrapText(true);
 
 
 //        textArea.setWrapText(true);
@@ -70,8 +74,15 @@ public class FileWindowMain {
                 }
             });
             save.setOnAction(event-> {
-                writeFile(fileNode,textArea.getText());
-                GenerateDialog.AlertInformation("保存成功","", Alert.AlertType.INFORMATION, ButtonType.OK);
+                try {
+                    var beg = System.currentTimeMillis();
+                    writeFile(fileNode, textArea.getText());
+                    var end = System.currentTimeMillis();
+                    GenerateDialog.AlertInformation("保存成功", "consume time = " + (end-beg) + "ms", Alert.AlertType.INFORMATION, ButtonType.OK);
+                }catch (Exception e){
+                    GenerateDialog.AlertInformation("写入错误", e.getMessage(), Alert.AlertType.ERROR, ButtonType.OK);
+                }
+                MainController.refreshDiskInfo();
             });
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override

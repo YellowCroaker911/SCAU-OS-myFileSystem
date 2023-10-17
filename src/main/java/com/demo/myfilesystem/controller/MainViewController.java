@@ -125,8 +125,7 @@ public class MainViewController {
                 break;
             }
         }
-        blockTable.refresh();
-        FatTable.refreshTable();
+        refreshDiskInfo();
     }
 
     /**********************顶部三个按钮相关***********************/
@@ -183,6 +182,10 @@ public class MainViewController {
     }
 
     /****************窗口右侧的信息展示有关************************/
+    public void refreshDiskInfo(){
+        blockTable.refresh();
+        FatTable.refreshTable();
+    }
     private void initFAT() {
         // TODO: FAT 右下角表格
     }

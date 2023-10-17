@@ -253,11 +253,11 @@ public class Manager {
         return fNode;
     }
 
-    public static int writeFile(FileNode targetFNode, String str) {
+    public static int writeFile(FileNode targetFNode, String str) throws IOException {
         // 检查写入长度是否超出硬盘空间
         int requiredFreeSpaceNum = targetFNode.requiredFreeSpaceNum(str);
         if (requiredFreeSpaceNum > freeBlockNum()) {
-            return -1;
+            throw new IOException("内存空间不足");
         }
         // 开辟所需空间
         for (int i = 0; i < requiredFreeSpaceNum; i++) {
