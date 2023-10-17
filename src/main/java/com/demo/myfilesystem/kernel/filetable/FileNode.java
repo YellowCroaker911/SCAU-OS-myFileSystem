@@ -44,13 +44,6 @@ public class FileNode {
         }
     }
 
-    public int closeUpdate() {
-        if (this.mode.equals(WRITE)) {
-            this.appendEndMark();
-        }
-        return 1;
-    }
-
     public void appendEndMark() {
         this.wPointer.putByte(FILE_END_MARK_BYTE);
     }
@@ -70,6 +63,7 @@ public class FileNode {
             assert this.wPointer.hasNext();
             this.wPointer.next();
         }
+        this.appendEndMark();
     }
 
     public int bytesLength() {

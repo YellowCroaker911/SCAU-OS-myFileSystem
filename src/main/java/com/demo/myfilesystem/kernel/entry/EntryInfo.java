@@ -176,12 +176,12 @@ public class EntryInfo {
         }
     }
 
-    public Pointer startBytePointer(){
-        return new Pointer(this.startBlockIndex,0,BYTE);
+    public Pointer startBytePointer() {
+        return new Pointer(this.startBlockIndex, 0, BYTE);
     }
 
-    public Pointer startEntryPointer(){
-        return new Pointer(this.startBlockIndex,0,ENTRY);
+    public Pointer startEntryPointer() {
+        return new Pointer(this.startBlockIndex, 0, ENTRY);
     }
 
 }

@@ -36,9 +36,6 @@ public class FileTableHelper {
     public static FileNode close(EntryTreeNode tNode) {
         for (FileNode fNode : openedFileNodes) {
             if (fNode.getPathArray().equals(tNode.pathArray()) && fNode.getFullName().equals(tNode.getFullName())) {
-                if (fNode.closeUpdate() == -1) {
-                    return null;
-                }
                 openedFileNodes.remove(fNode);
                 return fNode;
             }
