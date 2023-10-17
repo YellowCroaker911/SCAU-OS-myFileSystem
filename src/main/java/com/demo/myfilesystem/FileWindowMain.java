@@ -37,9 +37,10 @@ public class FileWindowMain {
     public FileWindowMain(Stage ParentStage, EntryTreeNode entry, String mode) {
         AnchorPane anchorPane = new AnchorPane();
         TextArea textArea = new TextArea();
+        TextArea textArea1 = new TextArea();
         Button save = new Button("保存");
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(save,textArea);
+        vBox.getChildren().addAll(save,textArea,textArea1);
         anchorPane.getChildren().add(vBox);
         AnchorPane.setTopAnchor(vBox,50.0);
         AnchorPane.setLeftAnchor(vBox,100.0);
@@ -59,8 +60,8 @@ public class FileWindowMain {
         stage.setWidth(800);
         stage.setHeight(800);
         textArea.setEditable(true);
-
-
+        textArea1.appendText(readFile(fileNode,fileNode.bytesLength()));
+        textArea1.setEditable(false);
 //        textArea.setWrapText(true);
         if(mode.equals("w")) {
             textArea.textProperty().addListener(new ChangeListener<String>() {
@@ -71,6 +72,7 @@ public class FileWindowMain {
             });
             save.setOnAction(event-> {
                 writeFile(fileNode,textArea.getText());
+                textArea1.appendText(textArea.getText());
                 GenerateDialog.AlertInformation("保存成功","", Alert.AlertType.INFORMATION, ButtonType.OK);
             });
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
