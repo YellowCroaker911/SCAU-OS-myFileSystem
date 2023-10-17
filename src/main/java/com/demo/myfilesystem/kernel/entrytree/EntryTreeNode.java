@@ -71,12 +71,11 @@ public class EntryTreeNode {
 
     public ArrayList<String> pathArray() {
         ArrayList<String> pathArray = new ArrayList<String>();
-        for (EntryTreeNode node = this.getParentNode(); node.getParentNode() != null; node = node.getParentNode()) {
+        for (EntryTreeNode node = this.getParentNode(); node != null; node = node.getParentNode()) {
             pathArray.add(node.fullName);
         }
         Collections.reverse(pathArray);
         return pathArray;
     }
-
 }
 

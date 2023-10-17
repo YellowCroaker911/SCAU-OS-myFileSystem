@@ -9,7 +9,9 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Optional;
 
 /**
@@ -75,7 +77,7 @@ public class OperationMenu extends ContextMenu {
     private void openReadOnly(ActionEvent actionEvent){
         //TODO: 只读打开
         if(thumbnail.getDirectory().getEntry().getInfo().isDirectory()){    // 打开文件夹
-            flowPane.openDirectory(thumbnail.getDirectory());
+            flowPane.openDirectory(thumbnail.getDirectory(), true);
         }
         else{       // 打开文件
             thumbnail.openFile("r");
@@ -107,16 +109,16 @@ public class OperationMenu extends ContextMenu {
                         "文件名和扩展名不能为空", "", AlertType.ERROR, ButtonType.OK);
             }
             else{
-                // TODO:设置默认的文件属性
-                int result = Manager.createEntry(FullName, "00100000", flowPane.getCurrentTreeNode());
-                if(result != 1){   // 创建文件失败
-                    GenerateDialog.AlertInformation(
-                            "创建文件失败", "", AlertType.ERROR, ButtonType.OK);
-                }
-                else{   // 创建文件成功 刷新flowPane
+                try {
+                    // TODO:设置默认的文件属性
+                    int result = Manager.createEntry(FullName, "00100000", flowPane.getCurrentTreeNode());
+                    assert result == 1: "有问题";
                     flowPane.refresh();
                     GenerateDialog.AlertInformation(
                             "创建文件成功", "", AlertType.INFORMATION, ButtonType.OK);
+                }catch (Exception e){
+                    GenerateDialog.AlertInformation(
+                            "创建文件失败", e.getMessage(), AlertType.ERROR, ButtonType.OK);
                 }
             }
 //            System.out.println("新建文件OK" + option.get());
@@ -135,15 +137,16 @@ public class OperationMenu extends ContextMenu {
                         "文件夹名称不能为空", "", AlertType.ERROR, ButtonType.OK);
             }
             else{
-                int result = Manager.createEntry(FullName, "00010000", flowPane.getCurrentTreeNode());
-                if(result != 1){   // 创建文件夹失败
-                    GenerateDialog.AlertInformation(
-                            "创建文件夹失败", "", AlertType.ERROR, ButtonType.OK);
-                }
-                else{   // 创建文件成功 刷新flowPane
+                try {
+                    int result = Manager.createEntry(FullName, "00010000", flowPane.getCurrentTreeNode());
+                    assert result==1:"有问题";
+                    // 创建文件成功 刷新flowPane
                     flowPane.refresh();
                     GenerateDialog.AlertInformation(
                             "创建文件夹成功", "", AlertType.INFORMATION, ButtonType.OK);
+                }catch (Exception e){
+                    GenerateDialog.AlertInformation(
+                            "创建文件夹失败", e.getMessage(), AlertType.ERROR, ButtonType.OK);
                 }
             }
 //            System.out.println("新建文件夹OK" + option.get());
@@ -156,20 +159,22 @@ public class OperationMenu extends ContextMenu {
             System.err.println("deleteFile() entry为空");
             return;
         }
-        int result = Manager.deleteEntry(thumbnail.getDirectory().getFullName(), flowPane.getCurrentTreeNode());
-        if(result != 1){
-            GenerateDialog.AlertInformation("删除文件失败","", AlertType.ERROR, ButtonType.OK);
-        }
-        else{
+        try {
+            int result = Manager.deleteEntry(thumbnail.getDirectory().getFullName(), flowPane.getCurrentTreeNode());
+            assert result==1:"有问题";
             flowPane.refresh();
-            GenerateDialog.AlertInformation("删除文件成功","",AlertType.INFORMATION, ButtonType.OK);
+            GenerateDialog.AlertInformation("删除文件成功", "", AlertType.INFORMATION, ButtonType.OK);
+        }catch (Exception e){
+            GenerateDialog.AlertInformation("删除文件失败", e.getMessage(), AlertType.ERROR, ButtonType.OK);
+
         }
     }
 
     private void showProperty(ActionEvent actionEvent) {
 
         //TODO: 展示文件属性
-        Platform.runLater(()->new PropertyMain(thumbnail.getDirectory()));
+        Stage stage =  (Stage)flowPane.getScene().getWindow();
+        Platform.runLater(()->new PropertyMain(stage, thumbnail.getDirectory()));
     }
 
 

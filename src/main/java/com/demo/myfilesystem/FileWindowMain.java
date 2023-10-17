@@ -6,13 +6,16 @@ import com.demo.myfilesystem.kernel.filetable.FileNode;
 import com.demo.myfilesystem.kernel.io.IOtool;
 import com.demo.myfilesystem.kernel.io.Pointer;
 import com.demo.myfilesystem.test.DebugTool;
+import com.demo.myfilesystem.utils.GenerateDialog;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -21,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.File;
+import java.io.IOException;
 
 import static com.demo.myfilesystem.kernel.manager.Manager.*;
 
@@ -30,7 +34,7 @@ import static com.demo.myfilesystem.kernel.manager.Manager.*;
  * mode为"r"/"rw" 只读/读写
  */
 public class FileWindowMain {
-    public FileWindowMain(EntryTreeNode entry, String mode){
+    public FileWindowMain(Stage ParentStage, EntryTreeNode entry, String mode) {
         AnchorPane anchorPane = new AnchorPane();
         TextArea textArea = new TextArea();
         Button save = new Button("保存");
@@ -39,15 +43,21 @@ public class FileWindowMain {
         anchorPane.getChildren().add(vBox);
         AnchorPane.setTopAnchor(vBox,50.0);
         AnchorPane.setLeftAnchor(vBox,100.0);
+
+        FileNode fileNode;
+        try {
+            fileNode = openFile(entry, mode);
+        }catch (Exception e){
+            GenerateDialog.AlertInformation("打开文件失败", e.getMessage(), Alert.AlertType.ERROR, ButtonType.OK);
+            return;
+        }
+
         Scene scene = new Scene(anchorPane);
         Stage stage = new Stage();
+        stage.initOwner(ParentStage);   // 父窗口关子窗口跟着关
         stage.setScene(scene);
         stage.setWidth(800);
         stage.setHeight(800);
-
-        FileNode fileNode = openFile(entry,mode);
-
-
         textArea.setEditable(true);
 
 
@@ -61,6 +71,7 @@ public class FileWindowMain {
             });
             save.setOnAction(event-> {
                 writeFile(fileNode,textArea.getText());
+                GenerateDialog.AlertInformation("保存成功","", Alert.AlertType.INFORMATION, ButtonType.OK);
             });
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override

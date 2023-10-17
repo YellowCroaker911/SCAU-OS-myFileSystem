@@ -3,10 +3,13 @@ package com.demo.myfilesystem.controller;
 import com.demo.myfilesystem.Main;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import com.demo.myfilesystem.kernel.manager.Manager;
+import com.demo.myfilesystem.utils.GenerateDialog;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -67,6 +70,7 @@ public class PropertyController {
     @FXML
     void applySetting(ActionEvent event) {
         assert entry.getEntry().getInfo().isOnlyRead() != isReadOnly : "改了还一样";
+        GenerateDialog.AlertInformation("没写","", Alert.AlertType.ERROR, ButtonType.OK);
     }
 
     @FXML
@@ -78,12 +82,22 @@ public class PropertyController {
 
     @FXML
     void setReadOnly(ActionEvent event) {
-
+        if(ReadOnlyButton.isSelected()){
+            ReadWriteButton.setSelected(false);
+            isReadOnly = true;
+            applyButton.setDisable(!applyButton.isDisable());
+        }
+        else ReadOnlyButton.setSelected(true);
     }
 
     @FXML
     void setReadWrite(ActionEvent event) {
-
+        if(ReadWriteButton.isSelected()){
+            ReadOnlyButton.setSelected(false);
+            isReadOnly = false;
+            applyButton.setDisable(!applyButton.isDisable());
+        }
+        else ReadWriteButton.setSelected(true);
     }
 
     /**

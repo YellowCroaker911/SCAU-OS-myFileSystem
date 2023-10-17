@@ -55,7 +55,7 @@ public class Constant {
     };
     public static final byte[] NULL_ENTRY_BYTES = new byte[]{ PLACEHOLDER_BYTE, (byte) 0x00, (byte) 0x00,
             (byte) 0x00, (byte) 0x00,
-            (byte) 0x00, (byte) 0x00, (byte) 0x00};
+            (byte) 0x00, (byte) 0x00, (byte) 0x01};
     // mode
     public static final String BYTE = "byte";
     public static final String ENTRY = "entry";
