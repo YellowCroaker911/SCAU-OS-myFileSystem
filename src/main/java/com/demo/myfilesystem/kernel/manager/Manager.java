@@ -3,6 +3,7 @@ package com.demo.myfilesystem.kernel.manager;
 import com.demo.myfilesystem.kernel.entry.*;
 import com.demo.myfilesystem.kernel.entrytree.*;
 import com.demo.myfilesystem.kernel.filetable.*;
+import com.demo.myfilesystem.test.DebugTool;
 import javafx.util.Pair;
 
 
@@ -209,6 +210,7 @@ public class Manager {
         if (fNode == null) {
             return null;
         }
+        DebugTool.print(32);
         return fNode;
     }
 
@@ -301,10 +303,10 @@ public class Manager {
         return 1;
     }
 
-    public static int alterAttribute(EntryTreeNode targetNode,String attribute) {
-        targetNode.getEntry().getInfo().setAttribute(attribute);
-        targetNode.getEntry().getInfo().updateBytes();
-        targetNode.getEntry().updateEntryByte();
+    public static int alterAttribute(FileNode targetFNode,String attribute) {
+        targetFNode.getEntry().getInfo().setAttribute(attribute);
+        targetFNode.getEntry().getInfo().updateBytes();
+        targetFNode.getEntry().updateEntryByte();
         return 1;
     }
 

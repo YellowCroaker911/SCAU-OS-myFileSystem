@@ -38,7 +38,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-//        IOtool.format();
+        IOtool.format();
+        DebugTool.print(32);
         Manager.init();
         launch();
     }
