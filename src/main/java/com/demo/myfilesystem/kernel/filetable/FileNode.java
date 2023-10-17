@@ -27,29 +27,20 @@ public class FileNode {
         this.mode = mode;
         this.rPointer = this.getEntry().getInfo().startBytePointer();
         if (mode.equals(WRITE)) {
-            this.wPointer = this.tailPointer();
+            this.wPointer = this.getEntry().tailPointer();
         } else {
             this.wPointer = this.getEntry().getInfo().startBytePointer();
         }
     }
 
-    public Pointer tailPointer() {
-        Pointer pointer = this.getEntry().getInfo().startBytePointer();
-        while (true) {
-            if (pointer.loadByte() == FILE_END_MARK_BYTE) {
-                return pointer.clone();
-            }
-            assert pointer.hasNext();
-            pointer.next();
-        }
-    }
+
 
     public void appendEndMark() {
         this.wPointer.putByte(FILE_END_MARK_BYTE);
     }
 
     public int requiredFreeSpaceNum(String str) {
-        int remainingFreeByte = BYTES_NUM_OF_BLOCK - this.tailPointer().getByteOffset();
+        int remainingFreeByte = BYTES_NUM_OF_BLOCK - this.getEntry().tailPointer().getByteOffset();
         int len = str.length() + 1; // 第一个+1考虑预留文件结束符那一位
         if (len <= remainingFreeByte) return 0;
         else {
@@ -67,7 +58,7 @@ public class FileNode {
     }
 
     public int bytesLength() {
-        return (this.getEntry().blocksIndex().size() - 1) * BYTES_NUM_OF_BLOCK + this.tailPointer().getByteOffset();
+        return (this.getEntry().blocksIndex().size() - 1) * BYTES_NUM_OF_BLOCK + this.getEntry().tailPointer().getByteOffset();
     }
 
     public String read(int len) {

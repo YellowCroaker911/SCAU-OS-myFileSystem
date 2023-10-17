@@ -36,6 +36,17 @@ public class Entry {
         return blocksIndexArray;
     }
 
+    public Pointer tailPointer() {
+        Pointer pointer = this.getInfo().startBytePointer();
+        while (true) {
+            if (pointer.loadByte() == FILE_END_MARK_BYTE) {
+                return pointer.clone();
+            }
+            assert pointer.hasNext();
+            pointer.next();
+        }
+    }
+
     public ArrayList<Entry> list() {
         ArrayList<Entry> entriesArray = new ArrayList<Entry>();
         Pointer pointer = this.getInfo().startEntryPointer();

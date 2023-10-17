@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static com.demo.myfilesystem.utils.Constant.BYTES_NUM_OF_BLOCK;
+
 /**
  * 文件在树型结构下的节点
  * 目录树记录该节点
@@ -76,6 +78,10 @@ public class EntryTreeNode {
         }
         Collections.reverse(pathArray);
         return pathArray;
+    }
+
+    public int bytesLength() {
+        return (this.getEntry().blocksIndex().size() - 1) * BYTES_NUM_OF_BLOCK + this.getEntry().tailPointer().getByteOffset();
     }
 }
 

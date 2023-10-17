@@ -31,6 +31,7 @@ public class EntryTreeHelper {
             }
             EntryTreeNode child = new EntryTreeNode(childEntry);
             curNode.getChildList().add(child);
+            child.setParentNode(curNode);
             if (child.getEntry().getInfo().isDirectory()) {
                 loadTree(child);
             }

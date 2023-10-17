@@ -133,10 +133,6 @@ public class Manager {
         if (targetNode == null) {
             throw new IOException("文件节点不存在");
         }
-        // 调用直接传入targetNode的deleteEntry方法
-//        if (deleteEntry(targetNode) == -1) {
-//
-//        }
         deleteEntry(targetNode);
         return 1;
     }
@@ -277,6 +273,44 @@ public class Manager {
         }
         // 读文件
         return targetFNode.read(len);
+    }
+
+    public static int alterAttribute(ArrayList<String> pathArray, String fullName,String attribute)throws IOException {
+        // 匹配路径，得到父目录
+        EntryTreeNode curNode = EntryTreeHelper.match(pathArray);
+        if (curNode == null) {
+            throw new IOException("父节点不存在");
+        }
+        // 调用无路径检查的alterAttribute方法
+        if (alterAttribute(fullName, curNode,attribute) == -1) {
+            throw new IOException("文件节点不存在");
+        }
+        return 1;
+    }
+
+    /**
+     * 删除文件
+     * @param fullName  文件全名
+     * @param curNode   要删除文件所在的文件夹
+     */
+    public static int alterAttribute(String fullName, EntryTreeNode curNode,String attribute)throws IOException {
+        if (curNode == null) {
+            curNode = pathStack.lastElement();
+        }
+        // 根据目录树得到待删除目录项的节点
+        EntryTreeNode targetNode = curNode.match(fullName);
+        if (targetNode == null) {
+            throw new IOException("文件节点不存在");
+        }
+        alterAttribute(targetNode,attribute);
+        return 1;
+    }
+
+    public static int alterAttribute(EntryTreeNode targetNode,String attribute) {
+        targetNode.getEntry().getInfo().setAttribute(attribute);
+        targetNode.getEntry().getInfo().updateBytes();
+        targetNode.getEntry().updateEntryByte();
+        return 1;
     }
 
     public static ArrayList<Pair<ArrayList<Integer>,Entry>> listFATBlockLink() {
