@@ -12,6 +12,8 @@ import static com.demo.myfilesystem.kernel.io.IOtool.*;
 import static com.demo.myfilesystem.kernel.manager.ManagerHelper.*;
 import static com.demo.myfilesystem.utils.Constant.*;
 
+import java.io.IOError;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -54,16 +56,17 @@ public class Manager {
      * @param attribute 文件属性
      * @return  创建是否成功
      */
-    public static int createEntry(ArrayList<String> pathArray, String fullName, String attribute) {
+    public static int createEntry(ArrayList<String> pathArray, String fullName, String attribute) throws IOException {
         // 匹配路径，得到父目录
         EntryTreeNode curNode = EntryTreeHelper.match(pathArray);
         if (curNode == null) {
-            return -1;
+            throw new IOException("父目录不存在");
         }
         // 调用无路径检查的createEntry方法
-        if (createEntry(fullName, attribute, curNode) == -1) {
-            return -1;
-        }
+//        if (createEntry(fullName, attribute, curNode) != 1) {
+//            return -1;
+//        }
+        createEntry(fullName,attribute,curNode);
         return 1;
     }
 
@@ -76,24 +79,24 @@ public class Manager {
      * xxx.xx       文件
      * xxx          文件夹
      */
-    public static int createEntry(String fullName, String attribute, EntryTreeNode curNode) {
+    public static int createEntry(String fullName, String attribute, EntryTreeNode curNode)throws IOException {
         if (curNode == null) {
             curNode = pathStack.lastElement();
         }
         // 判断当前目录是否有同名目录项
         if (curNode.match(fullName) != null) {
-            return -1;
+            throw new IOException("文件名已存在");
         }
         // 若无可用空间创建目录项则分配新的block
         if (curNode.childNum() / ENTRIES_NUM_OF_BLOCK >= curNode.getEntry().getInfo().getLength()) {
             if (openUpSpace(curNode) == -1) {
-                return -1;
+                throw new IOException("没有空闲空间");
             }
         }
         // 搜索空闲block作为新目录空间
         int freeBlockIndex = freeBlockIndex();
         if (freeBlockIndex == -1) {
-            return -1;
+            throw new IOException("没有空闲块");
         }
         writeFATByte(freeBlockIndex, -1);
         // 创建新目录项
@@ -103,15 +106,15 @@ public class Manager {
         return 1;
     }
 
-    public static int deleteEntry(ArrayList<String> pathArray, String fullName) {
+    public static int deleteEntry(ArrayList<String> pathArray, String fullName)throws IOException {
         // 匹配路径，得到父目录
         EntryTreeNode curNode = EntryTreeHelper.match(pathArray);
         if (curNode == null) {
-            return -1;
+            throw new IOException("父节点不存在");
         }
         // 调用无路径检查的deleteEntry方法
         if (deleteEntry(fullName, curNode) == -1) {
-            return -1;
+            throw new IOException("文件节点不存在");
         }
         return 1;
     }
@@ -121,19 +124,20 @@ public class Manager {
      * @param fullName  文件全名
      * @param curNode   要删除文件所在的文件夹
      */
-    public static int deleteEntry(String fullName, EntryTreeNode curNode) {
+    public static int deleteEntry(String fullName, EntryTreeNode curNode)throws IOException {
         if (curNode == null) {
             curNode = pathStack.lastElement();
         }
         // 根据目录树得到待删除目录项的节点
         EntryTreeNode targetNode = curNode.match(fullName);
         if (targetNode == null) {
-            return -1;
+            throw new IOException("文件节点不存在");
         }
         // 调用直接传入targetNode的deleteEntry方法
-        if (deleteEntry(targetNode) == -1) {
-            return -1;
-        }
+//        if (deleteEntry(targetNode) == -1) {
+//
+//        }
+        deleteEntry(targetNode);
         return 1;
     }
 
@@ -154,11 +158,12 @@ public class Manager {
     }
 
     // 注意list方法的执行对象是当前目录
-    public static ArrayList<EntryTreeNode> listEntry(ArrayList<String> pathArray) {
+    public static ArrayList<EntryTreeNode> listEntry(ArrayList<String> pathArray)throws IOException {
         // 匹配路径，得到父目录
         EntryTreeNode curNode = EntryTreeHelper.match(pathArray);
         if (curNode == null) {
-            return null;
+//            return null;
+            throw new IOException("父目录不存在");
         }
         // 调用无路径检查的listEntry方法
         return listEntry(curNode);
@@ -174,7 +179,7 @@ public class Manager {
         return curNode.getChildList();
     }
 
-    public static FileNode openFile(ArrayList<String> pathArray, String fullName, String mode) {
+    public static FileNode openFile(ArrayList<String> pathArray, String fullName, String mode) throws IOException {
         // 匹配路径，得到父目录
         EntryTreeNode curNode = EntryTreeHelper.match(pathArray);
         if (curNode == null) {
@@ -188,7 +193,7 @@ public class Manager {
         return fNode;
     }
 
-    public static FileNode openFile(String fullName, EntryTreeNode curNode, String mode) {
+    public static FileNode openFile(String fullName, EntryTreeNode curNode, String mode) throws IOException {
         // 根据目录树得到待打开文件目录项的节点
         EntryTreeNode targetNode = curNode.match(fullName);
         if (targetNode == null) {
@@ -202,7 +207,7 @@ public class Manager {
         return fNode;
     }
 
-    public static FileNode openFile(EntryTreeNode targetNode, String mode) {
+    public static FileNode openFile(EntryTreeNode targetNode, String mode) throws IOException {
         // 打开文件
         FileNode fNode = open(targetNode, mode);
         if (fNode == null) {

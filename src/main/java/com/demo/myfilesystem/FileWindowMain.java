@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.File;
+import java.io.IOException;
 
 import static com.demo.myfilesystem.kernel.manager.Manager.*;
 
@@ -33,7 +34,7 @@ import static com.demo.myfilesystem.kernel.manager.Manager.*;
  * mode为"r"/"rw" 只读/读写
  */
 public class FileWindowMain {
-    public FileWindowMain(Stage ParentStage, EntryTreeNode entry, String mode){
+    public FileWindowMain(Stage ParentStage, EntryTreeNode entry, String mode) {
         AnchorPane anchorPane = new AnchorPane();
         TextArea textArea = new TextArea();
         Button save = new Button("保存");
@@ -42,16 +43,21 @@ public class FileWindowMain {
         anchorPane.getChildren().add(vBox);
         AnchorPane.setTopAnchor(vBox,50.0);
         AnchorPane.setLeftAnchor(vBox,100.0);
+
+        FileNode fileNode;
+        try {
+            fileNode = openFile(entry, mode);
+        }catch (Exception e){
+            GenerateDialog.AlertInformation("打开文件失败", e.getMessage(), Alert.AlertType.ERROR, ButtonType.OK);
+            return;
+        }
+
         Scene scene = new Scene(anchorPane);
         Stage stage = new Stage();
         stage.initOwner(ParentStage);   // 父窗口关子窗口跟着关
         stage.setScene(scene);
         stage.setWidth(800);
         stage.setHeight(800);
-
-        FileNode fileNode = openFile(entry,mode);
-
-
         textArea.setEditable(true);
 
 
