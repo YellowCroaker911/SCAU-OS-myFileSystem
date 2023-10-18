@@ -19,18 +19,14 @@ public class FileTableHelper {
         FileNode fNode = new FileNode(tNode.pathArray(), tNode.getEntry(), mode);
         // 只读文件不能写打开
         if (fNode.getEntry().getInfo().isOnlyRead() && mode.equals(WRITE)) {
-//            return null;
             throw new IOException("只读文件不能写打开");
         }
         // 已打开文件表已满
         if (openedFileNodes.size() == OPENED_FILE_TABLE_SIZE) {
-//            return null;
             throw new IOException("已打开文件表已满");
         }
         // 文件已被打开
         if (openedFileNodes.contains(fNode)) {
-//            System.out.println(222);
-//            return null;
             throw new IOException("文件已被打开");
         }
         openedFileNodes.add(fNode);
@@ -43,6 +39,14 @@ public class FileTableHelper {
                 openedFileNodes.remove(fNode);
                 return fNode;
             }
+        }
+        return null;
+    }
+
+    public static FileNode close(FileNode fNode) {
+        if (openedFileNodes.contains(fNode)) {
+            openedFileNodes.remove(fNode);
+            return fNode;
         }
         return null;
     }
