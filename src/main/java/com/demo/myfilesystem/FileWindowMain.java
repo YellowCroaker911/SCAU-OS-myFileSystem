@@ -94,7 +94,7 @@ public class FileWindowMain {
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent windowEvent) {
-                    closeFile(entry);
+                    closeFile(fileNode);
                     DebugTool.print(16);
                 }
             });
