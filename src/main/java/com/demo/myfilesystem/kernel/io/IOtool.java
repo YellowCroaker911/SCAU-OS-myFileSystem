@@ -1,6 +1,6 @@
 package com.demo.myfilesystem.kernel.io;
 
-import com.demo.myfilesystem.disk.Disk;
+import com.demo.myfilesystem.kernel.disk.Disk;
 
 import java.util.Arrays;
 

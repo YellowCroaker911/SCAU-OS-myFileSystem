@@ -2,12 +2,8 @@ package com.demo.myfilesystem.kernel.filetable;
 
 import com.demo.myfilesystem.kernel.entry.Entry;
 import com.demo.myfilesystem.kernel.io.Pointer;
-import com.demo.myfilesystem.kernel.manager.ManagerHelper;
 
 import java.util.ArrayList;
-
-import static com.demo.myfilesystem.kernel.io.IOtool.*;
-import static com.demo.myfilesystem.kernel.manager.ManagerHelper.*;
 import static com.demo.myfilesystem.utils.Constant.*;
 
 public class FileNode {

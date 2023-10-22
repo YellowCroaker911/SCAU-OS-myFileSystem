@@ -101,7 +101,7 @@ public class FileWindowMain {
         }
         else {
             textArea.setEditable(false);
-            textArea.appendText(readFile(fileNode,fileNode.bytesLength()));
+//            textArea.appendText(readFile(fileNode,fileNode.bytesLength()));
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent windowEvent) {

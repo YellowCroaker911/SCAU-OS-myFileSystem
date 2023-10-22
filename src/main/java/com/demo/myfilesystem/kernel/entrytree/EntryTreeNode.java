@@ -4,7 +4,6 @@ import com.demo.myfilesystem.kernel.entry.Entry;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import static com.demo.myfilesystem.utils.Constant.BYTES_NUM_OF_BLOCK;
 

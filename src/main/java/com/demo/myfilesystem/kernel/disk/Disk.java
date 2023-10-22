@@ -1,4 +1,4 @@
-package com.demo.myfilesystem.disk;
+package com.demo.myfilesystem.kernel.disk;
 
 import com.demo.myfilesystem.utils.Constant;
 
