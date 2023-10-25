@@ -38,8 +38,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        IOtool.format();
-        DebugTool.print(32);
+//        IOtool.format();
+//        DebugTool.print(32);
         Manager.init();
         launch();
     }

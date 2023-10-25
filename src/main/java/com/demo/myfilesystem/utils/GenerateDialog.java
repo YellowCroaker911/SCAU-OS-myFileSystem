@@ -23,9 +23,11 @@ public class GenerateDialog {
         TextField FileName = new RegexTextField("^[^.$]{0,3}$");
         TextField FileType = new RegexTextField("^[^.$]{0,2}$");
         if(mode == 0) {
+            dialog.setTitle("新建文件夹");
             gridPane.add(new Label("文件夹名称: "), 0, 0);
             gridPane.add(FileName, 1, 0);
         } else if (mode == 1) {
+            dialog.setTitle("新建文件");
             gridPane.add(new Label("文件名称: "), 0, 0);
             gridPane.add(FileName, 1, 0);
             gridPane.add(new Label("文件类型: "), 0, 1);

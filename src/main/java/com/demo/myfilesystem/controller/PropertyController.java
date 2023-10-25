@@ -2,6 +2,7 @@ package com.demo.myfilesystem.controller;
 
 import com.demo.myfilesystem.Main;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
+import com.demo.myfilesystem.kernel.filetable.FileNode;
 import com.demo.myfilesystem.kernel.manager.Manager;
 import com.demo.myfilesystem.utils.GenerateDialog;
 import javafx.application.Platform;
@@ -18,6 +19,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
+import static com.demo.myfilesystem.kernel.manager.Manager.closeFile;
+import static com.demo.myfilesystem.kernel.manager.Manager.openFile;
 import static com.demo.myfilesystem.utils.Constant.*;
 
 /**
@@ -109,7 +114,7 @@ public class PropertyController {
      * 根据文件信息更新窗口
      * @param entry 文件
      */
-    public void initInfo(EntryTreeNode entry){
+    public void initInfo(EntryTreeNode entry) throws IOException {
         this.entry = entry;
         CommentButton.setSelected(entry.getEntry().getInfo().isCommon());
         SystemFilebutton.setSelected(entry.getEntry().getInfo().isSystem());
@@ -136,7 +141,10 @@ public class PropertyController {
         // 文件名
         FileNameText.setText("文件名称：  " + entry.getFullName().replace("$",""));
         // 文件实际大小
-        SizeInfo.setText(""+entry.getEntry().getInfo().getLength()+"bytes");
+        FileNode fileNode;
+        fileNode = openFile(entry, "r");
+        SizeInfo.setText(""+fileNode.bytesLength()+"bytes");
+        closeFile(entry);
         // 文件占磁盘大小(块数*块大小)
         OccupyInfo.setText(""+entry.getEntry().list().size()*BYTES_NUM_OF_BLOCK + "bytes");
 

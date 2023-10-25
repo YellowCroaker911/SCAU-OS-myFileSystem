@@ -4,9 +4,12 @@ import com.demo.myfilesystem.controller.PropertyController;
 import com.demo.myfilesystem.kernel.entrytree.EntryTreeNode;
 import com.demo.myfilesystem.kernel.io.IOtool;
 import com.demo.myfilesystem.kernel.manager.Manager;
+import com.demo.myfilesystem.utils.GenerateDialog;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -35,7 +38,12 @@ public class PropertyMain {
 //        stage.getIcons().add(new Image(Main.class.getResource("icon.png").toExternalForm()));
         stage.setScene(scene);
         PropertyController controller = fxmlLoader.getController();
-        controller.initInfo(entry);
+        try {
+            controller.initInfo(entry);
+        } catch (Exception e){
+            GenerateDialog.AlertInformation("打开文件失败", e.getMessage(), Alert.AlertType.ERROR, ButtonType.OK);
+            return;
+        }
         stage.show();
     }
 

@@ -13,6 +13,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -20,7 +22,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -38,16 +42,20 @@ import static com.demo.myfilesystem.kernel.manager.Manager.*;
  */
 public class FileWindowMain {
     public FileWindowMain(EntryTreeNode entry, String mode, Stage ParentStage, MainViewController MainController) {
-        AnchorPane anchorPane = new AnchorPane();
+        BorderPane borderPane = new BorderPane();
         TextArea textArea = new TextArea();
         TextArea textArea1 = new TextArea();
-        Button save = new Button("保存");
+        Text ReadText = new Text("读文件窗口");
+        Text WriteText = new Text("写文件窗口");
+        Button save = new Button("写入");
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(textArea1,textArea,save);
-        vBox.setSpacing(10);
-        anchorPane.getChildren().add(vBox);
-        AnchorPane.setTopAnchor(vBox,50.0);
-        AnchorPane.setLeftAnchor(vBox,100.0);
+        vBox.getChildren().addAll(ReadText, textArea1, WriteText,textArea,save);
+        vBox.setSpacing(20);
+        vBox.setAlignment(Pos.CENTER);
+        borderPane.setCenter(vBox);
+        borderPane.setPadding(new Insets(10,50,10,50));
+//        AnchorPane.setTopAnchor(vBox,50.0);
+//        AnchorPane.setLeftAnchor(vBox,100.0);
 
         FileNode fileNode;
         try {
@@ -57,8 +65,9 @@ public class FileWindowMain {
             return;
         }
 
-        Scene scene = new Scene(anchorPane);
+        Scene scene = new Scene(borderPane);
         Stage stage = new Stage();
+        stage.setTitle(entry.getFullName().replace("$",""));
         stage.initOwner(ParentStage);   // 父窗口关子窗口跟着关
         stage.setScene(scene);
         stage.setWidth(800);
@@ -100,6 +109,7 @@ public class FileWindowMain {
             });
         }
         else {
+            save.setDisable(true);
             textArea.setEditable(false);
 //            textArea.appendText(readFile(fileNode,fileNode.bytesLength()));
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
