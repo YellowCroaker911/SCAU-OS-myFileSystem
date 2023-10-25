@@ -38,12 +38,7 @@ public class PropertyMain {
 //        stage.getIcons().add(new Image(Main.class.getResource("icon.png").toExternalForm()));
         stage.setScene(scene);
         PropertyController controller = fxmlLoader.getController();
-        try {
-            controller.initInfo(entry);
-        } catch (Exception e){
-            GenerateDialog.AlertInformation("打开文件失败", e.getMessage(), Alert.AlertType.ERROR, ButtonType.OK);
-            return;
-        }
+        controller.initInfo(entry);
         stage.show();
     }
 

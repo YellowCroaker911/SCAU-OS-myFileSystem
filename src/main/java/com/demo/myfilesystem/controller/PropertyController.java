@@ -114,7 +114,7 @@ public class PropertyController {
      * 根据文件信息更新窗口
      * @param entry 文件
      */
-    public void initInfo(EntryTreeNode entry) throws IOException {
+    public void initInfo(EntryTreeNode entry) {
         this.entry = entry;
         CommentButton.setSelected(entry.getEntry().getInfo().isCommon());
         SystemFilebutton.setSelected(entry.getEntry().getInfo().isSystem());
@@ -141,10 +141,7 @@ public class PropertyController {
         // 文件名
         FileNameText.setText("文件名称：  " + entry.getFullName().replace("$",""));
         // 文件实际大小
-        FileNode fileNode;
-        fileNode = openFile(entry, "r");
-        SizeInfo.setText(""+fileNode.bytesLength()+"bytes");
-        closeFile(entry);
+        SizeInfo.setText(""+entry.bytesLength()+"bytes");
         // 文件占磁盘大小(块数*块大小)
         OccupyInfo.setText(""+entry.getEntry().list().size()*BYTES_NUM_OF_BLOCK + "bytes");
 
