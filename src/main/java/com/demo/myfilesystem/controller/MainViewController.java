@@ -158,13 +158,12 @@ public class MainViewController {
     }
     @FXML
     private void goBackward(ActionEvent event) {
-        assert BackStack.size() < 2: "你不应该能按这东西";
+        assert BackStack.size() >= 2: "你不应该能按这东西";
         ForeStack.push(BackStack.peek());
         BackStack.pop();
         EntryTreeNode target = BackStack.peek();
         flowPane.openDirectory(target, false);
         updateButtonState();
-
     }
 
     @FXML

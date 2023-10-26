@@ -27,7 +27,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import java.io.File;
 import java.io.IOException;
 
@@ -45,8 +46,8 @@ public class FileWindowMain {
         BorderPane borderPane = new BorderPane();
         TextArea textArea = new TextArea();
         TextArea textArea1 = new TextArea();
-        Text ReadText = new Text("读文件窗口");
-        Text WriteText = new Text("写文件窗口");
+        Text ReadText = new Text("文件内容");
+        Text WriteText = new Text("写入预览");
         Button save = new Button("写入");
         VBox vBox = new VBox();
         vBox.getChildren().addAll(ReadText, textArea1, WriteText,textArea,save);
@@ -84,7 +85,17 @@ public class FileWindowMain {
             textArea.textProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
-                    oldValue = newValue;
+                    if(newValue.contains("#")){
+                        Notifications.create()
+                                .text("不能输入井号'#'")
+                                .owner(stage)
+                                .position(Pos.TOP_CENTER)
+                                .hideAfter(Duration.seconds(5))
+                                .show();
+                        textArea.setText(oldValue);
+                        return;
+                    }
+                    textArea.setText(newValue);
                 }
             });
             save.setOnAction(event-> {
